@@ -1,0 +1,961 @@
+{
+	"folder_history":
+	[
+		"/Users/Alex/.netbeans-derby",
+		"/Users/Alex/.netbeans",
+		"/usr/local/bin",
+		"/Users/Alex/Documents/Projects/Book/Code/pelicanbugs",
+		"/Users/Alex/Documents/Projects/Book/Code/pelican",
+		"/Users/Alex/Documents/Projects/Book/Code",
+		"/Users/Alex/Documents/Projects/Book/Code/samples",
+		"/Users/Alex/Documents/Projects/Book/Code/docs",
+		"/Users/Alex/Downloads/pelican-master",
+		"/Users/Alex/Downloads/hyde-master",
+		"/Users/Alex/Documents/Research/LearnPythonHardWay",
+		"/Users/Alex/Documents/Projects/charity",
+		"/Users/Alex/Documents/Projects/charity/charity"
+	],
+	"last_window_id": 53,
+	"settings":
+	{
+		"new_window_height": 752.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"author",
+						"author"
+					],
+					[
+						"settings",
+						"settings"
+					],
+					[
+						"sear",
+						"search_view_factory"
+					],
+					[
+						"sea",
+						"search_view_factory"
+					],
+					[
+						"Searc",
+						"SearchView"
+					],
+					[
+						"Objec",
+						"ObjectDoesNotExist"
+					],
+					[
+						"Cha",
+						"CharityUserChangeForm"
+					],
+					[
+						"Char",
+						"CharityUserCreationForm"
+					],
+					[
+						"form",
+						"form"
+					],
+					[
+						"Charity",
+						"CharityForm"
+					],
+					[
+						"formset",
+						"formset_factory"
+					]
+				]
+			},
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 357.0,
+				"selected_items":
+				[
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"install p",
+						"Package Control: Install Package"
+					],
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"install pack",
+						"Package Control: Install Package"
+					],
+					[
+						"Package Control: ",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 462.0
+			},
+			"console":
+			{
+				"height": 125.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/Alex/.zshrc",
+				"/Users/Alex/Documents/Projects/Book/Code/pelicanbugs/pelican/pelican/contents.py",
+				"/Users/Alex/.oh-my-zsh/themes/alex.zsh-theme",
+				"/Users/Alex/.virtualenvs/get_env_details",
+				"/Users/Alex/.virtualenvs/book/get_env_details",
+				"/Users/Alex/.virtualenvs/postactivate",
+				"/Users/Alex/.oh-my-zsh/templates/zshrc.zsh-template",
+				"/Users/Alex/.bash_profile",
+				"/Users/Alex/.bashrc",
+				"/etc/paths",
+				"/Users/Alex/.bash_profile.macports-saved_2011-10-19_at_22:00:29",
+				"/Users/Alex/.profile",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/utcTime/utc_plugin.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/epubGenerator/utcTime/utc_plugin.py",
+				"/Users/Alex/Documents/Projects/Book/Test/content/output/ncx.html",
+				"/Users/Alex/Documents/Projects/Book/Test/content/output.txt",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/__init__.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/epub_plugin.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/generators.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/settings.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/themes/simple/templates/ncx.html",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/epubGenerator/__init__.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/themes/simple/templates/opf.html",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/themes/simple/templates/tableofcontents.xhtml",
+				"/Users/Alex/Documents/Projects/Book/Code/CONTRIBUTING.rst",
+				"/Users/Alex/Documents/Research/LearnPythonHardWay/ex1.py",
+				"/Users/Alex/Documents/Projects/food/.git/HEAD",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/search/search.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/list.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/charityPage.html",
+				"/Users/Alex/Documents/Online School/StartupEngin/hw1p1",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/settings/base.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/admin.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/fixtures/items.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/tests/test_views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests/test_views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/urls.py",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/settings/test.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/migrations/0002_load_myfixture.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/0002_load_myfixture.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/search_indexes.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/fixtures/orgs.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/search/indexes/items/item_text.txt",
+				"/Users/Alex/Documents/Projects/charity/charity/items/models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/settings/local.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/fixtures/fixtures.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/items/fixtures/fixtures.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/search/search_indexes.py",
+				"/Users/Alex/Documents/Projects/charity/charity/htmlcov/charity_urls.html",
+				"/Users/Alex/Documents/Projects/charity/charity/items/admin.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/tests/test_models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/urls.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/urls.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests/test_models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/__init__.py",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/newCharity.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/login.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/new.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/newUser.html",
+				"/Users/Alex/Documents/Projects/charity/charity/fabfile.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/0002_initial.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/__init.py__",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests/models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/newcreate.html",
+				"/Users/Alex/Documents/Projects/charity/CONTRIBUTORS.txt",
+				"/Users/Alex/Documents/Projects/charity/LICENSE.txt",
+				"/Users/Alex/Documents/Projects/charity/requirements.txt",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+				"/Users/Alex/Downloads/Markdown-2.3.1/run-tests.py",
+				"/Users/Alex/Downloads/Markdown-2.3.1/markdown/__init__.py",
+				"/Users/Alex/Downloads/Markdown-2.3.1/tests/__init__.py",
+				"/Users/Alex/Downloads/Markdown-2.3.1/README.md",
+				"/Users/Alex/Documents/Projects/PersonalWebsite/bootstrap/less/navs.less",
+				"/Users/Alex/Documents/Projects/PersonalWebsite/flatui/Useful Links! (How To)"
+			],
+			"find":
+			{
+				"height": 37.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+					"",
+					"<project>"
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"timezone",
+					"TIMEZONE",
+					"timezone",
+					"utc",
+					"mandatory_properties",
+					"date",
+					"datetime",
+					"date",
+					"datetime",
+					"date",
+					"debug",
+					"tableofcontents",
+					"._templates",
+					"template",
+					"DIRECT_TEMPLATES",
+					"'template_pages'",
+					"'template",
+					"templates",
+					"template",
+					"templates",
+					"writer",
+					"template",
+					"templates",
+					"generator.context",
+					"get_generators",
+					"settings",
+					"pdb",
+					"writer",
+					"settings",
+					"get",
+					"writer",
+					"get_writer",
+					"writer",
+					"update_context",
+					"AUTHOR",
+					"read_file",
+					"index.html",
+					"CharityUser",
+					"Pet",
+					"s",
+					"se",
+					"hello",
+					"\n"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"pelican.settings"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 33.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"replace":
+			{
+				"height": 66.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"form",
+						"charity/templates/search/form.html"
+					],
+					[
+						"project",
+						"charity/static/css/project.css"
+					],
+					[
+						"base",
+						"charity/templates/base.html"
+					],
+					[
+						"models",
+						"charity/search/models.py"
+					],
+					[
+						"views",
+						"charity/search/views.py"
+					],
+					[
+						"urls",
+						"charity/search/urls.py"
+					],
+					[
+						"search",
+						"charity/templates/search/search.html"
+					],
+					[
+						"",
+						"charity/static/css/project.css"
+					],
+					[
+						"listall",
+						"charity/templates/listAllCharity.html"
+					],
+					[
+						"url",
+						"charity/items/urls.py"
+					],
+					[
+						"sear",
+						"charity/items/search_indexes.py"
+					],
+					[
+						"se",
+						"charity/templates/search/search.html"
+					],
+					[
+						"test",
+						"charity/items/tests/test_views.py"
+					],
+					[
+						"test_views",
+						"charity/orgs/tests/test_views.py"
+					],
+					[
+						"fab",
+						"charity/fabfile.py"
+					],
+					[
+						"login",
+						"charity/templates/login.html"
+					],
+					[
+						"base.",
+						"charity/templates/base.html"
+					],
+					[
+						"css",
+						"charity/static/css/project.css"
+					],
+					[
+						"pro",
+						"charity/static/css/project.css"
+					],
+					[
+						"p",
+						"charity/static/css/project.css"
+					],
+					[
+						"list",
+						"charity/templates/list.html"
+					],
+					[
+						"admin",
+						"charity/orgs/admin.py"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true
+		},
+		"new_window_width": 1280.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"author",
+						"author"
+					],
+					[
+						"settings",
+						"settings"
+					],
+					[
+						"sear",
+						"search_view_factory"
+					],
+					[
+						"sea",
+						"search_view_factory"
+					],
+					[
+						"Searc",
+						"SearchView"
+					],
+					[
+						"Objec",
+						"ObjectDoesNotExist"
+					],
+					[
+						"Cha",
+						"CharityUserChangeForm"
+					],
+					[
+						"Char",
+						"CharityUserCreationForm"
+					],
+					[
+						"form",
+						"form"
+					],
+					[
+						"Charity",
+						"CharityForm"
+					],
+					[
+						"formset",
+						"formset_factory"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/etc/profile",
+					"settings":
+					{
+						"buffer_size": 189,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/Users/Alex/.bash_profile",
+					"settings":
+					{
+						"buffer_size": 877,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/Users/Alex/.dotfiles/symlink.sh",
+					"settings":
+					{
+						"buffer_size": 532,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 357.0,
+				"selected_items":
+				[
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"install p",
+						"Package Control: Install Package"
+					],
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"install pack",
+						"Package Control: Install Package"
+					],
+					[
+						"Package Control: ",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 462.0
+			},
+			"console":
+			{
+				"height": 125.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/Alex/.dotfiles/symlink.sh",
+				"/Users/Alex/.dotfiles/README.md",
+				"/Users/Alex/.ec2",
+				"/Users/Alex/.zsh-update",
+				"/Users/Alex/.bash_logout",
+				"/Users/Alex/.dotfiles/zsh/alex.zsh-theme",
+				"/Users/Alex/.zshrc",
+				"/Users/Alex/.oh-my-zsh/README.textile",
+				"/Users/Alex/.dotfiles/zsh/.zshrc",
+				"/Users/Alex/Documents/Projects/Book/Code/pelicanbugs/pelican/pelican/contents.py",
+				"/Users/Alex/.oh-my-zsh/themes/alex.zsh-theme",
+				"/Users/Alex/.virtualenvs/get_env_details",
+				"/Users/Alex/.virtualenvs/book/get_env_details",
+				"/Users/Alex/.virtualenvs/postactivate",
+				"/Users/Alex/.oh-my-zsh/templates/zshrc.zsh-template",
+				"/Users/Alex/.bash_profile",
+				"/Users/Alex/.bashrc",
+				"/etc/paths",
+				"/Users/Alex/.bash_profile.macports-saved_2011-10-19_at_22:00:29",
+				"/Users/Alex/.profile",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/utcTime/utc_plugin.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/epubGenerator/utcTime/utc_plugin.py",
+				"/Users/Alex/Documents/Projects/Book/Test/content/output/ncx.html",
+				"/Users/Alex/Documents/Projects/Book/Test/content/output.txt",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/__init__.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/epub_plugin.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/generators.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/settings.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/themes/simple/templates/ncx.html",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/epubGenerator/__init__.py",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/themes/simple/templates/opf.html",
+				"/Users/Alex/Documents/Projects/Book/Code/pelican/pelican/themes/simple/templates/tableofcontents.xhtml",
+				"/Users/Alex/Documents/Projects/Book/Code/CONTRIBUTING.rst",
+				"/Users/Alex/Documents/Research/LearnPythonHardWay/ex1.py",
+				"/Users/Alex/Documents/Projects/food/.git/HEAD",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/search/search.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/list.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/charityPage.html",
+				"/Users/Alex/Documents/Online School/StartupEngin/hw1p1",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/settings/base.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/admin.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/fixtures/items.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/tests/test_views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests/test_views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/urls.py",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/settings/test.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/migrations/0002_load_myfixture.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/0002_load_myfixture.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/search_indexes.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/fixtures/orgs.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/search/indexes/items/item_text.txt",
+				"/Users/Alex/Documents/Projects/charity/charity/items/models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/charity/settings/local.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/fixtures/fixtures.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/items/fixtures/fixtures.yaml",
+				"/Users/Alex/Documents/Projects/charity/charity/search/search_indexes.py",
+				"/Users/Alex/Documents/Projects/charity/charity/htmlcov/charity_urls.html",
+				"/Users/Alex/Documents/Projects/charity/charity/items/admin.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/tests/test_models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/urls.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/views.py",
+				"/Users/Alex/Documents/Projects/charity/charity/orgs/urls.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests/test_models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/__init__.py",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/newCharity.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/login.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/new.html",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/newUser.html",
+				"/Users/Alex/Documents/Projects/charity/charity/fabfile.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/0002_initial.py",
+				"/Users/Alex/Documents/Projects/charity/charity/items/migrations/__init.py__",
+				"/Users/Alex/Documents/Projects/charity/charity/items/tests/models.py",
+				"/Users/Alex/Documents/Projects/charity/charity/templates/newcreate.html",
+				"/Users/Alex/Documents/Projects/charity/CONTRIBUTORS.txt",
+				"/Users/Alex/Documents/Projects/charity/LICENSE.txt",
+				"/Users/Alex/Documents/Projects/charity/requirements.txt",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+				"/Users/Alex/Downloads/Markdown-2.3.1/run-tests.py",
+				"/Users/Alex/Downloads/Markdown-2.3.1/markdown/__init__.py",
+				"/Users/Alex/Downloads/Markdown-2.3.1/tests/__init__.py",
+				"/Users/Alex/Downloads/Markdown-2.3.1/README.md",
+				"/Users/Alex/Documents/Projects/PersonalWebsite/bootstrap/less/navs.less",
+				"/Users/Alex/Documents/Projects/PersonalWebsite/flatui/Useful Links! (How To)"
+			],
+			"find":
+			{
+				"height": 37.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+					"",
+					"<project>"
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"timezone",
+					"TIMEZONE",
+					"timezone",
+					"utc",
+					"mandatory_properties",
+					"date",
+					"datetime",
+					"date",
+					"datetime",
+					"date",
+					"debug",
+					"tableofcontents",
+					"._templates",
+					"template",
+					"DIRECT_TEMPLATES",
+					"'template_pages'",
+					"'template",
+					"templates",
+					"template",
+					"templates",
+					"writer",
+					"template",
+					"templates",
+					"generator.context",
+					"get_generators",
+					"settings",
+					"pdb",
+					"writer",
+					"settings",
+					"get",
+					"writer",
+					"get_writer",
+					"writer",
+					"update_context",
+					"AUTHOR",
+					"read_file",
+					"index.html",
+					"CharityUser",
+					"Pet",
+					"s",
+					"se",
+					"hello",
+					"\n"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"pelican.settings"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/Users/Alex/Documents/Projects/Book/Code/pelicanbugs"
+				}
+			],
+			"groups":
+			[
+				{
+					"selected": 2,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/etc/profile",
+							"settings":
+							{
+								"buffer_size": 189,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/Users/Alex/.bash_profile",
+							"settings":
+							{
+								"buffer_size": 877,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/Users/Alex/.dotfiles/symlink.sh",
+							"settings":
+							{
+								"buffer_size": 532,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										532,
+										532
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 33.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"position": "0 4 1280 774 0 0 1280 778 ",
+			"replace":
+			{
+				"height": 66.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"form",
+						"charity/templates/search/form.html"
+					],
+					[
+						"project",
+						"charity/static/css/project.css"
+					],
+					[
+						"base",
+						"charity/templates/base.html"
+					],
+					[
+						"models",
+						"charity/search/models.py"
+					],
+					[
+						"views",
+						"charity/search/views.py"
+					],
+					[
+						"urls",
+						"charity/search/urls.py"
+					],
+					[
+						"search",
+						"charity/templates/search/search.html"
+					],
+					[
+						"",
+						"charity/static/css/project.css"
+					],
+					[
+						"listall",
+						"charity/templates/listAllCharity.html"
+					],
+					[
+						"url",
+						"charity/items/urls.py"
+					],
+					[
+						"sear",
+						"charity/items/search_indexes.py"
+					],
+					[
+						"se",
+						"charity/templates/search/search.html"
+					],
+					[
+						"test",
+						"charity/items/tests/test_views.py"
+					],
+					[
+						"test_views",
+						"charity/orgs/tests/test_views.py"
+					],
+					[
+						"fab",
+						"charity/fabfile.py"
+					],
+					[
+						"login",
+						"charity/templates/login.html"
+					],
+					[
+						"base.",
+						"charity/templates/base.html"
+					],
+					[
+						"css",
+						"charity/static/css/project.css"
+					],
+					[
+						"pro",
+						"charity/static/css/project.css"
+					],
+					[
+						"p",
+						"charity/static/css/project.css"
+					],
+					[
+						"list",
+						"charity/templates/list.html"
+					],
+					[
+						"admin",
+						"charity/orgs/admin.py"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"window_id": 50,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}
