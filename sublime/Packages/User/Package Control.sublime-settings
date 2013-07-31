@@ -2,8 +2,11 @@
 	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
+		"Django Click",
 		"Package Control",
+		"SetDjangoSyntax",
 		"SideBarEnhancements",
+		"Solarized Color Scheme",
 		"Tag",
 		"Theme - Soda"
 	]
