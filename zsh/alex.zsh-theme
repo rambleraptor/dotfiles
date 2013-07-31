@@ -33,7 +33,7 @@ function put_spacing() {
 	#Calculate number of places for python env
 	local pythonenv=$VIRTUAL_ENV
 	if [ ${#pythonenv} != 0 ]; then
-		((pythonenv=${#VIRTUAL_ENV} -10))
+		((pythonenv=${#VIRTUAL_ENV} -7))
 	else
 		pythonenv=0
 	fi
