@@ -12,7 +12,7 @@ source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/virtualenvwrapper.sh
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-# Customize to your needs...
+#Path
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/Alex/.rvm/gems/ruby-1.9.2-p290/bin:/Users/Alex/.rvm/gems/ruby-1.9.2-p290@global/bin:/Users/Alex/.rvm/rubies/ruby-1.9.2-p290/bin:/Users/Alex/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/Alex/Documents/Open/Chromium/depot_tools:/opt/X11/bin
 
 #Functions
@@ -26,6 +26,23 @@ function myip() {
 
 function hiddenOn() { defaults write com.apple.Finder AppleShowAllFiles YES ; }
 function hiddenOff() { defaults write com.apple.Finder AppleShowAllFiles NO ; }
+
+#Golang Stuff
+export GOROOT=/usr/local/Cellar/go/1.1.1
+
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
+alias go='nocorrect go'
+
+#Autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+#Local files
+if [ -r ~/.dotfiles/zsh/.zshrc.local ]; then
+    . ~/.dotfiles/zsh/.zshrc.local
+fi
+
 
 
 

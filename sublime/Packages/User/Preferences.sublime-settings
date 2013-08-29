@@ -13,13 +13,13 @@
 	[
 		"Vintage"
 	],
-	"tab-size": 4,
-	"theme": "Soda Light.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
 	"match_brackets": true,
 	"match_brackets_angle": true,
 	"match_brackets_braces": true,
 	"match_brackets_content": true,
-	"match_brackets_square": true
+	"match_brackets_square": true,
+	"tab-size": 4,
+	"theme": "Soda Light.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
 }
