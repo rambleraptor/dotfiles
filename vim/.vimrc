@@ -8,6 +8,5 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 syntax on
-
-"Solarized color scheme.
+set number
 

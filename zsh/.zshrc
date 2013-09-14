@@ -5,10 +5,7 @@ ZSH_THEME="alex"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-
-
-
-# Virtualenv Files
+#Virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
