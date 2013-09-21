@@ -32,6 +32,8 @@ export PATH=$PATH:$GOPATH/bin
 
 alias go='nocorrect go'
 
+#Java Stuff
+export CLASSPATH=/Users/Alex/Documents/School/EECS285
 #Autojump
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
