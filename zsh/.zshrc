@@ -1,9 +1,7 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="alex"
-
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 #Virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
@@ -34,8 +32,9 @@ alias go='nocorrect go'
 
 #Java Stuff
 export CLASSPATH=/Users/Alex/Documents/School/EECS285
+
 #Autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+[[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
 
 #Local files
 if [ -r ~/.dotfiles/zsh/.zshrc.local ]; then
