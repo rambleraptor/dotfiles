@@ -15,3 +15,7 @@ let g:solarized_termcolors = 16
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
+
+filetype plugin indent on
+syntax on
+set encoding=utf-8
