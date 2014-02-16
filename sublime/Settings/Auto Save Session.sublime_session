@@ -582,7 +582,7 @@
 					"file": "/Users/Alex/.dotfiles/symlink.sh",
 					"settings":
 					{
-						"buffer_size": 3315,
+						"buffer_size": 3450,
 						"line_ending": "Unix"
 					}
 				}
@@ -869,7 +869,7 @@
 							"file": "/Users/Alex/.dotfiles/symlink.sh",
 							"settings":
 							{
-								"buffer_size": 3315,
+								"buffer_size": 3450,
 								"regions":
 								{
 								},
@@ -887,7 +887,7 @@
 									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
-								"translation.y": 1864.0,
+								"translation.y": 2124.0,
 								"zoom_level": 1.0
 							},
 							"type": "text"

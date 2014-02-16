@@ -120,7 +120,25 @@ install_dotfiles () {
   done
 }
 
+zpreztorc() {
+  ln -s $DOTFILES_ROOT/zsh/prompt_alex_setup ~/.zprezto/modules/prompt/functions/prompt_alex_setup
+}
+
+sublime (){
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+   # Sublime Text
+   ln -s ~/.dotfiles/sublime/Pristine\ Packages ~/Library/Application\ Support/Sublime\ Text\ 2
+   ln -s ~/.dotfiles/sublime/Packages ~/Library/Application\ Support/Sublime\ Text\ 2
+   ln -s ~/.dotfiles/sublime/Settings ~/Library/Application\ Support/Sublime\ Text\ 2
+   ln -s ~/.dotfiles/sublime/Installed\ Packages ~/Library/Application\ Support/Sublime\ Text\ 2
+   ln -s "~/.dotfiles/sublime/Backup" ~/Library/Application\ Support/Sublime\ Text\ 2
+  fi
+}
+
 install_dotfiles
+zpreztorc
+
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
@@ -137,14 +155,5 @@ fi
 echo ''
 echo '  All installed!'
 
-sublime (){
-  if [ "$(uname -s)" == "Darwin" ]
-  then
-   # Sublime Text
-	 ln -s ~/.dotfiles/sublime/Pristine\ Packages ~/Library/Application\ Support/Sublime\ Text\ 2
-	 ln -s ~/.dotfiles/sublime/Packages ~/Library/Application\ Support/Sublime\ Text\ 2
-	 ln -s ~/.dotfiles/sublime/Settings ~/Library/Application\ Support/Sublime\ Text\ 2
-	 ln -s ~/.dotfiles/sublime/Installed\ Packages ~/Library/Application\ Support/Sublime\ Text\ 2
-	 ln -s "~/.dotfiles/sublime/Backup" ~/Library/Application\ Support/Sublime\ Text\ 2
-  fi
-}
+
+
