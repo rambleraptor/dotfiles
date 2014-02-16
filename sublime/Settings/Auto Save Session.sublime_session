@@ -577,6 +577,14 @@
 						"buffer_size": 819,
 						"line_ending": "Unix"
 					}
+				},
+				{
+					"file": "/Users/Alex/.dotfiles/symlink.sh",
+					"settings":
+					{
+						"buffer_size": 3331,
+						"line_ending": "Unix"
+					}
 				}
 			],
 			"build_system": "",
@@ -723,7 +731,7 @@
 			"groups":
 			[
 				{
-					"selected": 3,
+					"selected": 5,
 					"sheets":
 					[
 						{
@@ -849,6 +857,34 @@
 								"settings":
 								{
 									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 5,
+							"file": "/Users/Alex/.dotfiles/symlink.sh",
+							"settings":
+							{
+								"buffer_size": 3331,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										2504,
+										2504
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
 								"translation.y": 0.0,
