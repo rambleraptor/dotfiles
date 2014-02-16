@@ -4,9 +4,12 @@
 	[
 		"MarkdownBuild",
 		"Package Control",
+		"Pretty JSON",
 		"SideBarEnhancements",
 		"Solarized Color Scheme",
 		"Tag",
-		"Theme - Soda"
+		"Theme - Soda",
+		"Theme - Spacegray",
+		"WordCount"
 	]
 }

@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/Alex/.zprezto'
 let g:netrw_dirhist_2='/Users/Alex/.zprezto/modules/prompt/functions'
 let g:netrw_dirhist_3='/Users/Alex/.zprezto'
+let g:netrw_dirhist_4='/Users/Alex/Documents/CSEScholars/CodeUM/js/foundation'
+let g:netrw_dirhist_5='/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements'
+let g:netrw_dirhist_6='/Users/Alex/.zprezto'

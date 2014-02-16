@@ -1,0 +1,931 @@
+{
+	"folder_history":
+	[
+		"/Users/Alex/.dotfiles",
+		"/Users/Alex/Documents/School/EECS376/HW4",
+		"/Users/Alex/Documents/School/EECS376/HW2",
+		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node",
+		"/Users/Alex/Documents/School/EECS492/HW2",
+		"/Users/Alex/Documents/CSEScholars/CodeUM/SplashPage2",
+		"/Users/Alex/Documents/Projects/MultipleChoice",
+		"/Users/Alex/Documents/Projects/Blog",
+		"/Users/Alex/Documents/School/EECS492/HW1",
+		"/Users/Alex/Documents/Apps/Clever",
+		"/Users/Alex/Downloads/parse-ruby-client-master/lib/parse",
+		"/Users/Alex/Documents/MPowered/MHacks2/app",
+		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels",
+		"/Users/Alex/Downloads/linnovate-mean-bb910c5"
+	],
+	"last_window_id": 49,
+	"settings":
+	{
+		"new_window_height": 752.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"w",
+						"w"
+					],
+					[
+						"True",
+						"True"
+					],
+					[
+						"waittimes_new",
+						"waittimes_newest_collection"
+					],
+					[
+						"waitt",
+						"waittimes_collection"
+					]
+				]
+			},
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 339.0,
+				"selected_items":
+				[
+					[
+						"prett",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pretty",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pack",
+						"Package Control: Install Package"
+					],
+					[
+						"pac",
+						"Package Control: Remove Package"
+					],
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"pakage Control : In",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: in",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: inst",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: remove",
+						"Package Control: Remove Package"
+					]
+				],
+				"width": 484.0
+			},
+			"console":
+			{
+				"height": 0.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
+				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
+				"/Users/Alex/Documents/School/EECS376/HW2/Prob4.txt",
+				"/Users/Alex/Documents/School/EECS376/HW2/validate.py",
+				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
+			],
+			"find":
+			{
+				"height": 38.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+					"package.json",
+					""
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"p",
+					"find_exponent",
+					"p2_i",
+					"current",
+					"fastPass"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"latest"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 32.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true
+		},
+		"new_window_width": 1280.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"w",
+						"w"
+					],
+					[
+						"True",
+						"True"
+					],
+					[
+						"waittimes_new",
+						"waittimes_newest_collection"
+					],
+					[
+						"waitt",
+						"waittimes_collection"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/Users/Alex/Documents/School/EECS498/HW4/P2",
+					"settings":
+					{
+						"buffer_size": 728,
+						"line_ending": "Unix",
+						"name": "A = [1 2 4 9];"
+					}
+				}
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 339.0,
+				"selected_items":
+				[
+					[
+						"prett",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pretty",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pack",
+						"Package Control: Install Package"
+					],
+					[
+						"pac",
+						"Package Control: Remove Package"
+					],
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"pakage Control : In",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: in",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: inst",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: remove",
+						"Package Control: Remove Package"
+					]
+				],
+				"width": 484.0
+			},
+			"console":
+			{
+				"height": 0.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
+				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
+				"/Users/Alex/Documents/School/EECS376/HW2/Prob4.txt",
+				"/Users/Alex/Documents/School/EECS376/HW2/validate.py",
+				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
+			],
+			"find":
+			{
+				"height": 38.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+					"package.json",
+					""
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"p",
+					"find_exponent",
+					"p2_i",
+					"current",
+					"fastPass"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"latest"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"groups":
+			[
+				{
+					"selected": 0,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/Users/Alex/Documents/School/EECS498/HW4/P2",
+							"settings":
+							{
+								"buffer_size": 728,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										728,
+										728
+									]
+								],
+								"settings":
+								{
+									"auto_name": "A = [1 2 4 9];",
+									"is_xml": false,
+									"syntax": "Packages/Text/Plain text.tmLanguage",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 32.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"position": "0 4 1280 774 0 0 1280 778 ",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"window_id": 48,
+			"workspace_name": ""
+		},
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"w",
+						"w"
+					],
+					[
+						"True",
+						"True"
+					],
+					[
+						"waittimes_new",
+						"waittimes_newest_collection"
+					],
+					[
+						"waitt",
+						"waittimes_collection"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/Users/Alex/.dotfiles/zsh/go.zsh",
+					"settings":
+					{
+						"buffer_size": 111,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/Users/Alex/.dotfiles/zsh/alex.zsh",
+					"settings":
+					{
+						"buffer_size": 0,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/Users/Alex/.dotfiles/zsh/alias.zsh",
+					"settings":
+					{
+						"buffer_size": 80,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/Users/Alex/.dotfiles/zsh/config.zsh",
+					"settings":
+					{
+						"buffer_size": 556,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/Users/Alex/.dotfiles/zsh/functions.zsh",
+					"settings":
+					{
+						"buffer_size": 819,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 339.0,
+				"selected_items":
+				[
+					[
+						"prett",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pretty",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pack",
+						"Package Control: Install Package"
+					],
+					[
+						"pac",
+						"Package Control: Remove Package"
+					],
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"pakage Control : In",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: in",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: inst",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: remove",
+						"Package Control: Remove Package"
+					]
+				],
+				"width": 484.0
+			},
+			"console":
+			{
+				"height": 0.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
+				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
+				"/Users/Alex/Documents/School/EECS376/HW2/Prob4.txt",
+				"/Users/Alex/Documents/School/EECS376/HW2/validate.py",
+				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
+			],
+			"find":
+			{
+				"height": 38.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+					"package.json",
+					""
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"p",
+					"find_exponent",
+					"p2_i",
+					"current",
+					"fastPass"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"latest"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/Users/Alex/.dotfiles"
+				}
+			],
+			"groups":
+			[
+				{
+					"selected": 3,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/Users/Alex/.dotfiles/zsh/go.zsh",
+							"settings":
+							{
+								"buffer_size": 111,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										110,
+										110
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/Users/Alex/.dotfiles/zsh/alex.zsh",
+							"settings":
+							{
+								"buffer_size": 0,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/Users/Alex/.dotfiles/zsh/alias.zsh",
+							"settings":
+							{
+								"buffer_size": 80,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										19,
+										19
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "/Users/Alex/.dotfiles/zsh/config.zsh",
+							"settings":
+							{
+								"buffer_size": 556,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										552,
+										552
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						},
+						{
+							"buffer": 4,
+							"file": "/Users/Alex/.dotfiles/zsh/functions.zsh",
+							"settings":
+							{
+								"buffer_size": 819,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										819,
+										819
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 32.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"position": "0 4 1280 774 0 0 1280 778 ",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"window_id": 49,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}

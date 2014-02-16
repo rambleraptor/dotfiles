@@ -1,0 +1,4 @@
+{
+    "whitelist_syntaxes": ["Plain Text"],
+    "blacklist_syntaxes": ["CSS"]
+}
