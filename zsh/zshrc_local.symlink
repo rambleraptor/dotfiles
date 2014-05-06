@@ -1,0 +1,16 @@
+function server-ssh() {
+    ssh -p 25000 alex@162.243.70.57 ;
+}
+
+function umich-mount() {
+    sshfs stepa@login.engin.umich.edu:/afs/umich.edu/user/s/t/stepa /Users/Alex/Documents/Scripts/mount_point;
+    cd /Users/Alex/Documents/Scripts/mount_point;
+}
+
+function umich-unmount() {
+    cd ~;
+    umount /Users/Alex/Documents/Scripts/mount_point;
+}
+function umich-ssh() {
+    ssh stepa@login.engin.umich.edu;
+}
