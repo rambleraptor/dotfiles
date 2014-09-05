@@ -1,4 +1,3 @@
-set TERM=xterm-256
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -7,10 +6,6 @@ fi
 
 #Autojump
 [[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
-
-#RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #Virtualenv
 source /usr/local/bin/virtualenvwrapper.sh

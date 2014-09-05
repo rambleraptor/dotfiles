@@ -16,6 +16,20 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
 
+set nofoldenable
+let g:vim_markdown_folding_disabled=1
+filetype plugin on
 filetype plugin indent on
 syntax on
 set encoding=utf-8
+
+" Ctl P
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+nnoremap <Space> @q

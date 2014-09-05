@@ -1,13 +1,35 @@
 {
 	"folder_history":
 	[
+		"/Users/Alex/Documents/Raptors/PriorityToDo",
+		"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html",
+		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node",
+		"/Users/Alex/Documents/Apps/resume",
+		"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite",
+		"/Users/Alex/Downloads/Universal",
+		"/Users/Alex/Downloads/com.universalstudios.orlandoresort",
+		"/Users/Alex/Documents/Projects/poole-master",
+		"/Users/Alex/Documents/CSEScholars/website",
+		"/Users/Alex/.dotfiles",
+		"/Users/Alex/Documents/Projects/poole-master/_layouts",
+		"/Users/Alex/Documents/School/EECS498/Projects",
+		"/Users/Alex/Documents/School/EECS498/Projects/AlignedOut",
+		"/Users/Alex/Documents/Projects/learn-python-through-projects",
+		"/Users/Alex/Downloads/speech_tools",
+		"/Users/Alex/Documents/Misc/Test",
+		"/Users/Alex/Documents/Projects/CommandLine",
+		"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains",
+		"/Users/Alex/Documents/CSEScholars/Website",
+		"/Users/Alex/Documents/School/EECS492/HW4/sgp",
+		"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3",
+		"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 2",
+		"/Users/Alex/Documents/School/EECS498/HW5",
+		"/Users/Alex/Documents/Projects/Blog",
 		"/Users/Alex/Documents/School/EECS376/HW4",
 		"/Users/Alex/Documents/School/EECS376/HW2",
-		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node",
 		"/Users/Alex/Documents/School/EECS492/HW2",
 		"/Users/Alex/Documents/CSEScholars/CodeUM/SplashPage2",
 		"/Users/Alex/Documents/Projects/MultipleChoice",
-		"/Users/Alex/Documents/Projects/Blog",
 		"/Users/Alex/Documents/School/EECS492/HW1",
 		"/Users/Alex/Documents/Apps/Clever",
 		"/Users/Alex/Downloads/parse-ruby-client-master/lib/parse",
@@ -15,7 +37,7 @@
 		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels",
 		"/Users/Alex/Downloads/linnovate-mean-bb910c5"
 	],
-	"last_window_id": 48,
+	"last_window_id": 129,
 	"settings":
 	{
 		"new_window_height": 752.0,
@@ -25,6 +47,62 @@
 			{
 				"selected_items":
 				[
+					[
+						"strto",
+						"strtotime"
+					],
+					[
+						"collection",
+						"collection_name"
+					],
+					[
+						"calcul",
+						"calculateGOP"
+					],
+					[
+						"filename",
+						"filename1"
+					],
+					[
+						"stru",
+						"structure0"
+					],
+					[
+						"str",
+						"structure3"
+					],
+					[
+						"struc",
+						"structure3"
+					],
+					[
+						"st",
+						"structure0"
+					],
+					[
+						"words",
+						"words"
+					],
+					[
+						"say",
+						"sayCommand"
+					],
+					[
+						"TTS",
+						"TTSPrompts"
+					],
+					[
+						"grep",
+						"grep_input"
+					],
+					[
+						"output",
+						"outputfilename"
+					],
+					[
+						"i",
+						"i"
+					],
 					[
 						"w",
 						"w"
@@ -46,9 +124,17 @@
 			"build_system": "",
 			"command_palette":
 			{
-				"height": 339.0,
+				"height": 400.0,
 				"selected_items":
 				[
+					[
+						":w",
+						":w - Save"
+					],
+					[
+						"pac",
+						"Package Control: Install Package"
+					],
 					[
 						"prett",
 						"Pretty JSON: Reformat (Pretty Print) JSON"
@@ -60,10 +146,6 @@
 					[
 						"pack",
 						"Package Control: Install Package"
-					],
-					[
-						"pac",
-						"Package Control: Remove Package"
 					],
 					[
 						"package",
@@ -86,7 +168,7 @@
 						"Package Control: Remove Package"
 					]
 				],
-				"width": 484.0
+				"width": 583.0
 			},
 			"console":
 			{
@@ -103,11 +185,93 @@
 			},
 			"file_history":
 			[
+				"/Users/Alex/Documents/Raptors/ASPriorityQueue/ASPriorityQueue/ASPriorityQueue.m",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/layout.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/README.md",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/static/css/style.css",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/views/officers.php",
+				"/Users/Alex/.ssh/id_rsa.pub",
+				"/Users/Alex/Documents/Apps/resume.json.html",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/member_info.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/admin_page.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/resume_book/index.php",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/tests/html.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/controllers/html.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal.py",
+				"/Users/Alex/Documents/Projects/poole-master/_includes/head.html",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-18-dropbox-for-ssh.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-9-test.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-9-2-100-acres.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-11-27-housing.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-3-13-favicons.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-12-leaving-browsers.markdown",
+				"/Users/Alex/Documents/Projects/poole-master/README.md",
+				"/Users/Alex/Documents/Projects/poole-master/CNAME",
+				"/Users/Alex/Documents/Projects/poole-master/_includes/analytics.html",
+				"/Users/Alex/Documents/CSEScholars/website/_site/index.html",
+				"/Users/Alex/Documents/CSEScholars/website/_site/Gemfile",
+				"/Users/Alex/Documents/CSEScholars/website/_layouts/default.html",
+				"/Users/Alex/Documents/CSEScholars/website/css/main.scss",
+				"/Users/Alex/Documents/CSEScholars/website/_config.yml",
+				"/Users/Alex/Documents/CSEScholars/website/index.html",
+				"/Users/Alex/Documents/CSEScholars/website/login.html",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Documents/Projects/poole-master/index.html",
+				"/Users/Alex/Documents/Projects/poole-master/about.md",
+				"/Users/Alex/Documents/Projects/poole-master/public/css/poole.css",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/promptsGood.csv",
+				"/Users/Alex/Documents/School/EECS498/Projects/train4.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/train3.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/train2.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/mlf_builder.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/project.sh",
+				"/Users/Alex/Documents/School/EECS498/Projects/tts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/aligned_parser.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/test.out",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/csv_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/dict_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/tts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/wlist_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/prompts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/dict_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/dlog",
+				"/Users/Alex/Documents/School/EECS498/Projects/badwordlist",
+				"/Users/Alex/Documents/School/EECS498/Projects/testprompt",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/testprompt",
+				"/Users/Alex/Documents/School/EECS498/Projects/wav_config",
+				"/Users/Alex/Documents/School/EECS498/Projects/train.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/dict",
+				"/Users/Alex/Documents/School/EECS498/Projects/words.mlf",
+				"/Users/Alex/Documents/School/EECS498/Projects/prompts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/missingWords",
+				"/Users/Alex/Documents/School/EECS498/Projects/dict",
+				"/Users/Alex/Documents/School/EECS498/Projects/wlist",
+				"/Users/Alex/Documents/School/EECS498/Projects/csv_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/wlist_generator.py",
+				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/rocket.pddl",
+				"/Users/Alex/Documents/CSEScholars/Website/index.html",
+				"/Users/Alex/Documents/CSEScholars/Website/css/style.scss",
+				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/old_rocket.pddl",
+				"/Users/Alex/Documents/School/EECS492/HW4/rocket.pddl",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/aligned.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/wintri.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/TestPrompts/testprompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/mktri.led",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/phones0.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/testprompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_test_prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_training_prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/skeleton_hmm.m",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 2/wlist",
+				"/Users/Alex/Desktop/test.py",
+				"/Users/Alex/Downloads/htk/HTKLib/HGraf.c",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/cron.js",
 				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
 				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
 				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
@@ -134,7 +298,6 @@
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
-				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
@@ -149,15 +312,123 @@
 				"height": 0.0,
 				"where_history":
 				[
+					"reset.css",
+					"index.phtml",
+					"",
+					"prompts",
+					"",
+					"testprompts",
+					"",
+					"testprompts",
+					"",
 					"package.json",
 					""
 				]
 			},
 			"find_state":
 			{
-				"case_sensitive": false,
+				"case_sensitive": true,
 				"find_history":
 				[
+					".navbar-simple",
+					"officer_text",
+					"footer",
+					"md",
+					"span4",
+					"span2",
+					"name",
+					"AddResume",
+					"addResume",
+					"uploadf",
+					"AddResume",
+					"$_FILES",
+					"temp",
+					"audio",
+					"SELECT",
+					"members",
+					"Askia",
+					"askia",
+					"INSERT INTO",
+					"INSERT INTO members",
+					"INSERT INTO",
+					"INSERT",
+					"print",
+					"update",
+					"parks_list",
+					"parks_lsit",
+					"params",
+					"query",
+					"engine",
+					"universalstudios",
+					"api",
+					"wait",
+					"api",
+					"http",
+					"<g>",
+					"print",
+					"x",
+					"eh",
+					"as",
+					"sp",
+					"sun",
+					"sky",
+					"us",
+					"ch",
+					"no",
+					"sa",
+					"ro",
+					"re",
+					"mun",
+					"ok",
+					"ex",
+					"x",
+					"ha",
+					"lu",
+					"ca",
+					"cam",
+					"ld",
+					"wa",
+					"her",
+					"j",
+					"til",
+					"gi",
+					"fu",
+					"bu",
+					"co",
+					"na",
+					"not",
+					"DOMAIN",
+					"Domains",
+					"sample24",
+					"sample10",
+					"sample4",
+					"dict",
+					"sample1",
+					"DIAL",
+					"124",
+					"dial",
+					"aligned.mlf",
+					"sample",
+					"prompt124",
+					"alex-train-prompt124",
+					"DIAL",
+					"BROOKHAVEN",
+					"SENT-END",
+					"SENT-START",
+					"BROOKHAVEN",
+					"SENT-END",
+					"SENT-START",
+					"b",
+					"sil",
+					"SENT-START",
+					"SENT-END",
+					"SENT-START",
+					"SENT-END",
+					"SENT-START",
+					"ARCH",
+					"temp",
+					"IsLeft",
+					"IsAbove",
 					"p",
 					"find_exponent",
 					"p2_i",
@@ -170,17 +441,25 @@
 				"regex": false,
 				"replace_history":
 				[
+					"",
+					"lg",
+					"col-md-4",
+					"col-md-2",
+					"",
+					"IsLeft",
+					"IsAbove",
+					"temp",
 					"latest"
 				],
 				"reverse": false,
 				"show_context": true,
 				"use_buffer2": true,
 				"whole_word": false,
-				"wrap": true
+				"wrap": false
 			},
 			"incremental_find":
 			{
-				"height": 0.0
+				"height": 38.0
 			},
 			"input":
 			{
@@ -219,6 +498,62 @@
 				"height": 0.0,
 				"selected_items":
 				[
+					[
+						"html",
+						"controllers/html.js"
+					],
+					[
+						"",
+						"models/Waits.js"
+					],
+					[
+						"disney",
+						"channels/disney_waits.py"
+					],
+					[
+						"api",
+						"controllers/api.js"
+					],
+					[
+						"app",
+						"app.js"
+					],
+					[
+						"app.js",
+						"app.js"
+					],
+					[
+						"server",
+						"server.js"
+					],
+					[
+						"read",
+						"README.md"
+					],
+					[
+						"ana",
+						"_includes/analytics.html"
+					],
+					[
+						"ph",
+						"phones0.mlf"
+					],
+					[
+						"phones0",
+						"phones0.mlf"
+					],
+					[
+						"words",
+						"words.mlf"
+					],
+					[
+						"dict",
+						"dict"
+					],
+					[
+						"word",
+						"words.mlf"
+					]
 				],
 				"width": 0.0
 			},
@@ -247,6 +582,62 @@
 				"selected_items":
 				[
 					[
+						"strto",
+						"strtotime"
+					],
+					[
+						"collection",
+						"collection_name"
+					],
+					[
+						"calcul",
+						"calculateGOP"
+					],
+					[
+						"filename",
+						"filename1"
+					],
+					[
+						"stru",
+						"structure0"
+					],
+					[
+						"str",
+						"structure3"
+					],
+					[
+						"struc",
+						"structure3"
+					],
+					[
+						"st",
+						"structure0"
+					],
+					[
+						"words",
+						"words"
+					],
+					[
+						"say",
+						"sayCommand"
+					],
+					[
+						"TTS",
+						"TTSPrompts"
+					],
+					[
+						"grep",
+						"grep_input"
+					],
+					[
+						"output",
+						"outputfilename"
+					],
+					[
+						"i",
+						"i"
+					],
+					[
 						"w",
 						"w"
 					],
@@ -267,21 +658,28 @@
 			"buffers":
 			[
 				{
-					"file": "/Users/Alex/Documents/School/EECS498/HW4/P2",
+					"file": "/Users/Alex/Documents/Raptors/ASPriorityQueue/Tests/ASPriorityQueueTests.m",
 					"settings":
 					{
-						"buffer_size": 728,
-						"line_ending": "Unix",
-						"name": "A = [1 2 4 9];"
+						"buffer_size": 2265,
+						"line_ending": "Unix"
 					}
 				}
 			],
 			"build_system": "",
 			"command_palette":
 			{
-				"height": 339.0,
+				"height": 400.0,
 				"selected_items":
 				[
+					[
+						":w",
+						":w - Save"
+					],
+					[
+						"pac",
+						"Package Control: Install Package"
+					],
 					[
 						"prett",
 						"Pretty JSON: Reformat (Pretty Print) JSON"
@@ -293,10 +691,6 @@
 					[
 						"pack",
 						"Package Control: Install Package"
-					],
-					[
-						"pac",
-						"Package Control: Remove Package"
 					],
 					[
 						"package",
@@ -319,7 +713,7 @@
 						"Package Control: Remove Package"
 					]
 				],
-				"width": 484.0
+				"width": 583.0
 			},
 			"console":
 			{
@@ -336,11 +730,93 @@
 			},
 			"file_history":
 			[
+				"/Users/Alex/Documents/Raptors/ASPriorityQueue/ASPriorityQueue/ASPriorityQueue.m",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/layout.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/README.md",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/static/css/style.css",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/views/officers.php",
+				"/Users/Alex/.ssh/id_rsa.pub",
+				"/Users/Alex/Documents/Apps/resume.json.html",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/member_info.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/admin_page.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/resume_book/index.php",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/tests/html.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/controllers/html.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal.py",
+				"/Users/Alex/Documents/Projects/poole-master/_includes/head.html",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-18-dropbox-for-ssh.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-9-test.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-9-2-100-acres.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-11-27-housing.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-3-13-favicons.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-12-leaving-browsers.markdown",
+				"/Users/Alex/Documents/Projects/poole-master/README.md",
+				"/Users/Alex/Documents/Projects/poole-master/CNAME",
+				"/Users/Alex/Documents/Projects/poole-master/_includes/analytics.html",
+				"/Users/Alex/Documents/CSEScholars/website/_site/index.html",
+				"/Users/Alex/Documents/CSEScholars/website/_site/Gemfile",
+				"/Users/Alex/Documents/CSEScholars/website/_layouts/default.html",
+				"/Users/Alex/Documents/CSEScholars/website/css/main.scss",
+				"/Users/Alex/Documents/CSEScholars/website/_config.yml",
+				"/Users/Alex/Documents/CSEScholars/website/index.html",
+				"/Users/Alex/Documents/CSEScholars/website/login.html",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Documents/Projects/poole-master/index.html",
+				"/Users/Alex/Documents/Projects/poole-master/about.md",
+				"/Users/Alex/Documents/Projects/poole-master/public/css/poole.css",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/promptsGood.csv",
+				"/Users/Alex/Documents/School/EECS498/Projects/train4.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/train3.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/train2.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/mlf_builder.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/project.sh",
+				"/Users/Alex/Documents/School/EECS498/Projects/tts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/aligned_parser.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/test.out",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/csv_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/dict_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/tts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/wlist_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/prompts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/dict_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/dlog",
+				"/Users/Alex/Documents/School/EECS498/Projects/badwordlist",
+				"/Users/Alex/Documents/School/EECS498/Projects/testprompt",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/testprompt",
+				"/Users/Alex/Documents/School/EECS498/Projects/wav_config",
+				"/Users/Alex/Documents/School/EECS498/Projects/train.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/dict",
+				"/Users/Alex/Documents/School/EECS498/Projects/words.mlf",
+				"/Users/Alex/Documents/School/EECS498/Projects/prompts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/missingWords",
+				"/Users/Alex/Documents/School/EECS498/Projects/dict",
+				"/Users/Alex/Documents/School/EECS498/Projects/wlist",
+				"/Users/Alex/Documents/School/EECS498/Projects/csv_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/wlist_generator.py",
+				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/rocket.pddl",
+				"/Users/Alex/Documents/CSEScholars/Website/index.html",
+				"/Users/Alex/Documents/CSEScholars/Website/css/style.scss",
+				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/old_rocket.pddl",
+				"/Users/Alex/Documents/School/EECS492/HW4/rocket.pddl",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/aligned.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/wintri.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/TestPrompts/testprompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/mktri.led",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/phones0.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/testprompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_test_prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_training_prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/skeleton_hmm.m",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 2/wlist",
+				"/Users/Alex/Desktop/test.py",
+				"/Users/Alex/Downloads/htk/HTKLib/HGraf.c",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/cron.js",
 				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
 				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
 				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
@@ -367,7 +843,6 @@
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
-				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
 				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
@@ -382,15 +857,123 @@
 				"height": 0.0,
 				"where_history":
 				[
+					"reset.css",
+					"index.phtml",
+					"",
+					"prompts",
+					"",
+					"testprompts",
+					"",
+					"testprompts",
+					"",
 					"package.json",
 					""
 				]
 			},
 			"find_state":
 			{
-				"case_sensitive": false,
+				"case_sensitive": true,
 				"find_history":
 				[
+					".navbar-simple",
+					"officer_text",
+					"footer",
+					"md",
+					"span4",
+					"span2",
+					"name",
+					"AddResume",
+					"addResume",
+					"uploadf",
+					"AddResume",
+					"$_FILES",
+					"temp",
+					"audio",
+					"SELECT",
+					"members",
+					"Askia",
+					"askia",
+					"INSERT INTO",
+					"INSERT INTO members",
+					"INSERT INTO",
+					"INSERT",
+					"print",
+					"update",
+					"parks_list",
+					"parks_lsit",
+					"params",
+					"query",
+					"engine",
+					"universalstudios",
+					"api",
+					"wait",
+					"api",
+					"http",
+					"<g>",
+					"print",
+					"x",
+					"eh",
+					"as",
+					"sp",
+					"sun",
+					"sky",
+					"us",
+					"ch",
+					"no",
+					"sa",
+					"ro",
+					"re",
+					"mun",
+					"ok",
+					"ex",
+					"x",
+					"ha",
+					"lu",
+					"ca",
+					"cam",
+					"ld",
+					"wa",
+					"her",
+					"j",
+					"til",
+					"gi",
+					"fu",
+					"bu",
+					"co",
+					"na",
+					"not",
+					"DOMAIN",
+					"Domains",
+					"sample24",
+					"sample10",
+					"sample4",
+					"dict",
+					"sample1",
+					"DIAL",
+					"124",
+					"dial",
+					"aligned.mlf",
+					"sample",
+					"prompt124",
+					"alex-train-prompt124",
+					"DIAL",
+					"BROOKHAVEN",
+					"SENT-END",
+					"SENT-START",
+					"BROOKHAVEN",
+					"SENT-END",
+					"SENT-START",
+					"b",
+					"sil",
+					"SENT-START",
+					"SENT-END",
+					"SENT-START",
+					"SENT-END",
+					"SENT-START",
+					"ARCH",
+					"temp",
+					"IsLeft",
+					"IsAbove",
 					"p",
 					"find_exponent",
 					"p2_i",
@@ -403,13 +986,21 @@
 				"regex": false,
 				"replace_history":
 				[
+					"",
+					"lg",
+					"col-md-4",
+					"col-md-2",
+					"",
+					"IsLeft",
+					"IsAbove",
+					"temp",
 					"latest"
 				],
 				"reverse": false,
 				"show_context": true,
 				"use_buffer2": true,
 				"whole_word": false,
-				"wrap": true
+				"wrap": false
 			},
 			"groups":
 			[
@@ -419,26 +1010,24 @@
 					[
 						{
 							"buffer": 0,
-							"file": "/Users/Alex/Documents/School/EECS498/HW4/P2",
+							"file": "/Users/Alex/Documents/Raptors/ASPriorityQueue/Tests/ASPriorityQueueTests.m",
 							"settings":
 							{
-								"buffer_size": 728,
+								"buffer_size": 2265,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										728,
-										728
+										0,
+										2265
 									]
 								],
 								"settings":
 								{
-									"auto_name": "A = [1 2 4 9];",
-									"is_xml": false,
-									"syntax": "Packages/Text/Plain text.tmLanguage",
-									"tab_size": 2,
+									"syntax": "Packages/Objective-C/Objective-C.tmLanguage",
+									"tab_size": 4,
 									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
@@ -452,7 +1041,7 @@
 			],
 			"incremental_find":
 			{
-				"height": 0.0
+				"height": 38.0
 			},
 			"input":
 			{
@@ -492,6 +1081,62 @@
 				"height": 0.0,
 				"selected_items":
 				[
+					[
+						"html",
+						"controllers/html.js"
+					],
+					[
+						"",
+						"models/Waits.js"
+					],
+					[
+						"disney",
+						"channels/disney_waits.py"
+					],
+					[
+						"api",
+						"controllers/api.js"
+					],
+					[
+						"app",
+						"app.js"
+					],
+					[
+						"app.js",
+						"app.js"
+					],
+					[
+						"server",
+						"server.js"
+					],
+					[
+						"read",
+						"README.md"
+					],
+					[
+						"ana",
+						"_includes/analytics.html"
+					],
+					[
+						"ph",
+						"phones0.mlf"
+					],
+					[
+						"phones0",
+						"phones0.mlf"
+					],
+					[
+						"words",
+						"words.mlf"
+					],
+					[
+						"dict",
+						"dict"
+					],
+					[
+						"word",
+						"words.mlf"
+					]
 				],
 				"width": 0.0
 			},
@@ -509,7 +1154,557 @@
 			"side_bar_visible": true,
 			"side_bar_width": 150.0,
 			"status_bar_visible": true,
-			"window_id": 48,
+			"window_id": 128,
+			"workspace_name": ""
+		},
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"strto",
+						"strtotime"
+					],
+					[
+						"collection",
+						"collection_name"
+					],
+					[
+						"calcul",
+						"calculateGOP"
+					],
+					[
+						"filename",
+						"filename1"
+					],
+					[
+						"stru",
+						"structure0"
+					],
+					[
+						"str",
+						"structure3"
+					],
+					[
+						"struc",
+						"structure3"
+					],
+					[
+						"st",
+						"structure0"
+					],
+					[
+						"words",
+						"words"
+					],
+					[
+						"say",
+						"sayCommand"
+					],
+					[
+						"TTS",
+						"TTSPrompts"
+					],
+					[
+						"grep",
+						"grep_input"
+					],
+					[
+						"output",
+						"outputfilename"
+					],
+					[
+						"i",
+						"i"
+					],
+					[
+						"w",
+						"w"
+					],
+					[
+						"True",
+						"True"
+					],
+					[
+						"waittimes_new",
+						"waittimes_newest_collection"
+					],
+					[
+						"waitt",
+						"waittimes_collection"
+					]
+				]
+			},
+			"buffers":
+			[
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 400.0,
+				"selected_items":
+				[
+					[
+						":w",
+						":w - Save"
+					],
+					[
+						"pac",
+						"Package Control: Install Package"
+					],
+					[
+						"prett",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pretty",
+						"Pretty JSON: Reformat (Pretty Print) JSON"
+					],
+					[
+						"pack",
+						"Package Control: Install Package"
+					],
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"pakage Control : In",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: in",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: inst",
+						"Package Control: Install Package"
+					],
+					[
+						"package control: remove",
+						"Package Control: Remove Package"
+					]
+				],
+				"width": 583.0
+			},
+			"console":
+			{
+				"height": 0.0
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/Users/Alex/Documents/Raptors/ASPriorityQueue/ASPriorityQueue/ASPriorityQueue.m",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/layout.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/README.md",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/static/css/style.css",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/views/officers.php",
+				"/Users/Alex/.ssh/id_rsa.pub",
+				"/Users/Alex/Documents/Apps/resume.json.html",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/member_info.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/admin_page.phtml",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/resume_book/index.php",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/tests/html.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/controllers/html.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal.py",
+				"/Users/Alex/Documents/Projects/poole-master/_includes/head.html",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-18-dropbox-for-ssh.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-9-test.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-9-2-100-acres.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-11-27-housing.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-3-13-favicons.md",
+				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-12-leaving-browsers.markdown",
+				"/Users/Alex/Documents/Projects/poole-master/README.md",
+				"/Users/Alex/Documents/Projects/poole-master/CNAME",
+				"/Users/Alex/Documents/Projects/poole-master/_includes/analytics.html",
+				"/Users/Alex/Documents/CSEScholars/website/_site/index.html",
+				"/Users/Alex/Documents/CSEScholars/website/_site/Gemfile",
+				"/Users/Alex/Documents/CSEScholars/website/_layouts/default.html",
+				"/Users/Alex/Documents/CSEScholars/website/css/main.scss",
+				"/Users/Alex/Documents/CSEScholars/website/_config.yml",
+				"/Users/Alex/Documents/CSEScholars/website/index.html",
+				"/Users/Alex/Documents/CSEScholars/website/login.html",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Documents/Projects/poole-master/index.html",
+				"/Users/Alex/Documents/Projects/poole-master/about.md",
+				"/Users/Alex/Documents/Projects/poole-master/public/css/poole.css",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/promptsGood.csv",
+				"/Users/Alex/Documents/School/EECS498/Projects/train4.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/train3.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/train2.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/mlf_builder.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/project.sh",
+				"/Users/Alex/Documents/School/EECS498/Projects/tts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/aligned_parser.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/test.out",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/csv_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/dict_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/tts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/wlist_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/generators/prompts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/dict_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/dlog",
+				"/Users/Alex/Documents/School/EECS498/Projects/badwordlist",
+				"/Users/Alex/Documents/School/EECS498/Projects/testprompt",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/testprompt",
+				"/Users/Alex/Documents/School/EECS498/Projects/wav_config",
+				"/Users/Alex/Documents/School/EECS498/Projects/train.scp",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/dict",
+				"/Users/Alex/Documents/School/EECS498/Projects/words.mlf",
+				"/Users/Alex/Documents/School/EECS498/Projects/prompts_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/missingWords",
+				"/Users/Alex/Documents/School/EECS498/Projects/dict",
+				"/Users/Alex/Documents/School/EECS498/Projects/wlist",
+				"/Users/Alex/Documents/School/EECS498/Projects/csv_generator.py",
+				"/Users/Alex/Documents/School/EECS498/Projects/wlist_generator.py",
+				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/rocket.pddl",
+				"/Users/Alex/Documents/CSEScholars/Website/index.html",
+				"/Users/Alex/Documents/CSEScholars/Website/css/style.scss",
+				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/old_rocket.pddl",
+				"/Users/Alex/Documents/School/EECS492/HW4/rocket.pddl",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/aligned.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/wintri.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/TestPrompts/testprompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/mktri.led",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/phones0.mlf",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/testprompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_test_prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_training_prompts",
+				"/Users/Alex/Documents/School/EECS498/HW5/skeleton_hmm.m",
+				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 2/wlist",
+				"/Users/Alex/Desktop/test.py",
+				"/Users/Alex/Downloads/htk/HTKLib/HGraf.c",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/cron.js",
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
+				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
+				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
+				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
+				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
+				"/Users/Alex/Documents/School/EECS376/HW2/Prob4.txt",
+				"/Users/Alex/Documents/School/EECS376/HW2/validate.py",
+				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
+				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
+				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
+			],
+			"find":
+			{
+				"height": 38.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+					"reset.css",
+					"index.phtml",
+					"",
+					"prompts",
+					"",
+					"testprompts",
+					"",
+					"testprompts",
+					"",
+					"package.json",
+					""
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": true,
+				"find_history":
+				[
+					".navbar-simple",
+					"officer_text",
+					"footer",
+					"md",
+					"span4",
+					"span2",
+					"name",
+					"AddResume",
+					"addResume",
+					"uploadf",
+					"AddResume",
+					"$_FILES",
+					"temp",
+					"audio",
+					"SELECT",
+					"members",
+					"Askia",
+					"askia",
+					"INSERT INTO",
+					"INSERT INTO members",
+					"INSERT INTO",
+					"INSERT",
+					"print",
+					"update",
+					"parks_list",
+					"parks_lsit",
+					"params",
+					"query",
+					"engine",
+					"universalstudios",
+					"api",
+					"wait",
+					"api",
+					"http",
+					"<g>",
+					"print",
+					"x",
+					"eh",
+					"as",
+					"sp",
+					"sun",
+					"sky",
+					"us",
+					"ch",
+					"no",
+					"sa",
+					"ro",
+					"re",
+					"mun",
+					"ok",
+					"ex",
+					"x",
+					"ha",
+					"lu",
+					"ca",
+					"cam",
+					"ld",
+					"wa",
+					"her",
+					"j",
+					"til",
+					"gi",
+					"fu",
+					"bu",
+					"co",
+					"na",
+					"not",
+					"DOMAIN",
+					"Domains",
+					"sample24",
+					"sample10",
+					"sample4",
+					"dict",
+					"sample1",
+					"DIAL",
+					"124",
+					"dial",
+					"aligned.mlf",
+					"sample",
+					"prompt124",
+					"alex-train-prompt124",
+					"DIAL",
+					"BROOKHAVEN",
+					"SENT-END",
+					"SENT-START",
+					"BROOKHAVEN",
+					"SENT-END",
+					"SENT-START",
+					"b",
+					"sil",
+					"SENT-START",
+					"SENT-END",
+					"SENT-START",
+					"SENT-END",
+					"SENT-START",
+					"ARCH",
+					"temp",
+					"IsLeft",
+					"IsAbove",
+					"p",
+					"find_exponent",
+					"p2_i",
+					"current",
+					"fastPass"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					"",
+					"lg",
+					"col-md-4",
+					"col-md-2",
+					"",
+					"IsLeft",
+					"IsAbove",
+					"temp",
+					"latest"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": false
+			},
+			"folders":
+			[
+				{
+					"path": "/Users/Alex/Documents/Raptors/PriorityToDo"
+				}
+			],
+			"groups":
+			[
+				{
+					"sheets":
+					[
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 38.0
+			},
+			"input":
+			{
+				"height": 32.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"position": "0 4 1280 774 0 0 1280 778 ",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"html",
+						"controllers/html.js"
+					],
+					[
+						"",
+						"models/Waits.js"
+					],
+					[
+						"disney",
+						"channels/disney_waits.py"
+					],
+					[
+						"api",
+						"controllers/api.js"
+					],
+					[
+						"app",
+						"app.js"
+					],
+					[
+						"app.js",
+						"app.js"
+					],
+					[
+						"server",
+						"server.js"
+					],
+					[
+						"read",
+						"README.md"
+					],
+					[
+						"ana",
+						"_includes/analytics.html"
+					],
+					[
+						"ph",
+						"phones0.mlf"
+					],
+					[
+						"phones0",
+						"phones0.mlf"
+					],
+					[
+						"words",
+						"words.mlf"
+					],
+					[
+						"dict",
+						"dict"
+					],
+					[
+						"word",
+						"words.mlf"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"window_id": 129,
 			"workspace_name": ""
 		}
 	],

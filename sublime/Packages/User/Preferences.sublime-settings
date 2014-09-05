@@ -8,10 +8,9 @@
 		"*.pyc"
 	],
 	"font_face": "Source Code Pro",
-	"font_size": 14,
+	"font_size": 14.0,
 	"ignored_packages":
 	[
-		"Vintage"
 	],
 	"match_brackets": true,
 	"match_brackets_angle": true,
@@ -21,6 +20,5 @@
 	"show_minimap": false,
 	"tab-size": 4,
 	"theme": "Spacegray.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"translate_tabs_to_spaces": true
 }
