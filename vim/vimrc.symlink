@@ -1,5 +1,20 @@
-"Add pathogen to vim.
-execute pathogen#infect()
+" Vundle stuff
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" " let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'mhinz/vim-startify'
+
+call vundle#end()   
+filetype plugin indent on
+
+" Vundle stuff ends
+
 
 " Turn off arrow keys.
 noremap <Up> <NOP>
@@ -15,6 +30,7 @@ let g:solarized_termcolors = 16
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
+set background=dark
 
 set nofoldenable
 let g:vim_markdown_folding_disabled=1

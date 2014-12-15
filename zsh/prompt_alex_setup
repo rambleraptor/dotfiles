@@ -31,6 +31,9 @@ function prompt_sorin_precmd {
   # Format PWD.
   prompt_sorin_pwd
 
+  # Format User
+  prompt_context
+
   # Format Python VirtualENV
   python-info
 
@@ -39,6 +42,15 @@ function prompt_sorin_precmd {
     git-info
   fi
 }
+
+function prompt_context {
+  local user=`whoami`
+
+  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
+    _prompt_context="%F{blue}[$user@%m]%f "
+  fi
+}
+
 
 function prompt_sorin_setup {
   setopt LOCAL_OPTIONS
@@ -79,7 +91,7 @@ function prompt_sorin_setup {
   zstyle ':prezto:module:python:info:virtualenv' format '%%B%F{magenta}[python:%v]%f%%b'
 
   # Define prompts.
-  PROMPT='%F{cyan}${_prompt_sorin_pwd}${editor_info[keymap]} '
+  PROMPT='${_prompt_context}%F{cyan}${_prompt_sorin_pwd}${editor_info[keymap]} '
   RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${git_info[rprompt]}$python_info[virtualenv]'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }

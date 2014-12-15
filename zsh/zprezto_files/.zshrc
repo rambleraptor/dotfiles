@@ -1,0 +1,1 @@
+/home/alex/.dotfiles/zsh/zshrc.symlink

@@ -13,7 +13,7 @@ then
   source ~/.zshrc_local
 fi
 
-for file in ~/.dotfiles/zsh/*.zsh;
+for file in $ZSH/zsh/*.zsh;
 do
 	source $file;
 done
