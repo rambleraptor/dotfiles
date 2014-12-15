@@ -14,3 +14,5 @@ function umich-unmount() {
 function umich-ssh() {
     ssh stepa@login.engin.umich.edu;
 }
+
+export DEFAULT_USER=`whoami`
