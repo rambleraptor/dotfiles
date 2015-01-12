@@ -1,2 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/Alex/Documents/Projects/email/files/test'
+let g:netrw_dirhist_2='/Users/Alex/Documents/Projects/email/files/classes'
+let g:netrw_dirhist_3='/Users/Alex/Documents/Projects/email/files'
+let g:netrw_dirhist_4='/Users/Alex/Documents/Projects/email/files/classes'
+let g:netrw_dirhist_5='/Users/Alex/.dotfiles/zsh'
+let g:netrw_dirhist_6='/Users/Alex/Documents/Projects/email/files/test/files'
+let g:netrw_dirhist_7='/Users/Alex/Documents/Projects/email/files/test'
+let g:netrw_dirhist_8='/Users/Alex/Documents/Projects/email/files/testers'

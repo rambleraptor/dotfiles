@@ -1,5 +1,5 @@
 function server-ssh() {
-    ssh -p 25000 alex@162.243.70.57 ;
+    ssh alex@104.236.71.208 ;
 }
 
 function umich-mount() {
