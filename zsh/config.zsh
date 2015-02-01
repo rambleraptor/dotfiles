@@ -5,11 +5,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 #Virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+if [ -r /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+fi
 
 #Local files
-if [ -r ~/.dotfiles/zsh/.zshrc.local ]; then
+if [ -r ${HOME}/.dotfiles/zsh/.zshrc.local ]; then
     . ~/.dotfiles/zsh/.zshrc.local
 fi
 
