@@ -44,7 +44,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
 # Git
@@ -86,7 +86,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Reset up fpath so I can load the prompt
 fpath=(
-  ${HOME}/.dotfiles/zsh/zprezto_files
+  ${HOME}/.dotfiles/zsh/zprezto_files/themes
   ${fpath}
 )
 # Set the prompt theme to load.
