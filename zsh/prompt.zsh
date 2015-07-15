@@ -21,9 +21,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "(%{$fg[green]%}$(git_prompt_info)%{$reset_color%})"
+      echo "(%{$fg[green]%}$(git_prompt_info)%{$reset_color%}"
     else
-      echo "(%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%})"
+      echo "(%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
     fi
   fi
 }
@@ -41,9 +41,13 @@ unpushed () {
 need_push () {
   if [[ $(unpushed) == "" ]]
   then
-    echo " "
+    echo ")"
   else
-    echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
+    if [[ "$(uname -s)" == "Darwin" ]] then
+      echo "🔥 )"
+    else 
+      echo "|%{$fg_bold[magenta]%}unpushed%{$reset_color%})"
+    fi
   fi
 }
 
