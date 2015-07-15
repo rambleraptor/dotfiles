@@ -120,47 +120,38 @@ def plugin_loaded():
         installed_packages.append('Package Control')
         save_list_setting(pc_settings, pc_settings_filename(), 'installed_packages', installed_packages)
 
-    orig_installed_dependencies = load_list_setting(pc_settings, 'installed_dependencies')
-    installed_dependencies = list(orig_installed_dependencies)
-
-    # Record that the loader itself is installed
-    if loader.loader_package_name not in installed_dependencies:
-        installed_dependencies.append(loader.loader_package_name)
-
-    # Queue up installation of bz2
-    if 'bz2' not in installed_dependencies:
-        installed_dependencies.append('bz2')
-
-    # Queue up installation of select module for ST2/Windows
-    if sublime.platform() == 'windows' and sys.version_info < (3,) and 'select-windows' not in installed_dependencies:
-        installed_dependencies.append('select-windows')
-
-    save_list_setting(pc_settings, pc_settings_filename(), 'installed_dependencies', installed_dependencies, orig_installed_dependencies)
-
+    # We no longer use the installed_dependencies setting because it is not
+    # necessary and created issues with settings shared across operating systems
+    if pc_settings.get('installed_dependencies'):
+        pc_settings.erase('installed_dependencies')
+        sublime.save_settings(pc_settings_filename())
 
     # SSL support fo Linux
     if sublime.platform() == 'linux':
-        linux_ssl_url = u'http://packagecontrol.io/ssl-linux.sublime-package'
-        linux_ssl_hash = u'bd107e93065aa8520749fe37d9d15afc40af75c5ccbdcdb14966b7db162032d2'
+        linux_ssl_url = u'http://packagecontrol.io/ssl/1.0.1/ssl-linux.sublime-package'
+        linux_ssl_hash = u'862d061cbe666777cd1e9cd1cbc7c82f48ad8897dbb68332975f3edf5ce0f38d'
         linux_ssl_priority = u'01'
+        linux_ssl_version = '1.0.1'
 
         def linux_ssl_show_restart():
             sublime.message_dialog(u'Package Control\n\n'
-                u'Package Control just installed the missing Python _ssl ' + \
-                u'module for Linux since Sublime Text does not include it.\n\n' + \
+                u'Package Control just installed or upgraded the missing ' + \
+                u'Python _ssl module for Linux since Sublime Text does not ' + \
+                u'include it.\n\n' + \
                 u'Please restart Sublime Text to make SSL available to all ' + \
                 u'packages.')
 
         linux_ssl_args = (settings, linux_ssl_url,
-            linux_ssl_hash, linux_ssl_priority, linux_ssl_show_restart)
+            linux_ssl_hash, linux_ssl_priority, linux_ssl_version, linux_ssl_show_restart)
         threading.Thread(target=bootstrap_dependency, args=linux_ssl_args).start()
 
 
     # SSL support for SHA-2 certificates with ST2 on Windows
     if sublime.platform() == 'windows' and sys.version_info < (3,):
-        win_ssl_url = u'http://packagecontrol.io/ssl-windows.sublime-package'
+        win_ssl_url = u'http://packagecontrol.io/ssl/1.0.0/ssl-windows.sublime-package'
         win_ssl_hash = u'3c28982eb400039cfffe53d38510556adead39ba7321f2d15a6770d3ebc75030'
         win_ssl_priority = u'01'
+        win_ssl_version = u'1.0.0'
 
         def win_ssl_show_restart():
             sublime.message_dialog(u'Package Control\n\n'
@@ -170,7 +161,7 @@ def plugin_loaded():
                 u'Please restart Sublime Text to complete the upgrade.')
 
         win_ssl_args = (settings, win_ssl_url, win_ssl_hash,
-            win_ssl_priority, win_ssl_show_restart)
+            win_ssl_priority, win_ssl_version, win_ssl_show_restart)
         threading.Thread(target=bootstrap_dependency, args=win_ssl_args).start()
 
 # ST2 compat

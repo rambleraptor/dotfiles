@@ -1,13 +1,17 @@
 {
 	"auto_upgrade_last_run": null,
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
+		"Google Spell Check",
 		"MarkdownBuild",
+		"MarkdownEditing",
 		"Package Control",
 		"Pretty JSON",
 		"SideBarEnhancements",
 		"Solarized Color Scheme",
-		"Tag",
 		"Theme - Soda",
 		"Theme - Spacegray",
 		"WordCount"

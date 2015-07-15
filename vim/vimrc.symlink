@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mhinz/vim-startify'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()   
@@ -57,3 +56,4 @@ let g:vim_markdown_folding_disabled=1
 
 " Mouse
 set mouse=a
+let mapleader = ","

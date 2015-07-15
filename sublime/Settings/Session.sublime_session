@@ -1,6 +1,7 @@
 {
 	"folder_history":
 	[
+		"/Users/Alex/Downloads/com.universalstudios.orlandoresort (1)",
 		"/Users/Alex/Documents/Raptors/PriorityToDo",
 		"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html",
 		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node",
@@ -37,10 +38,10 @@
 		"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels",
 		"/Users/Alex/Downloads/linnovate-mean-bb910c5"
 	],
-	"last_window_id": 129,
+	"last_window_id": 149,
 	"settings":
 	{
-		"new_window_height": 752.0,
+		"new_window_height": 751.0,
 		"new_window_settings":
 		{
 			"auto_complete":
@@ -132,23 +133,83 @@
 						":w - Save"
 					],
 					[
+						"htm",
+						"HTMLPrettify"
+					],
+					[
+						"pret",
+						"HTMLPrettify"
+					],
+					[
+						"json",
+						"Set Syntax: JSON"
+					],
+					[
+						"google",
+						"Google Spell Check"
+					],
+					[
+						"spell",
+						"Google Spell Check"
+					],
+					[
+						"package",
+						"Package Control: Install Package"
+					],
+					[
+						"pree",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"ht",
+						"HTMLPrettify"
+					],
+					[
+						"xml",
+						"Indent XML"
+					],
+					[
+						"html",
+						"HTMLPrettify"
+					],
+					[
+						"preety",
+						"HTMLPrettify: Set Prettify Preferences"
+					],
+					[
+						"pretty",
+						"HTMLPrettify"
+					],
+					[
+						"pre",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"prett",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"Pretty",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"Pre",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"Package",
+						"Package Control: Install Package"
+					],
+					[
+						"Prett",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
 						"pac",
 						"Package Control: Install Package"
 					],
 					[
-						"prett",
-						"Pretty JSON: Reformat (Pretty Print) JSON"
-					],
-					[
-						"pretty",
-						"Pretty JSON: Reformat (Pretty Print) JSON"
-					],
-					[
 						"pack",
-						"Package Control: Install Package"
-					],
-					[
-						"package",
 						"Package Control: Install Package"
 					],
 					[
@@ -168,7 +229,7 @@
 						"Package Control: Remove Package"
 					]
 				],
-				"width": 583.0
+				"width": 457.0
 			},
 			"console":
 			{
@@ -185,6 +246,34 @@
 			},
 			"file_history":
 			[
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/Rakefile",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal_waits2.py",
+				"/var/folders/1r/84k38sw54fbcgrh9hlgvt8b80000gn/T/mproxyIAUK88.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disneyparis.py",
+				"/Users/Alex/Documents/Projects/blog/_includes/twitter.html",
+				"/Users/Alex/Documents/Projects/blog/_includes/facebook.html",
+				"/Users/Alex/Documents/Projects/blog/_drafts/guatemala.markdown",
+				"/Users/Alex/Desktop/usj_strings.json",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/WordCount.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Markdown.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/JSON.sublime-settings",
+				"/Users/Alex/Downloads/Sublime Text.icns",
+				"/Users/Alex/Documents/Projects/poole-master/Rakefile",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/config/usj_strings.json",
+				"/Users/Alex/Documents/Temp/test2",
+				"/Users/Alex/Desktop/universal_japan.py",
+				"/Users/Alex/Documents/Temp/test",
+				"/Users/Alex/Downloads/Universal 2/Orlando.app/ADBMobileConfig.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal_singapore.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/input",
+				"/Users/Alex/Documents/Temp/output2",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/output",
+				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+				"/Users/Alex/Documents/School/EECS483/proj2/parser.y",
+				"/Users/Alex/Downloads/Universal 2/Library/Cookies/BinaryCookie.py",
+				"/Users/Alex/.dotfiles/zsh/zprezto_files/themes/prompt_pure_setup",
 				"/Users/Alex/Documents/Raptors/ASPriorityQueue/ASPriorityQueue/ASPriorityQueue.m",
 				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/layout.phtml",
 				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/README.md",
@@ -216,7 +305,6 @@
 				"/Users/Alex/Documents/CSEScholars/website/_config.yml",
 				"/Users/Alex/Documents/CSEScholars/website/index.html",
 				"/Users/Alex/Documents/CSEScholars/website/login.html",
-				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 				"/Users/Alex/Documents/Projects/poole-master/index.html",
 				"/Users/Alex/Documents/Projects/poole-master/about.md",
 				"/Users/Alex/Documents/Projects/poole-master/public/css/poole.css",
@@ -277,7 +365,6 @@
 				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
 				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
 				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
-				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
 				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
 				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
@@ -286,22 +373,7 @@
 				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
 				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
 				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml"
 			],
 			"find":
 			{
@@ -312,6 +384,7 @@
 				"height": 0.0,
 				"where_history":
 				[
+					"",
 					"reset.css",
 					"index.phtml",
 					"",
@@ -330,6 +403,32 @@
 				"case_sensitive": true,
 				"find_history":
 				[
+					"P1MA01",
+					">",
+					"10000",
+					"Sponge",
+					"Shows",
+					"Jurassic",
+					"Curious",
+					"WaitTime",
+					"-50",
+					"\"WaitTime\"",
+					"families",
+					"D",
+					"Dip",
+					"Dippi",
+					"Dippin Dots",
+					"False",
+					"Availability",
+					"Ride",
+					"Open",
+					"Show",
+					"Queue",
+					"rides_wait",
+					"wait",
+					"Closed",
+					"Seasonly",
+					"singleRider",
 					".navbar-simple",
 					"officer_text",
 					"footer",
@@ -431,9 +530,7 @@
 					"IsAbove",
 					"p",
 					"find_exponent",
-					"p2_i",
-					"current",
-					"fastPass"
+					"p2_i"
 				],
 				"highlight": true,
 				"in_selection": false,
@@ -441,6 +538,7 @@
 				"regex": false,
 				"replace_history":
 				[
+					"/>",
 					"",
 					"lg",
 					"col-md-4",
@@ -572,7 +670,7 @@
 			"side_bar_width": 150.0,
 			"status_bar_visible": true
 		},
-		"new_window_width": 1280.0
+		"new_window_width": 640.0
 	},
 	"windows":
 	[
@@ -658,10 +756,13 @@
 			"buffers":
 			[
 				{
-					"file": "/Users/Alex/Documents/Raptors/ASPriorityQueue/Tests/ASPriorityQueueTests.m",
+					"contents": "[\n  {\n    \"id\": 18,\n    \"name\": \"Carrousel\",\n    \"description\": \"An all wood carrousel with moving and stationary horses that spins counter-clockwise.  Music is provided by a Wurlitzer model 153 military band organ.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.28689792515,\n    \"longitude\": -76.656317264636,\n    \"image\": \"image/rides/18/%d/%d/1407197382.jpg\",\n    \"icon\": \"icon/rides/18/%d/%d/1407197344.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  Handheld infants must ride in a chariot.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Carrousel @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=18\"\n    }\n  },\n  {\n    \"id\": 40,\n    \"name\": \"Balloon Flite\",\n    \"description\": \"Children can pretend to be in a hot air balloon on this moderate-speed cycling kiddie ride.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.287159816806,\n    \"longitude\": -76.656435281833,\n    \"image\": \"image/rides/40/%d/%d/1407197366.jpg\",\n    \"icon\": \"icon/rides/40/%d/%d/1407197328.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Balloon Flite @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=40\"\n    }\n  },\n  {\n    \"id\": 41,\n    \"name\": \"Bizzy Bees\",\n    \"description\": \"Buzz through the air like a bee.  Even push a button to make buzzing sounds.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.287810449497,\n    \"longitude\": -76.655035168727,\n    \"image\": \"image/rides/41/%d/%d/1407197379.jpg\",\n    \"icon\": \"icon/rides/41/%d/%d/1425580834.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Bizzy Bees @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=41\"\n    }\n  },\n  {\n    \"id\": 97,\n    \"name\": \"Skyrush\",\n    \"description\": \"Ride the edge with the tallest and fastest roller coaster at Hersheypark. After climbing 200 feet into the air, you'll touch the sky before flying downhill at 75mph in the winged seat coaster train. Skyrush will take you to the very edge with four high speed turns, five zero-G airtime hills, and the highest drop in Hersheypark!\",\n    \"video\": \"hpvVBDz1rXM\",\n    \"status\": 1,\n    \"wait\": 30,\n    \"parkarea\": {\n      \"id\": 3,\n      \"name\": \"The Hollow\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.286408921608,\n    \"longitude\": -76.655184031328,\n    \"image\": \"image/rides/97/%d/%d/1407197373.jpg\",\n    \"icon\": \"icon/rides/97/%d/%d/1407197334.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.  Guests taller than 6 feet 5 inches may not be accommodated.  Casts are not permitted.\",\n      \"*  Guests with prosthetic legs will have to remove them. The residual limb must be below the knee in order to ride. \",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured.  Loose articles may not be taken on Skyrush.  Waist packs are not permitted on this ride.  Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Skyrush @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=97\"\n    }\n  },\n  {\n    \"id\": 11,\n    \"name\": \"sooperdooperLooper\",\n    \"description\": \"The first looping roller coaster on the East Coast, this thrilling steel roller coaster really sends riders for a loop!\\r\\n\\r\\n\\r\\n\",\n    \"video\": \"IFKVFzWPewU\",\n    \"status\": 1,\n    \"wait\": 10,\n    \"parkarea\": {\n      \"id\": 3,\n      \"name\": \"The Hollow\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.28624626065,\n    \"longitude\": -76.654779017766,\n    \"image\": \"image/rides/11/%d/%d/1407197372.jpg\",\n    \"icon\": \"icon/rides/11/%d/%d/1407197333.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on sooperdooperLooper @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=11\"\n    }\n  },\n  {\n    \"id\": 31,\n    \"name\": \"Fahrenheit\",\n    \"description\": \"Located adjacent to the Boardwalk, this hot new \\\"vertical lift inverted loop coaster\\\" will ascend 121 feet before plummeting down a 97-degree drop.\",\n    \"video\": \"lkiXMlvscqg\",\n    \"status\": 1,\n    \"wait\": 20,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.290119326593,\n    \"longitude\": -76.655159891447,\n    \"image\": \"image/rides/31/%d/%d/1407197367.jpg\",\n    \"icon\": \"icon/rides/31/%d/%d/1407197328.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"* Guests wearing one prosthetic leg must remove the prosthetic leg or have written documentation from the limb manufacturer ensuring that the prosthetic leg can withstand forces up to 5 Gs and not come off during the ride cycle. If guests must remove their prosthetic leg, the residual limb must be below the knee, so the restraint is in contact with enough of the residual limb to keep the guest properly restrained. Guests wearing two prosthetic legs must wear at least one of their prosthetic legs as this is critical for bracing required during the ride cycle. As a reminder, all guests wearing prosthetic devices on the ride must have manufacturer issued documentation regarding the prosthetic's ability to withstand forces up to 5 Gs.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Fahrenheit @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=31\"\n    }\n  },\n  {\n    \"id\": 24,\n    \"name\": \"Scrambler\",\n    \"description\": \"A high speed ride scrambles guests into a flurry of spinning motions.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.286792554393,\n    \"longitude\": -76.655878723462,\n    \"image\": \"image/rides/24/%d/%d/1407197385.jpg\",\n    \"icon\": \"icon/rides/24/%d/%d/1407197346.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Scrambler @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=24\"\n    }\n  },\n  {\n    \"id\": 19,\n    \"name\": \"Coal Cracker\",\n    \"description\": \"A hydroflume boat ride that gives guests a wet ride full of splashes through water canals, ending with one big plunge!\",\n    \"video\": \"Pbd-uRux9N8\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 4,\n      \"name\": \"High Thrill Ride\",\n      \"description\": \"This is a fast-paced ride experience with unexpected changes in speed, direction, and/or elevation.  This ride may contain significant twists, turns, bumps, spins, and loops, and requires rider full body control.\",\n      \"image\": \"image/ratings/4/%d/%d/1398417471.jpg\"\n    },\n    \"latitude\": 40.286893833085,\n    \"longitude\": -76.653844267925,\n    \"image\": \"image/rides/19/%d/%d/1407197378.jpg\",\n    \"icon\": \"icon/rides/19/%d/%d/1407197339.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"Water Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Coal Cracker @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=19\"\n    }\n  },\n  {\n    \"id\": 101,\n    \"name\": \"Cocoa Cruiser\",\n    \"description\": \"This steel family roller coaster will allow our younger guests to experience the thrill of a coaster for the first time!\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.288411972262,\n    \"longitude\": -76.65501505216,\n    \"image\": \"image/rides/101/%d/%d/1407197378.jpg\",\n    \"icon\": \"icon/rides/101/%d/%d/1407197339.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Cocoa Cruiser @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=101\"\n    }\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Comet\",\n    \"description\": \"A classic wooden roller coaster featuring quick turns and drops.\",\n    \"video\": \"EXCU6szxVTk\",\n    \"status\": 1,\n    \"wait\": 45,\n    \"parkarea\": {\n      \"id\": 3,\n      \"name\": \"The Hollow\"\n    },\n    \"rating\": {\n      \"id\": 4,\n      \"name\": \"High Thrill Ride\",\n      \"description\": \"This is a fast-paced ride experience with unexpected changes in speed, direction, and/or elevation.  This ride may contain significant twists, turns, bumps, spins, and loops, and requires rider full body control.\",\n      \"image\": \"image/ratings/4/%d/%d/1398417471.jpg\"\n    },\n    \"latitude\": 40.286920431504,\n    \"longitude\": -76.655173302491,\n    \"image\": \"image/rides/3/%d/%d/1407197378.jpg\",\n    \"icon\": \"icon/rides/3/%d/%d/1407197339.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Comet @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=3\"\n    }\n  },\n  {\n    \"id\": 42,\n    \"name\": \"Convoy\",\n    \"description\": \"These realistic trucks caravan around the track.  \",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.288137809489,\n    \"longitude\": -76.653513015111,\n    \"image\": \"image/rides/42/%d/%d/1407197366.jpg\",\n    \"icon\": \"icon/rides/42/%d/%d/1407197328.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  One taller companion may accompany child, this includes mom or dad.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Convoy @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=42\"\n    }\n  },\n  {\n    \"id\": 43,\n    \"name\": \"Dinosaur-Go-Round\",\n    \"description\": \"Children can ride prehistoric creatures as they rotate around a lit-up volcano.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.286661607981,\n    \"longitude\": -76.656433940728,\n    \"image\": \"image/rides/43/%d/%d/1407197366.jpg\",\n    \"icon\": \"icon/rides/43/%d/%d/1407197328.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Dinosaur-Go-Round @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=43\"\n    }\n  },\n  {\n    \"id\": 44,\n    \"name\": \"Dizzy Drums\",\n    \"description\": \"Kids can enjoy these spinning drums of fun as they twirl around.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.288236017177,\n    \"longitude\": -76.655061990817,\n    \"image\": \"image/rides/44/%d/%d/1407197377.jpg\",\n    \"icon\": \"icon/rides/44/%d/%d/1407197338.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Dizzy Drums @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=44\"\n    }\n  },\n  {\n    \"id\": 6,\n    \"name\": \"Dry Gulch Railroad \",\n    \"description\": \"Dry Gulch Railroad is sponsored by Amtrak.\\r\\n\\r\\nA miniature reproduction of a 19th century steam-powered railway takes guests on a journey through the Pioneer Frontier area of Hersheypark.\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.289179212918,\n    \"longitude\": -76.655576974948,\n    \"image\": \"image/rides/6/%d/%d/1407197378.jpg\",\n    \"icon\": \"icon/rides/6/%d/%d/1407197338.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Dry Gulch Railroad  @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=6\"\n    }\n  },\n  {\n    \"id\": 7,\n    \"name\": \"Fender Bender \",\n    \"description\": \"Fender Bender is sponsored by GEICO.\\r\\n\\r\\nA bumper car ride offering guests the opportunity to bump with other cars.  Each car has a start pedal and a steering wheel to control movement.\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 4,\n      \"name\": \"High Thrill Ride\",\n      \"description\": \"This is a fast-paced ride experience with unexpected changes in speed, direction, and/or elevation.  This ride may contain significant twists, turns, bumps, spins, and loops, and requires rider full body control.\",\n      \"image\": \"image/ratings/4/%d/%d/1398417471.jpg\"\n    },\n    \"latitude\": 40.288050854646,\n    \"longitude\": -76.654942632516,\n    \"image\": \"image/rides/7/%d/%d/1407197377.jpg\",\n    \"icon\": \"icon/rides/7/%d/%d/1407197337.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Fender Bender  @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=7\"\n    }\n  },\n  {\n    \"id\": 34,\n    \"name\": \"Ferris Wheel\",\n    \"description\": \"This ferris wheel delivers the thrill of soaring nearly 100 feet in the air on one of America's classic amusement rides.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.293207594928,\n    \"longitude\": -76.654111147722,\n    \"image\": \"image/rides/34/%d/%d/1407197377.jpg\",\n    \"icon\": \"icon/rides/34/%d/%d/1407197338.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  Single Riders Not Permitted\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Ferris Wheel @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=34\"\n    }\n  },\n  {\n    \"id\": 8,\n    \"name\": \"Flying Falcon\",\n    \"description\": \"Four giant arms  suspend in seven Falcon cars per arm that spin sideways in a circular motion.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.288152131452,\n    \"longitude\": -76.653089226087,\n    \"image\": \"image/rides/8/%d/%d/1407197368.jpg\",\n    \"icon\": \"icon/rides/8/%d/%d/1407197330.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Flying Falcon @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=8\"\n    }\n  },\n  {\n    \"id\": 39,\n    \"name\": \"Frog Hopper\",\n    \"description\": \"Designed for our little guests, the Frog Hopper is a ride in which passengers are vertically lifted up and \\\"hopped\\\" down to their descent.  Adults are able to join in the fun, if they wish to accompany their children on the ride.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.288058015637,\n    \"longitude\": -76.653647125562,\n    \"image\": \"image/rides/39/%d/%d/1407197367.jpg\",\n    \"icon\": \"icon/rides/39/%d/%d/1407197329.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  One taller companion may accompany each child: that includes mom or dad.  This ride only seats two guests taller than the TWIZZLERS height category and they must sit in the center seats.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Frog Hopper @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=39\"\n    }\n  },\n  {\n    \"id\": 80,\n    \"name\": \"Frontier Flyers\",\n    \"description\": \"This is an interactive passenger swing ride allowing guests to \\\"fly.\\\" You decide how to fly using your movable front fin.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.289425751066,\n    \"longitude\": -76.655334235032,\n    \"image\": \"image/rides/80/%d/%d/1425582105.jpg\",\n    \"icon\": \"icon/rides/80/%d/%d/1407197351.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight).  The combined weight of the riders in one ride vehicle may not exceed 340 pounds.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Frontier Flyers @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=80\"\n    }\n  },\n  {\n    \"id\": 46,\n    \"name\": \"Granny Bugs\",\n    \"description\": \"Grannybug cars circle around a small track for children to enjoy.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.293483782594,\n    \"longitude\": -76.654201270656,\n    \"image\": \"image/rides/46/%d/%d/1407197377.jpg\",\n    \"icon\": \"icon/rides/46/%d/%d/1407197337.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Granny Bugs @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=46\"\n    }\n  },\n  {\n    \"id\": 1,\n    \"name\": \"Great Bear\",\n    \"description\": \"Great Bear is an exhilarating, looping, inverted steel coaster. You ride below the track, not above it. The ride starts by lifting you 90 feet off the ground. It will then speed up to 61 miles per hour as it rips down the tracks, through a loop then into an immelman - a loop that turns you out at the top and then drops you like a falling star! Then you will cross the sooperdooperLooper, and make an \\\"S\\\" turn before returning to earth.\",\n    \"video\": \"WujrDNgFcus\",\n    \"status\": 1,\n    \"wait\": 45,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.287149586683,\n    \"longitude\": -76.653046310743,\n    \"image\": \"image/rides/1/%d/%d/1407197376.jpg\",\n    \"icon\": \"icon/rides/1/%d/%d/1407197337.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Guests with prosthetic legs will have to remove them. The residual limb must be below the knee in order to ride.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Great Bear @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=1\"\n    }\n  },\n  {\n    \"id\": 21,\n    \"name\": \"Kissing Tower\",\n    \"description\": \"An enclosed cabin climbs 250 feet and rotates in a clockwise direction, providing riders a panoramic view of Hershey through windows shaped like Hershey's Kisses chocolates.\",\n    \"video\": \"RAbZPMzeqto\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.287299969346,\n    \"longitude\": -76.652052552303,\n    \"image\": \"image/rides/21/%d/%d/1407197381.jpg\",\n    \"icon\": \"icon/rides/21/%d/%d/1407197342.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Kissing Tower @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=21\"\n    }\n  },\n  {\n    \"id\": 47,\n    \"name\": \"Helicopters\",\n    \"description\": \"Kids can fly through the sky in our helicopters.  The children can pull back on the bar to make them go even higher.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.286630917378,\n    \"longitude\": -76.655810327132,\n    \"image\": \"image/rides/47/%d/%d/1407197375.jpg\",\n    \"icon\": \"icon/rides/47/%d/%d/1407197337.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Helicopters @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=47\"\n    }\n  },\n  {\n    \"id\": 48,\n    \"name\": \"Ladybug\",\n    \"description\": \"Adults can join their children on this train of ladybug cars. \",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.287796741277,\n    \"longitude\": -76.655210853254,\n    \"image\": \"image/rides/48/%d/%d/1407197375.jpg\",\n    \"icon\": \"icon/rides/48/%d/%d/1407197336.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  One taller companion may accompany child, this includes mom or dad\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Ladybug @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=48\"\n    }\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Lightning Racer\",\n    \"description\": \"The first wooden racing/dueling coaster in the United States, Lightning Racer is a double-track wooden roller coaster with two staggered lifts. The ride is constructed with Southern Yellow Pine wood.\",\n    \"video\": \"l65nOsd7d1c\",\n    \"status\": 1,\n    \"wait\": 10,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 4,\n      \"name\": \"High Thrill Ride\",\n      \"description\": \"This is a fast-paced ride experience with unexpected changes in speed, direction, and/or elevation.  This ride may contain significant twists, turns, bumps, spins, and loops, and requires rider full body control.\",\n      \"image\": \"image/ratings/4/%d/%d/1398417471.jpg\"\n    },\n    \"latitude\": 40.293597940533,\n    \"longitude\": -76.653807521751,\n    \"image\": \"image/rides/2/%d/%d/1407197376.jpg\",\n    \"icon\": \"icon/rides/2/%d/%d/1407197336.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Lightning Racer @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=2\"\n    }\n  },\n  {\n    \"id\": 49,\n    \"name\": \"Livery Stables\",\n    \"description\": \"Children can ride this miniature carousel of horses.  \",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.289648555264,\n    \"longitude\": -76.655159891405,\n    \"image\": \"image/rides/49/%d/%d/1407197374.jpg\",\n    \"icon\": \"icon/rides/49/%d/%d/1407197335.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Livery Stables @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=49\"\n    }\n  },\n  {\n    \"id\": 36,\n    \"name\": \"Merry Derry Dip Fun Slides\",\n    \"description\": \"Six long slides with camel back humps are the main features of this ride.  Riders sit on a burlap bag before beginning their descent downward.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.290093343282,\n    \"longitude\": -76.655108929475,\n    \"image\": \"image/rides/36/%d/%d/1407197381.jpg\",\n    \"icon\": \"icon/rides/36/%d/%d/1407197342.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  REESE'S, HERSHEY'S KISSES & HERSHEY'S Miniatures may ride with another person.  All other height categories must ride alone.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Merry Derry Dip Fun Slides @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=36\"\n    }\n  },\n  {\n    \"id\": 13,\n    \"name\": \"Wildcat\",\n    \"description\": \"This wooden roller coaster sends people barreling over hills and bumps at speeds of 45 miles per hour.\\r\\n\\r\\n\\r\\n\",\n    \"video\": \"GksT9VPg47g\",\n    \"status\": 1,\n    \"wait\": 20,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.292806608801,\n    \"longitude\": -76.655202806791,\n    \"image\": \"image/rides/13/%d/%d/1407197368.jpg\",\n    \"icon\": \"icon/rides/13/%d/%d/1407197331.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Wildcat @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=13\"\n    }\n  },\n  {\n    \"id\": 15,\n    \"name\": \"Wild Mouse\",\n    \"description\": \"As it careens around corners, riders of the Wild Mouse have the illusion that they will fall off the edge of the track, providing yet another thrill for coaster lovers of all ages.\\r\\n\\r\\n\",\n    \"video\": \"JNzDq-dlzts\",\n    \"status\": 1,\n    \"wait\": 10,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.292816838068,\n    \"longitude\": -76.654880941709,\n    \"image\": \"image/rides/15/%d/%d/1407197368.jpg\",\n    \"icon\": \"icon/rides/15/%d/%d/1407197330.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Wild Mouse @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=15\"\n    }\n  },\n  {\n    \"id\": 33,\n    \"name\": \"Whip\",\n    \"description\": \"Experience the sharp turns and sudden twists on this fun fast paced track.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.293786565598,\n    \"longitude\": -76.654379368623,\n    \"image\": \"image/rides/33/%d/%d/1407197392.jpg\",\n    \"icon\": \"icon/rides/33/%d/%d/1407197350.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Whip @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=33\"\n    }\n  },\n  {\n    \"id\": 45,\n    \"name\": \"Mini Pirate \",\n    \"description\": \"Miniature version of our adult Pirate ship that swings guests back and forth, giving them a feeling of weightlessness.  \\r\\n\\r\\n\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.288210237535,\n    \"longitude\": -76.655221582458,\n    \"image\": \"image/rides/45/%d/%d/1407197375.jpg\",\n    \"icon\": \"icon/rides/45/%d/%d/1407197335.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Mini Pirate  @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=45\"\n    }\n  },\n  {\n    \"id\": 12,\n    \"name\": \"Wave Swinger\",\n    \"description\": \"Swing around through the air in this park favorite.\\r\\n\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 3,\n      \"name\": \"The Hollow\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.286975674342,\n    \"longitude\": -76.654838026365,\n    \"image\": \"image/rides/12/%d/%d/1407197392.jpg\",\n    \"icon\": \"icon/rides/12/%d/%d/1407197350.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.  The weight of a rider may not exceed 300 pounds.\",\n      \"*  Hersheypark suggests that that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Wave Swinger @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=12\"\n    }\n  },\n  {\n    \"id\": 77,\n    \"name\": \"Mini Scrambler\",\n    \"description\": \"This low speed ride scrambles our little guests into a flurry of spinning motions.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.289576537927,\n    \"longitude\": -76.655268789067,\n    \"image\": \"image/rides/77/%d/%d/1407197373.jpg\",\n    \"icon\": \"icon/rides/77/%d/%d/1407197334.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Mini Scrambler @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=77\"\n    }\n  },\n  {\n    \"id\": 30,\n    \"name\": \"Twin Turnpike\",\n    \"description\": \"Twin Turnpike - Sunoco Speedway is sponsored by Sunoco.\\r\\n\\r\\nGuests cruise along a roadway a sports cars they drive themselves.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.287064676596,\n    \"longitude\": -76.652464271386,\n    \"image\": \"image/rides/30/%d/%d/1407197391.jpg\",\n    \"icon\": \"icon/rides/30/%d/%d/1407197349.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Twin Turnpike @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=30\"\n    }\n  },\n  {\n    \"id\": 29,\n    \"name\": \"Twin Turnpike\",\n    \"description\": \"Twin Turnpike is sponsored by Sunoco.\\r\\n\\r\\nGuests cruise along on a roadway in a \\\"Model T\\\" they drive themselves or with the whole family.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.287100482067,\n    \"longitude\": -76.652297974427,\n    \"image\": \"image/rides/29/%d/%d/1407197390.jpg\",\n    \"icon\": \"icon/rides/29/%d/%d/1407197349.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Twin Turnpike @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=29\"\n    }\n  },\n  {\n    \"id\": 28,\n    \"name\": \"Trailblazer\",\n    \"description\": \"Children and adults can enjoy this fast paced coaster through pioneer country.\\r\\n\\r\\n\\r\\n\",\n    \"video\": \"wD5_JkxuC1c\",\n    \"status\": 1,\n    \"wait\": 15,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.288835490181,\n    \"longitude\": -76.653215289911,\n    \"image\": \"image/rides/28/%d/%d/1407197371.jpg\",\n    \"icon\": \"icon/rides/28/%d/%d/1407197332.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Trailblazer @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=28\"\n    }\n  },\n  {\n    \"id\": 58,\n    \"name\": \"Traffic Jam\",\n    \"description\": \"Kids can go around in their favorite vehicle and blare their horn, just like in a real traffic jam!\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.286557259876,\n    \"longitude\": -76.655921638807,\n    \"image\": \"image/rides/58/%d/%d/1407197389.jpg\",\n    \"icon\": \"icon/rides/58/%d/%d/1407197349.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  One taller companion may accompany each child: that includes mom or dad.  This ride only seats two guests taller than the HERSHEY'S milk chocolate bar height category and they must sit in the fire trucks.\",\n      \"*  This ride is for children.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Traffic Jam @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=58\"\n    }\n  },\n  {\n    \"id\": 27,\n    \"name\": \"Tilt-A-Whirl\",\n    \"description\": \"Cars move independently of each other on a circular track, which whirls riders into a series of spins and twirls.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.286625802277,\n    \"longitude\": -76.6561576732,\n    \"image\": \"image/rides/27/%d/%d/1407197389.jpg\",\n    \"icon\": \"icon/rides/27/%d/%d/1407197349.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Tilt-A-Whirl @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=27\"\n    }\n  },\n  {\n    \"id\": 14,\n    \"name\": \"Tidal Force\",\n    \"description\": \"One of the tallest splash-down rides in the world.  Guaranteed to get you soaked!\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"wait\": 30,\n    \"parkarea\": {\n      \"id\": 10,\n      \"name\": \"The Boardwalk\"\n    },\n    \"rating\": {\n      \"id\": 4,\n      \"name\": \"High Thrill Ride\",\n      \"description\": \"This is a fast-paced ride experience with unexpected changes in speed, direction, and/or elevation.  This ride may contain significant twists, turns, bumps, spins, and loops, and requires rider full body control.\",\n      \"image\": \"image/ratings/4/%d/%d/1398417471.jpg\"\n    },\n    \"latitude\": 40.291251742134,\n    \"longitude\": -76.654682458242,\n    \"image\": \"image/rides/14/%d/%d/1407197371.jpg\",\n    \"icon\": \"icon/rides/14/%d/%d/1407197332.jpg\",\n    \"types\": [\n      {\n        \"id\": 2,\n        \"name\": \"Water Rides\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Tidal Force @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=14\"\n    }\n  },\n  {\n    \"id\": 32,\n    \"name\": \"The Howler\",\n    \"description\": \"Get ready for TwisterMania!  Each passenger can spin their own car and the entire ride lifts 7 1/2 feet and tilts 20 degrees, causing each car to swing in and out.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.290018052734,\n    \"longitude\": -76.654921174844,\n    \"image\": \"image/rides/32/%d/%d/1407197381.jpg\",\n    \"icon\": \"icon/rides/32/%d/%d/1407197342.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.  The combined weight of the riders in one ride vehicle may not exceed 816 pounds.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on The Howler @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=32\"\n    }\n  },\n  {\n    \"id\": 79,\n    \"name\": \"The Claw\",\n    \"description\": \"This swinging pendulum ride will take you on a thrilling ride 64 feet in the air!\\r\\n\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"wait\": 30,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 4,\n      \"name\": \"High Thrill Ride\",\n      \"description\": \"This is a fast-paced ride experience with unexpected changes in speed, direction, and/or elevation.  This ride may contain significant twists, turns, bumps, spins, and loops, and requires rider full body control.\",\n      \"image\": \"image/ratings/4/%d/%d/1398417471.jpg\"\n    },\n    \"latitude\": 40.289187396771,\n    \"longitude\": -76.655916274389,\n    \"image\": \"image/rides/79/%d/%d/1407197393.jpg\",\n    \"icon\": \"icon/rides/79/%d/%d/1407197352.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Guests with prosthetic legs will have to remove them. The residual limb must be below the knee in order to ride.  \",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on The Claw @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=79\"\n    }\n  },\n  {\n    \"id\": 102,\n    \"name\": \"Tea Cups\",\n    \"description\": \"Enjoy the classic family experience of the Tea Cups. Take a sweet spin on these cups of joy located in The Hollow. \",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 3,\n      \"name\": \"The Hollow\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.287609940719,\n    \"longitude\": -76.654612720807,\n    \"image\": \"image/rides/102/%d/%d/1407197389.jpg\",\n    \"icon\": \"icon/rides/102/%d/%d/1407197348.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Tea Cups @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=102\"\n    }\n  },\n  {\n    \"id\": 56,\n    \"name\": \"Swing Thing\",\n    \"description\": \"Smaller children can enjoy the fun of the swings as they rotate through the air.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.287972083691,\n    \"longitude\": -76.655428112348,\n    \"image\": \"image/rides/56/%d/%d/1407197388.jpg\",\n    \"icon\": \"icon/rides/56/%d/%d/1407197347.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Swing Thing @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=56\"\n    }\n  },\n  {\n    \"id\": 103,\n    \"name\": \"Sweet Swing\",\n    \"description\": \"Take a ride on the sweetest swing ever!\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 3,\n      \"name\": \"The Hollow\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.287599710664,\n    \"longitude\": -76.654671729406,\n    \"image\": \"image/rides/103/%d/%d/1407197387.jpg\",\n    \"icon\": \"icon/rides/103/%d/%d/1407197347.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  One taller companion may accompany child, this includes mom or dad.\",\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.  Guests taller than 6 feet are not permitted to ride.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Sweet Swing @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=103\"\n    }\n  },\n  {\n    \"id\": 83,\n    \"name\": \"Storm Runner \",\n    \"description\": \"This one-of-a-kind coaster will launch you from 0-72 mph in 2 seconds flat. 18 stories straight up, straight down. And that's just the beginning. You'll fly through a 135 foot cobra loop, barrel rolls, and a dramatic flying snake dive. The first hydraulic launch coaster to feature inversions.\",\n    \"video\": \"KkaQcGdG7Oc\",\n    \"status\": 1,\n    \"wait\": 45,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.289872790975,\n    \"longitude\": -76.653333307107,\n    \"image\": \"image/rides/83/%d/%d/1407197372.jpg\",\n    \"icon\": \"icon/rides/83/%d/%d/1407197333.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"* Guests wearing one prosthetic leg must remove the prosthetic leg or have written documentation from the limb manufacturer ensuring that the prosthetic leg can withstand forces up to 5 Gs and not come off during the ride cycle. If guests must remove their prosthetic leg, the residual limb must be below the knee, so the restraint is in contact with enough of the residual limb to keep the guest properly restrained. Guests wearing two prosthetic legs must wear at least one of their prosthetic legs as this is critical for bracing required during the ride cycle. As a reminder, all guests wearing prosthetic devices on the ride must have manufacturer issued documentation regarding the prosthetic's ability to withstand forces up to 5 Gs.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Storm Runner  @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=83\"\n    }\n  },\n  {\n    \"id\": 74,\n    \"name\": \"Starship America\",\n    \"description\": \"This is a circular ride in which riders can control the up/down movement of the ship. \",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.287297923326,\n    \"longitude\": -76.65633335789,\n    \"image\": \"image/rides/74/%d/%d/1407197387.jpg\",\n    \"icon\": \"icon/rides/74/%d/%d/1407197346.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Starship America @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=74\"\n    }\n  },\n  {\n    \"id\": 55,\n    \"name\": \"Space Age\",\n    \"description\": \"Kids can cruise around in the air on these futuristic starships.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.286694344608,\n    \"longitude\": -76.655834467014,\n    \"image\": \"image/rides/55/%d/%d/1407197386.jpg\",\n    \"icon\": \"icon/rides/55/%d/%d/1407197351.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  One taller companion may accompany each child: that includes mom or dad.  This ride only seats four guests taller than the HERSHEY'S milk chocolate bars height category and they must sit in the red or blue spaceships.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Space Age @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=55\"\n    }\n  },\n  {\n    \"id\": 25,\n    \"name\": \"Skyview\",\n    \"description\": \"An aerial round-trip tramway over Spring Creek that provides a relaxing, quiet gondola ride.\\r\\n\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.287591526618,\n    \"longitude\": -76.655017734369,\n    \"image\": \"image/rides/25/%d/%d/1407197386.jpg\",\n    \"icon\": \"icon/rides/25/%d/%d/1407197346.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Skyview @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=25\"\n    }\n  },\n  {\n    \"id\": 10,\n    \"name\": \"Sidewinder \",\n    \"description\": \"This steel roller coaster completes its spectacular flight, only to return to its starting point in an exciting \\\"boomerang\\\" style.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\",\n    \"video\": \"hR5MTRQL2vg\",\n    \"status\": 1,\n    \"wait\": 30,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 5,\n      \"name\": \"Aggressive Thrill Ride\",\n      \"description\": \"This is a high-speed experience.  Riders will experience many unexpected, rapid changes in speed, direction, and/or elevation and requires rider full body control.  This ride is not recommended for guests with physical, cognitive, and/or medical limitations.\",\n      \"image\": \"image/ratings/5/%d/%d/1398417465.jpg\"\n    },\n    \"latitude\": 40.289911663871,\n    \"longitude\": -76.654162109693,\n    \"image\": \"image/rides/10/%d/%d/1407197372.jpg\",\n    \"icon\": \"icon/rides/10/%d/%d/1407197333.jpg\",\n    \"types\": [\n      {\n        \"id\": 1,\n        \"name\": \"Coasters\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be securedsheypark suggests that that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Sidewinder  @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=10\"\n    }\n  },\n  {\n    \"id\": 54,\n    \"name\": \"Rolling Rovers\",\n    \"description\": \"Rolling Rovers is sponsored by GEICO.\\r\\n\\r\\nChildren can roll along the ground on these self-propelled scooters.\\r\\n\\r\\n\",\n    \"status\": 0,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.287967991691,\n    \"longitude\": -76.654588580926,\n    \"image\": \"image/rides/54/%d/%d/1407197385.jpg\",\n    \"icon\": \"icon/rides/54/%d/%d/1407197345.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Rolling Rovers @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=54\"\n    }\n  },\n  {\n    \"id\": 84,\n    \"name\": \"Reese's Xtreme Cup Challenge\",\n    \"description\": \"This ride is an interactive dark ride in which independently rotating cars travel through competition zones.\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"wait\": 10,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.287810449497,\n    \"longitude\": -76.655546129545,\n    \"image\": \"image/rides/84/%d/%d/1407197386.jpg\",\n    \"icon\": \"icon/rides/84/%d/%d/1407197346.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride may not accommodate guests of a larger size (height and/or weight) due to the configuration of the safety restraint system.\",\n      \"*  Guests with conditions that may be triggered by strobe or chasing lighting effects should not ride. \",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Reese's Xtreme Cup Challenge @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=84\"\n    }\n  },\n  {\n    \"id\": 53,\n    \"name\": \"Red Baron\",\n    \"description\": \"Kids can fly around through the air on these realistic biplanes.  Kids can control how high up they go.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 5,\n      \"name\": \"Kissing Tower Hill\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.288082567601,\n    \"longitude\": -76.653424502214,\n    \"image\": \"image/rides/53/%d/%d/1407197384.jpg\",\n    \"icon\": \"icon/rides/53/%d/%d/1407197345.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Red Baron @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=53\"\n    }\n  },\n  {\n    \"id\": 52,\n    \"name\": \"Pony Parade\",\n    \"description\": \"Children can experience the fun of a virtual horse-drawn carriage.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.293462301717,\n    \"longitude\": -76.654304266771,\n    \"image\": \"image/rides/52/%d/%d/1407197384.jpg\",\n    \"icon\": \"icon/rides/52/%d/%d/1407197344.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"No hand-held infants\",\n      \"*  This ride is for children\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Pony Parade @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=52\"\n    }\n  },\n  {\n    \"id\": 9,\n    \"name\": \"Pirate\",\n    \"description\": \"A pirate ship swings guests back and forth, giving them a feeling of weightlessness.  \\r\\n\\r\\n\",\n    \"status\": 0,\n    \"parkarea\": {\n      \"id\": 6,\n      \"name\": \"Pioneer Frontier\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.289011443705,\n    \"longitude\": -76.655393243631,\n    \"image\": \"image/rides/9/%d/%d/1407197384.jpg\",\n    \"icon\": \"icon/rides/9/%d/%d/1407197344.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Pirate @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=9\"\n    }\n  },\n  {\n    \"id\": 37,\n    \"name\": \"Music Express\",\n    \"description\": \"Music Express features 3-passenger cars that rotate counterclockwise at a maximum speed of 10 revolutions per minute over an undulating track.  While riding, guests can enjoy exciting musical tunes.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 3,\n      \"name\": \"Moderate Thrill Ride\",\n      \"description\": \"This is a medium speed ride where riders may experience unexpected changes in elevation and speed.  This ride may contain moderate twists, turns, bumps, spins, and loops, and may require some rider body control.\",\n      \"image\": \"image/ratings/3/%d/%d/1398417464.jpg\"\n    },\n    \"latitude\": 40.293792293935,\n    \"longitude\": -76.654046237495,\n    \"image\": \"image/rides/37/%d/%d/1407197383.jpg\",\n    \"icon\": \"icon/rides/37/%d/%d/1407197344.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Music Express @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=37\"\n    }\n  },\n  {\n    \"id\": 22,\n    \"name\": \"Monorail \",\n    \"description\": \"Monorail is sponsored by Capital BlueCross.\\r\\n\\r\\nThis is an elevated monorail which offers riders an audio tour while viewing Hersheypark, ZooAmerica, and downtown Hershey.\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"wait\": 30,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 2,\n      \"name\": \"Mild Thrill Ride\",\n      \"description\": \"This is a low to medium speed ride with expected changes in elevation and speed.  This ride may require some rider body control and is not intended for unaccompanied toddlers or very young children.\",\n      \"image\": \"image/ratings/2/%d/%d/1398417458.jpg\"\n    },\n    \"latitude\": 40.288164407419,\n    \"longitude\": -76.655425430139,\n    \"image\": \"image/rides/22/%d/%d/1407197383.jpg\",\n    \"icon\": \"icon/rides/22/%d/%d/1407197343.jpg\",\n    \"types\": [\n      {\n        \"id\": 4,\n        \"name\": \"Family Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      },\n      {\n        \"id\": 1,\n        \"name\": \"60\\\" & Taller\",\n        \"image\": \"image/heights/1/%d/%d/1398417563.jpg\"\n      }\n    ],\n    \"restrictions\": [],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Monorail  @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=22\"\n    }\n  },\n  {\n    \"id\": 50,\n    \"name\": \"Mini-Himalaya\",\n    \"description\": \"A smaller version of an old favorite.  Travel around the circular track while moving up and down small hills.\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 2,\n      \"name\": \"Founder's Way\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.286781301196,\n    \"longitude\": -76.656482220491,\n    \"image\": \"image/rides/50/%d/%d/1407197383.jpg\",\n    \"icon\": \"icon/rides/50/%d/%d/1407197343.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      },\n      {\n        \"id\": 2,\n        \"name\": \"54\\\" to 60\\\"\",\n        \"image\": \"image/heights/2/%d/%d/1398417542.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"One taller companion may accompany child\",\n      \"No hand-held infants\",\n      \"*  Hersheypark suggests that if you plan on riding rides to please bring into the park only items that can be safely secured in cargo pockets, a waist pack or a zipping jacket pocket. To secure loose articles, a cargo pocket must fasten with a velcro or button flap or a zipper, a waist pack should fasten around the waist and have a zipper closure, and a jacket pocket must have a zipper closure. Long hair, head scarves and long jewelry must be secured.\"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Mini-Himalaya @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=50\"\n    }\n  },\n  {\n    \"id\": 57,\n    \"name\": \"Tiny Tracks\",\n    \"description\": \"Tiny Tracks is sponsored by Amtrak.\\r\\n\\r\\nChug along the track in this miniature train.  Kids can relax in the caboose or ring the bell in the engine.\\r\\n\\r\\n\",\n    \"status\": 1,\n    \"parkarea\": {\n      \"id\": 7,\n      \"name\": \"Midway America\"\n    },\n    \"rating\": {\n      \"id\": 1,\n      \"name\": \"Children's Ride\",\n      \"description\": \"This is a low-speed, gentle ride intended for young children and may accommodate chaperones where permitted.\",\n      \"image\": \"image/ratings/1/%d/%d/1398417468.jpg\"\n    },\n    \"latitude\": 40.293697367632,\n    \"longitude\": -76.653811814243,\n    \"image\": \"image/rides/57/%d/%d/1411154164.jpg\",\n    \"icon\": \"icon/rides/57/%d/%d/1411154151.jpg\",\n    \"types\": [\n      {\n        \"id\": 3,\n        \"name\": \"Kiddie Rides\"\n      }\n    ],\n    \"height\": [\n      {\n        \"id\": 7,\n        \"name\": \"0\\\" to 36\\\"\",\n        \"image\": \"image/heights/7/%d/%d/1398417552.jpg\",\n        \"add\": \"Must be accompanied by a responsible rider\"\n      },\n      {\n        \"id\": 5,\n        \"name\": \"36\\\" to 42\\\"\",\n        \"image\": \"image/heights/5/%d/%d/1398417550.jpg\"\n      },\n      {\n        \"id\": 4,\n        \"name\": \"42\\\" to 48\\\"\",\n        \"image\": \"image/heights/4/%d/%d/1398417565.jpg\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"48\\\" to 54\\\"\",\n        \"image\": \"image/heights/3/%d/%d/1398417556.jpg\"\n      }\n    ],\n    \"restrictions\": [\n      \"*  One taller companion may accompany each child: that includes mom or dad.  Due to the configuration of this ride, guests taller than the HERSHEY'S milk chocolate bar height category may not sit in the Engine or Caboose. \"\n    ],\n    \"share\": {\n      \"text\": \"I just took the sweetest ride on Tiny Tracks @Hersheypark! #HersheyparkHappy\",\n      \"url\": \"http://www.hersheypark.com/rides/details.php?id=57\"\n    }\n  }\n]",
+					"file": "/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/output",
+					"file_size": 119175,
+					"file_write_time": 1427841999000000,
 					"settings":
 					{
-						"buffer_size": 2265,
+						"buffer_size": 117557,
 						"line_ending": "Unix"
 					}
 				}
@@ -673,27 +774,91 @@
 				"selected_items":
 				[
 					[
+						"prett",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"pret",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"package",
+						"Package Control: Remove Package"
+					],
+					[
+						"pretty",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"paca",
+						"Package Control: Install Package"
+					],
+					[
+						"json",
+						"Set Syntax: JSON"
+					],
+					[
 						":w",
 						":w - Save"
+					],
+					[
+						"htm",
+						"HTMLPrettify"
+					],
+					[
+						"google",
+						"Google Spell Check"
+					],
+					[
+						"spell",
+						"Google Spell Check"
+					],
+					[
+						"pree",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"ht",
+						"HTMLPrettify"
+					],
+					[
+						"xml",
+						"Indent XML"
+					],
+					[
+						"html",
+						"HTMLPrettify"
+					],
+					[
+						"preety",
+						"HTMLPrettify: Set Prettify Preferences"
+					],
+					[
+						"pre",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"Pretty",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"Pre",
+						"Pretty JSON: Format (Pretty Print) JSON"
+					],
+					[
+						"Package",
+						"Package Control: Install Package"
+					],
+					[
+						"Prett",
+						"Pretty JSON: Format (Pretty Print) JSON"
 					],
 					[
 						"pac",
 						"Package Control: Install Package"
 					],
 					[
-						"prett",
-						"Pretty JSON: Reformat (Pretty Print) JSON"
-					],
-					[
-						"pretty",
-						"Pretty JSON: Reformat (Pretty Print) JSON"
-					],
-					[
 						"pack",
-						"Package Control: Install Package"
-					],
-					[
-						"package",
 						"Package Control: Install Package"
 					],
 					[
@@ -713,7 +878,7 @@
 						"Package Control: Remove Package"
 					]
 				],
-				"width": 583.0
+				"width": 457.0
 			},
 			"console":
 			{
@@ -730,6 +895,34 @@
 			},
 			"file_history":
 			[
+				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/Rakefile",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal_waits2.py",
+				"/var/folders/1r/84k38sw54fbcgrh9hlgvt8b80000gn/T/mproxyIAUK88.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disneyparis.py",
+				"/Users/Alex/Documents/Projects/blog/_includes/twitter.html",
+				"/Users/Alex/Documents/Projects/blog/_includes/facebook.html",
+				"/Users/Alex/Documents/Projects/blog/_drafts/guatemala.markdown",
+				"/Users/Alex/Desktop/usj_strings.json",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/WordCount.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Markdown.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/JSON.sublime-settings",
+				"/Users/Alex/Downloads/Sublime Text.icns",
+				"/Users/Alex/Documents/Projects/poole-master/Rakefile",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/config/usj_strings.json",
+				"/Users/Alex/Documents/Temp/test2",
+				"/Users/Alex/Desktop/universal_japan.py",
+				"/Users/Alex/Documents/Temp/test",
+				"/Users/Alex/Downloads/Universal 2/Orlando.app/ADBMobileConfig.json",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal_singapore.py",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/input",
+				"/Users/Alex/Documents/Temp/output2",
+				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/output",
+				"/Users/Alex/Documents/School/EECS483/proj2/parser.y",
+				"/Users/Alex/Downloads/Universal 2/Library/Cookies/BinaryCookie.py",
+				"/Users/Alex/.dotfiles/zsh/zprezto_files/themes/prompt_pure_setup",
 				"/Users/Alex/Documents/Raptors/ASPriorityQueue/ASPriorityQueue/ASPriorityQueue.m",
 				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/layout.phtml",
 				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/README.md",
@@ -761,7 +954,6 @@
 				"/Users/Alex/Documents/CSEScholars/website/_config.yml",
 				"/Users/Alex/Documents/CSEScholars/website/index.html",
 				"/Users/Alex/Documents/CSEScholars/website/login.html",
-				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 				"/Users/Alex/Documents/Projects/poole-master/index.html",
 				"/Users/Alex/Documents/Projects/poole-master/about.md",
 				"/Users/Alex/Documents/Projects/poole-master/public/css/poole.css",
@@ -822,7 +1014,6 @@
 				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
 				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
 				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
-				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
 				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
 				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
@@ -831,22 +1022,7 @@
 				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
 				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
 				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
+				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml"
 			],
 			"find":
 			{
@@ -857,6 +1033,7 @@
 				"height": 0.0,
 				"where_history":
 				[
+					"",
 					"reset.css",
 					"index.phtml",
 					"",
@@ -875,6 +1052,33 @@
 				"case_sensitive": true,
 				"find_history":
 				[
+					"Coasters",
+					"P1MA01",
+					">",
+					"10000",
+					"Sponge",
+					"Shows",
+					"Jurassic",
+					"Curious",
+					"WaitTime",
+					"-50",
+					"\"WaitTime\"",
+					"families",
+					"D",
+					"Dip",
+					"Dippi",
+					"Dippin Dots",
+					"False",
+					"Availability",
+					"Ride",
+					"Open",
+					"Show",
+					"Queue",
+					"rides_wait",
+					"wait",
+					"Closed",
+					"Seasonly",
+					"singleRider",
 					".navbar-simple",
 					"officer_text",
 					"footer",
@@ -975,10 +1179,7 @@
 					"IsLeft",
 					"IsAbove",
 					"p",
-					"find_exponent",
-					"p2_i",
-					"current",
-					"fastPass"
+					"find_exponent"
 				],
 				"highlight": true,
 				"in_selection": false,
@@ -986,6 +1187,7 @@
 				"regex": false,
 				"replace_history":
 				[
+					"/>",
 					"",
 					"lg",
 					"col-md-4",
@@ -1010,28 +1212,28 @@
 					[
 						{
 							"buffer": 0,
-							"file": "/Users/Alex/Documents/Raptors/ASPriorityQueue/Tests/ASPriorityQueueTests.m",
+							"file": "/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/output",
 							"settings":
 							{
-								"buffer_size": 2265,
+								"buffer_size": 117557,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										0,
-										2265
+										7773,
+										7773
 									]
 								],
 								"settings":
 								{
-									"syntax": "Packages/Objective-C/Objective-C.tmLanguage",
-									"tab_size": 4,
+									"syntax": "Packages/JavaScript/JSON.tmLanguage",
+									"tab_size": 2,
 									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
-								"translation.y": 0.0,
+								"translation.y": 3976.0,
 								"zoom_level": 1.0
 							},
 							"type": "text"
@@ -1070,7 +1272,7 @@
 				]
 			},
 			"menu_visible": true,
-			"position": "0 4 1280 774 0 0 1280 778 ",
+			"position": "0 4 1280 773 0 0 1280 777 ",
 			"replace":
 			{
 				"height": 0.0
@@ -1154,557 +1356,7 @@
 			"side_bar_visible": true,
 			"side_bar_width": 150.0,
 			"status_bar_visible": true,
-			"window_id": 128,
-			"workspace_name": ""
-		},
-		{
-			"auto_complete":
-			{
-				"selected_items":
-				[
-					[
-						"strto",
-						"strtotime"
-					],
-					[
-						"collection",
-						"collection_name"
-					],
-					[
-						"calcul",
-						"calculateGOP"
-					],
-					[
-						"filename",
-						"filename1"
-					],
-					[
-						"stru",
-						"structure0"
-					],
-					[
-						"str",
-						"structure3"
-					],
-					[
-						"struc",
-						"structure3"
-					],
-					[
-						"st",
-						"structure0"
-					],
-					[
-						"words",
-						"words"
-					],
-					[
-						"say",
-						"sayCommand"
-					],
-					[
-						"TTS",
-						"TTSPrompts"
-					],
-					[
-						"grep",
-						"grep_input"
-					],
-					[
-						"output",
-						"outputfilename"
-					],
-					[
-						"i",
-						"i"
-					],
-					[
-						"w",
-						"w"
-					],
-					[
-						"True",
-						"True"
-					],
-					[
-						"waittimes_new",
-						"waittimes_newest_collection"
-					],
-					[
-						"waitt",
-						"waittimes_collection"
-					]
-				]
-			},
-			"buffers":
-			[
-			],
-			"build_system": "",
-			"command_palette":
-			{
-				"height": 400.0,
-				"selected_items":
-				[
-					[
-						":w",
-						":w - Save"
-					],
-					[
-						"pac",
-						"Package Control: Install Package"
-					],
-					[
-						"prett",
-						"Pretty JSON: Reformat (Pretty Print) JSON"
-					],
-					[
-						"pretty",
-						"Pretty JSON: Reformat (Pretty Print) JSON"
-					],
-					[
-						"pack",
-						"Package Control: Install Package"
-					],
-					[
-						"package",
-						"Package Control: Install Package"
-					],
-					[
-						"pakage Control : In",
-						"Package Control: Install Package"
-					],
-					[
-						"package control: in",
-						"Package Control: Install Package"
-					],
-					[
-						"package control: inst",
-						"Package Control: Install Package"
-					],
-					[
-						"package control: remove",
-						"Package Control: Remove Package"
-					]
-				],
-				"width": 583.0
-			},
-			"console":
-			{
-				"height": 0.0
-			},
-			"distraction_free":
-			{
-				"menu_visible": true,
-				"show_minimap": false,
-				"show_open_files": false,
-				"show_tabs": false,
-				"side_bar_visible": false,
-				"status_bar_visible": false
-			},
-			"file_history":
-			[
-				"/Users/Alex/Documents/Raptors/ASPriorityQueue/ASPriorityQueue/ASPriorityQueue.m",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/layout.phtml",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/README.md",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/static/css/style.css",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/views/officers.php",
-				"/Users/Alex/.ssh/id_rsa.pub",
-				"/Users/Alex/Documents/Apps/resume.json.html",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/member_info.phtml",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/templates/admin_page.phtml",
-				"/Users/Alex/Documents/CSEScholars/CSEScholarsWebsite/public_html/resume_book/index.php",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/tests/html.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/controllers/html.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/seaworld_waits.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/universal.py",
-				"/Users/Alex/Documents/Projects/poole-master/_includes/head.html",
-				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-18-dropbox-for-ssh.md",
-				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-9-test.md",
-				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-9-2-100-acres.md",
-				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-11-27-housing.md",
-				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-3-13-favicons.md",
-				"/Users/Alex/Documents/Projects/poole-master/_posts/2013-2-12-leaving-browsers.markdown",
-				"/Users/Alex/Documents/Projects/poole-master/README.md",
-				"/Users/Alex/Documents/Projects/poole-master/CNAME",
-				"/Users/Alex/Documents/Projects/poole-master/_includes/analytics.html",
-				"/Users/Alex/Documents/CSEScholars/website/_site/index.html",
-				"/Users/Alex/Documents/CSEScholars/website/_site/Gemfile",
-				"/Users/Alex/Documents/CSEScholars/website/_layouts/default.html",
-				"/Users/Alex/Documents/CSEScholars/website/css/main.scss",
-				"/Users/Alex/Documents/CSEScholars/website/_config.yml",
-				"/Users/Alex/Documents/CSEScholars/website/index.html",
-				"/Users/Alex/Documents/CSEScholars/website/login.html",
-				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-				"/Users/Alex/Documents/Projects/poole-master/index.html",
-				"/Users/Alex/Documents/Projects/poole-master/about.md",
-				"/Users/Alex/Documents/Projects/poole-master/public/css/poole.css",
-				"/Users/Alex/Documents/School/EECS498/Projects/generators/promptsGood.csv",
-				"/Users/Alex/Documents/School/EECS498/Projects/train4.scp",
-				"/Users/Alex/Documents/School/EECS498/Projects/train3.scp",
-				"/Users/Alex/Documents/School/EECS498/Projects/train2.scp",
-				"/Users/Alex/Documents/School/EECS498/Projects/mlf_builder.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/project.sh",
-				"/Users/Alex/Documents/School/EECS498/Projects/tts_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/aligned_parser.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/test.out",
-				"/Users/Alex/Documents/School/EECS498/Projects/generators/csv_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/generators/dict_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/generators/tts_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/generators/wlist_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/generators/prompts_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/dict_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/dlog",
-				"/Users/Alex/Documents/School/EECS498/Projects/badwordlist",
-				"/Users/Alex/Documents/School/EECS498/Projects/testprompt",
-				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/testprompt",
-				"/Users/Alex/Documents/School/EECS498/Projects/wav_config",
-				"/Users/Alex/Documents/School/EECS498/Projects/train.scp",
-				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/dict",
-				"/Users/Alex/Documents/School/EECS498/Projects/words.mlf",
-				"/Users/Alex/Documents/School/EECS498/Projects/prompts_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/TempFiles/missingWords",
-				"/Users/Alex/Documents/School/EECS498/Projects/dict",
-				"/Users/Alex/Documents/School/EECS498/Projects/wlist",
-				"/Users/Alex/Documents/School/EECS498/Projects/csv_generator.py",
-				"/Users/Alex/Documents/School/EECS498/Projects/wlist_generator.py",
-				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/rocket.pddl",
-				"/Users/Alex/Documents/CSEScholars/Website/index.html",
-				"/Users/Alex/Documents/CSEScholars/Website/css/style.scss",
-				"/Users/Alex/Documents/School/EECS492/HW4/sgp/domains/old_rocket.pddl",
-				"/Users/Alex/Documents/School/EECS492/HW4/rocket.pddl",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/aligned.mlf",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/prompts",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/wintri.mlf",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/needed/TestPrompts/testprompts",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/mktri.led",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/phones0.mlf",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/testprompts",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_test_prompts",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 3/you_training_prompts",
-				"/Users/Alex/Documents/School/EECS498/HW5/skeleton_hmm.m",
-				"/Users/Alex/Documents/School/EECS498/HW5/HTK_Tutorial 2/wlist",
-				"/Users/Alex/Desktop/test.py",
-				"/Users/Alex/Downloads/htk/HTKLib/HGraf.c",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/disney_waits.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/cron.js",
-				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_verify_reg_1_3.py",
-				"/Users/Alex/Documents/School/EECS376/HW4/pumping_lemma_prove_nonreg_1.5.1.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/engine.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/views/waitList.ejs",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/server.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Research/testInfo.txt",
-				"/Users/Alex/Library/Application Support/Sublime Text 2/Packages/Pretty JSON/Pretty JSON.sublime-settings",
-				"/Users/Alex/Documents/Projects/WaitTimes/Research/test",
-				"/Users/Alex/.dotfiles/sublime/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
-				"/Users/Alex/Documents/School/EECS492/HW1/agent2.txt",
-				"/Users/Alex/Documents/School/EECS492/HW1/agent1.txt",
-				"/Users/Alex/Documents/School/EECS492/HW1/p3.py",
-				"/Users/Alex/Documents/School/EECS376/HW2/Prob4.txt",
-				"/Users/Alex/Documents/School/EECS376/HW2/validate.py",
-				"/Users/Alex/Documents/School/EECS376/HW1/Final/hw1.tex",
-				"/Users/Alex/Documents/Projects/Blog/public/_old_public/_old_layout.ejs",
-				"/Users/Alex/Documents/Projects/Blog/public/_old_layout.ejs",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/parse_resource.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/initializers/yaml_load.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/app/views/announcements/list.html.erb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/routes.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/app/controllers/announcements_controller.rb",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/users.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/config/database.yml",
-				"/Users/Alex/Documents/MPowered/MHacks2/app/test/models/.keep",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.html",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/js/controllers.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/bower.json",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/public/views/index.ejs",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/package.json",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/time_test.py",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/parks_list.js",
-				"/Users/Alex/Documents/Projects/WaitTimes/Code/Node/channels/database.py"
-			],
-			"find":
-			{
-				"height": 38.0
-			},
-			"find_in_files":
-			{
-				"height": 0.0,
-				"where_history":
-				[
-					"reset.css",
-					"index.phtml",
-					"",
-					"prompts",
-					"",
-					"testprompts",
-					"",
-					"testprompts",
-					"",
-					"package.json",
-					""
-				]
-			},
-			"find_state":
-			{
-				"case_sensitive": true,
-				"find_history":
-				[
-					".navbar-simple",
-					"officer_text",
-					"footer",
-					"md",
-					"span4",
-					"span2",
-					"name",
-					"AddResume",
-					"addResume",
-					"uploadf",
-					"AddResume",
-					"$_FILES",
-					"temp",
-					"audio",
-					"SELECT",
-					"members",
-					"Askia",
-					"askia",
-					"INSERT INTO",
-					"INSERT INTO members",
-					"INSERT INTO",
-					"INSERT",
-					"print",
-					"update",
-					"parks_list",
-					"parks_lsit",
-					"params",
-					"query",
-					"engine",
-					"universalstudios",
-					"api",
-					"wait",
-					"api",
-					"http",
-					"<g>",
-					"print",
-					"x",
-					"eh",
-					"as",
-					"sp",
-					"sun",
-					"sky",
-					"us",
-					"ch",
-					"no",
-					"sa",
-					"ro",
-					"re",
-					"mun",
-					"ok",
-					"ex",
-					"x",
-					"ha",
-					"lu",
-					"ca",
-					"cam",
-					"ld",
-					"wa",
-					"her",
-					"j",
-					"til",
-					"gi",
-					"fu",
-					"bu",
-					"co",
-					"na",
-					"not",
-					"DOMAIN",
-					"Domains",
-					"sample24",
-					"sample10",
-					"sample4",
-					"dict",
-					"sample1",
-					"DIAL",
-					"124",
-					"dial",
-					"aligned.mlf",
-					"sample",
-					"prompt124",
-					"alex-train-prompt124",
-					"DIAL",
-					"BROOKHAVEN",
-					"SENT-END",
-					"SENT-START",
-					"BROOKHAVEN",
-					"SENT-END",
-					"SENT-START",
-					"b",
-					"sil",
-					"SENT-START",
-					"SENT-END",
-					"SENT-START",
-					"SENT-END",
-					"SENT-START",
-					"ARCH",
-					"temp",
-					"IsLeft",
-					"IsAbove",
-					"p",
-					"find_exponent",
-					"p2_i",
-					"current",
-					"fastPass"
-				],
-				"highlight": true,
-				"in_selection": false,
-				"preserve_case": false,
-				"regex": false,
-				"replace_history":
-				[
-					"",
-					"lg",
-					"col-md-4",
-					"col-md-2",
-					"",
-					"IsLeft",
-					"IsAbove",
-					"temp",
-					"latest"
-				],
-				"reverse": false,
-				"show_context": true,
-				"use_buffer2": true,
-				"whole_word": false,
-				"wrap": false
-			},
-			"folders":
-			[
-				{
-					"path": "/Users/Alex/Documents/Raptors/PriorityToDo"
-				}
-			],
-			"groups":
-			[
-				{
-					"sheets":
-					[
-					]
-				}
-			],
-			"incremental_find":
-			{
-				"height": 38.0
-			},
-			"input":
-			{
-				"height": 32.0
-			},
-			"layout":
-			{
-				"cells":
-				[
-					[
-						0,
-						0,
-						1,
-						1
-					]
-				],
-				"cols":
-				[
-					0.0,
-					1.0
-				],
-				"rows":
-				[
-					0.0,
-					1.0
-				]
-			},
-			"menu_visible": true,
-			"position": "0 4 1280 774 0 0 1280 778 ",
-			"replace":
-			{
-				"height": 0.0
-			},
-			"save_all_on_build": true,
-			"select_file":
-			{
-				"height": 0.0,
-				"selected_items":
-				[
-					[
-						"html",
-						"controllers/html.js"
-					],
-					[
-						"",
-						"models/Waits.js"
-					],
-					[
-						"disney",
-						"channels/disney_waits.py"
-					],
-					[
-						"api",
-						"controllers/api.js"
-					],
-					[
-						"app",
-						"app.js"
-					],
-					[
-						"app.js",
-						"app.js"
-					],
-					[
-						"server",
-						"server.js"
-					],
-					[
-						"read",
-						"README.md"
-					],
-					[
-						"ana",
-						"_includes/analytics.html"
-					],
-					[
-						"ph",
-						"phones0.mlf"
-					],
-					[
-						"phones0",
-						"phones0.mlf"
-					],
-					[
-						"words",
-						"words.mlf"
-					],
-					[
-						"dict",
-						"dict"
-					],
-					[
-						"word",
-						"words.mlf"
-					]
-				],
-				"width": 0.0
-			},
-			"select_project":
-			{
-				"height": 0.0,
-				"selected_items":
-				[
-				],
-				"width": 0.0
-			},
-			"show_minimap": false,
-			"show_open_files": false,
-			"show_tabs": true,
-			"side_bar_visible": true,
-			"side_bar_width": 150.0,
-			"status_bar_visible": true,
-			"window_id": 129,
+			"window_id": 149,
 			"workspace_name": ""
 		}
 	],

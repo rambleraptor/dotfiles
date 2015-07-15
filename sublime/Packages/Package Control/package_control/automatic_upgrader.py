@@ -6,10 +6,12 @@ import time
 
 import sublime
 
+from .show_error import show_error
 from .console_write import console_write
 from .package_installer import PackageInstaller
 from .package_renamer import PackageRenamer
 from .open_compat import open_compat, read_compat
+from .settings import pc_settings_filename, load_list_setting
 
 
 class AutomaticUpgrader(threading.Thread):
@@ -19,11 +21,14 @@ class AutomaticUpgrader(threading.Thread):
     settings.
     """
 
-    def __init__(self, found_packages):
+    def __init__(self, found_packages, found_dependencies):
         """
         :param found_packages:
             A list of package names for the packages that were found to be
             installed on the machine.
+
+        :param found_dependencies:
+            A list of installed dependencies found on the machine
         """
 
         self.installer = PackageInstaller()
@@ -43,6 +48,8 @@ class AutomaticUpgrader(threading.Thread):
         # Detect if a package is missing that should be installed
         self.missing_packages = list(set(self.installed_packages) -
             set(found_packages))
+        self.missing_dependencies = list(set(self.manager.find_required_dependencies()) -
+            set(found_dependencies))
 
         if self.auto_upgrade and self.next_run <= time.time():
             self.save_last_run(time.time())
@@ -91,19 +98,14 @@ class AutomaticUpgrader(threading.Thread):
         with open_compat(self.last_run_file, 'w') as fobj:
             fobj.write(str(int(last_run)))
 
-
     def load_settings(self):
         """
-        Loads the list of installed packages from the
-        Package Control.sublime-settings file
+        Loads the list of installed packages
         """
 
-        self.settings_file = 'Package Control.sublime-settings'
-        self.settings = sublime.load_settings(self.settings_file)
-        self.installed_packages = self.settings.get('installed_packages', [])
+        self.settings = sublime.load_settings(pc_settings_filename())
+        self.installed_packages = load_list_setting(self.settings, 'installed_packages')
         self.should_install_missing = self.settings.get('install_missing')
-        if not isinstance(self.installed_packages, list):
-            self.installed_packages = []
 
     def run(self):
         self.install_missing()
@@ -118,14 +120,66 @@ class AutomaticUpgrader(threading.Thread):
         """
         Installs all packages that were listed in the list of
         `installed_packages` from Package Control.sublime-settings but were not
-        found on the filesystem and passed as `found_packages`.
+        found on the filesystem and passed as `found_packages`. Also installs
+        any missing dependencies.
         """
 
+        # We always install missing dependencies - this operation does not
+        # obey the "install_missing" setting since not installing dependencies
+        # would result in broken packages.
+        if self.missing_dependencies:
+            total_missing_dependencies = len(self.missing_dependencies)
+            dependency_s = 'ies' if total_missing_dependencies != 1 else 'y'
+            console_write(u'Installing %s missing dependenc%s' %
+                (total_missing_dependencies, dependency_s), True)
+
+            dependencies_installed = 0
+
+            for dependency in self.missing_dependencies:
+                if self.installer.manager.install_package(dependency, is_dependency=True):
+                    console_write(u'Installed missing dependency %s' % dependency, True)
+                    dependencies_installed += 1
+
+            if dependencies_installed:
+                def notify_restart():
+                    dependency_was = 'ies were' if dependencies_installed != 1 else 'y was'
+                    message = (u'%s missing dependenc%s just ' +
+                        u'installed. Sublime Text should be restarted, otherwise ' +
+                        u'one or more of the installed packages may not function ' +
+                        u'properly.') % (dependencies_installed, dependency_was)
+                    show_error(message)
+                sublime.set_timeout(notify_restart, 1000)
+
+        # Missing package installs are controlled by a setting
         if not self.missing_packages or not self.should_install_missing:
             return
 
-        console_write(u'Installing %s missing packages' % len(self.missing_packages), True)
+        total_missing_packages = len(self.missing_packages)
+
+        if total_missing_packages > 0:
+            package_s = 's' if total_missing_packages != 1 else ''
+            console_write(u'Installing %s missing package%s' %
+                (total_missing_packages, package_s), True)
+
+        # Fetching the list of packages also grabs the renamed packages
+        self.manager.list_available_packages()
+        renamed_packages = self.manager.settings.get('renamed_packages', {})
+
         for package in self.missing_packages:
+
+            # If the package has been renamed, detect the rename and update
+            # the settings file with the new name as we install it
+            if package in renamed_packages:
+                old_name = package
+                new_name = renamed_packages[old_name]
+                def update_installed_packages():
+                    self.installed_packages.remove(old_name)
+                    self.installed_packages.append(new_name)
+                    self.settings.set('installed_packages', self.installed_packages)
+                    sublime.save_settings(pc_settings_filename())
+                sublime.set_timeout(update_installed_packages, 10)
+                package = new_name
+
             if self.installer.manager.install_package(package):
                 console_write(u'Installed missing package %s' % package, True)
 
@@ -181,7 +235,7 @@ class AutomaticUpgrader(threading.Thread):
 
         def do_upgrades():
             # Wait so that the ignored packages can be "unloaded"
-            time.sleep(0.5)
+            time.sleep(0.7)
 
             # We use a function to generate the on-complete lambda because if
             # we don't, the lambda will bind to info at the current scope, and
@@ -204,12 +258,13 @@ class AutomaticUpgrader(threading.Thread):
                 message_string = u'Upgraded %s to %s' % (info[0], version)
                 console_write(message_string, True)
                 if on_complete:
-                    sublime.set_timeout(on_complete, 1)
+                    sublime.set_timeout(on_complete, 700)
 
         # Disabling a package means changing settings, which can only be done
         # in the main thread. We then create a new background thread so that
         # the upgrade process does not block the UI.
         def disable_packages():
-            disabled_packages.extend(self.installer.disable_packages([info[0] for info in package_list]))
+            packages = [info[0] for info in package_list]
+            disabled_packages.extend(self.installer.disable_packages(packages, 'upgrade'))
             threading.Thread(target=do_upgrades).start()
         sublime.set_timeout(disable_packages, 1)

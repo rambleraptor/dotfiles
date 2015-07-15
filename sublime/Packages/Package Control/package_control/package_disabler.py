@@ -50,6 +50,7 @@ class PackageDisabler():
              - "remove"
              - "install"
              - "disable"
+             - "loader"
         """
 
         if not isinstance(packages, list):
@@ -72,10 +73,10 @@ class PackageDisabler():
                 ignored.append(package)
                 disabled.append(package)
 
-                if type in ['upgrade', 'remove']:
-                    version = self.get_version(package)
-                    tracker_type = 'pre_upgrade' if type == 'upgrade' else type
-                    events.add(tracker_type, package, version)
+            if type in ['upgrade', 'remove']:
+                version = self.get_version(package)
+                tracker_type = 'pre_upgrade' if type == 'upgrade' else type
+                events.add(tracker_type, package, version)
 
             for window in sublime.windows():
                 for view in window.views():
@@ -105,8 +106,11 @@ class PackageDisabler():
                 self.old_theme = settings.get('theme')
                 settings.set('theme', 'Default.sublime-theme')
 
-        pc_settings.set('in_process_packages', in_process)
-        sublime.save_settings(pc_settings_filename())
+        # We don't mark a package as in-process when disabling it, otherwise
+        # it automatically gets re-enabled the next time Sublime Text starts
+        if type != 'disable':
+            pc_settings.set('in_process_packages', in_process)
+            sublime.save_settings(pc_settings_filename())
 
         settings.set('ignored_packages', ignored)
         sublime.save_settings(preferences_filename())
@@ -126,6 +130,7 @@ class PackageDisabler():
              - "remove"
              - "install"
              - "enable"
+             - "loader"
         """
 
         settings = sublime.load_settings(preferences_filename())

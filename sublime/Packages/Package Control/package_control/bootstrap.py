@@ -18,16 +18,20 @@ except (ImportError) as e:
 
 import sublime
 
+from .clear_directory import clear_directory
 from .download_manager import downloader
 from .downloaders.downloader_exception import DownloaderException
 from .settings import pc_settings_filename, load_list_setting, save_list_setting
 from .console_write import console_write
 from . import loader
 from .sys_path import st_dir
+from .open_compat import open_compat, read_compat
+from .semver import SemVer
+from .file_not_found_error import FileNotFoundError
 
 
 
-def bootstrap_dependency(settings, url, hash_, priority, on_complete):
+def bootstrap_dependency(settings, url, hash_, priority, version, on_complete):
     """
     Downloads a dependency from a hard-coded URL - only used for bootstrapping _ssl
     on Linux and ST2/Windows
@@ -40,6 +44,9 @@ def bootstrap_dependency(settings, url, hash_, priority, on_complete):
 
     :param hash_:
         The sha256 hash of the package file
+
+    :param version:
+        The version number of the package
 
     :param priority:
         A three-digit number that controls what order packages are
@@ -57,9 +64,22 @@ def bootstrap_dependency(settings, url, hash_, priority, on_complete):
         return
     package_dir = path.join(packages_dir, package_basename)
 
-    # The package has already been installed
+    version = SemVer(version)
+
+    # The package has already been installed. Don't reinstall unless we have
+    # a newer version.
     if path.exists(package_dir):
-        return
+        try:
+            dep_metadata_path = path.join(package_dir, 'dependency-metadata.json')
+            with open_compat(dep_metadata_path, 'r') as f:
+                metadata = json.loads(read_compat(f))
+            old_version = SemVer(metadata['version'])
+            if version <= old_version:
+                return
+            console_write(u'Upgrading bootstrapped dependency %s to %s from %s' % (package_basename, version, old_version), True)
+        except (KeyError, FileNotFoundError):
+            # If we can't determine the old version, install the new one
+            pass
 
     with downloader(url, settings) as manager:
         try:
@@ -84,7 +104,9 @@ def bootstrap_dependency(settings, url, hash_, priority, on_complete):
         return
 
     if not path.exists(package_dir):
-        os.mkdir(package_dir, 0o755)
+        os.makedirs(package_dir, 0o755)
+    else:
+        clear_directory(package_dir)
 
     code = None
     for zip_path in data_zip.namelist():
@@ -103,33 +125,23 @@ def bootstrap_dependency(settings, url, hash_, priority, on_complete):
 
         if dest[-1] == '/':
             if not path.exists(dest):
-                os.mkdir(dest, 0o755)
+                os.makedirs(dest, 0o755)
         else:
             dest_dir = path.dirname(dest)
             if not path.exists(dest_dir):
-                os.mkdir(dest_dir, 0o755)
+                os.makedirs(dest_dir, 0o755)
 
             with open(dest, 'wb') as f:
                 f.write(data_zip.read(zip_path))
 
     data_zip.close()
 
+    if loader.exists(package_basename):
+        loader.remove(package_basename)
+        console_write(u'Removed old loader for bootstrapped dependency %s' % package_basename, True)
     loader.add(priority, package_basename, code)
 
     console_write(u'Successfully installed bootstrapped dependency %s' % package_basename, True)
 
-    def add_to_installed_dependencies():
-        filename = pc_settings_filename()
-        settings = sublime.load_settings(filename)
-        old = load_list_setting(settings, 'installed_dependencies')
-        new = list(old)
-        if loader.loader_package_name not in new:
-            new.append(loader_package_name)
-        if package_basename not in new:
-            new.append(package_basename)
-        save_list_setting(settings, filename, 'installed_dependencies', new, old)
-    sublime.set_timeout(add_to_installed_dependencies, 10)
-
     if on_complete:
-        # Give add_to_installed_dependencies() time to run
-        sublime.set_timeout(on_complete, 200)
+        sublime.set_timeout(on_complete, 100)

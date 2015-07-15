@@ -1,24 +1,42 @@
-# Prezto stuff
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-	source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# Borrowed from holman/dotfiles
 
-# Shortcut to this dotfiles path is $ZSH
+# shortcut to this dotfiles path is $ZSH
+export DEFAULT_USER="Alex"
 export ZSH=$HOME/.dotfiles
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.zshrc_local ]]
+
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
+if [[ -a ~/.localrc ]]
 then
-  source ~/.zshrc_local
+  source ~/.localrc
 fi
 
-for file in $ZSH/zsh/*.zsh;
+# all of our zsh files
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
 do
-	source $file;
+  source $file
 done
 
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
 
-# Get tmux working
-export TERM=xterm-256color
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit -u
 
+# load every completion after autocomplete loads
+for file in ${(M)config_files:#*/completion.zsh}
+do
+  source $file
+done
+
+unset config_files
