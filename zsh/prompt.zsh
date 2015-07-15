@@ -21,7 +21,7 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "(%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%})"
+      echo "(%{$fg[green]%}$(git_prompt_info)%{$reset_color%})"
     else
       echo "(%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%})"
     fi
