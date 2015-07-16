@@ -21,9 +21,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "(%{$fg[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo "(%{$fg[green]%}$(git_prompt_info)%{$reset_color%}$(need_push))"
     else
-      echo "(%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo "(%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}$(need_push))"
     fi
   fi
 }
@@ -41,12 +41,12 @@ unpushed () {
 need_push () {
   if [[ $(unpushed) == "" ]]
   then
-    echo ")"
+    echo ""
   else
     if [[ "$(uname -s)" == "Darwin" ]] then
-      echo "🔥 )"
+      echo "|🔥 "
     else 
-      echo "|%{$fg_bold[magenta]%}unpushed%{$reset_color%})"
+      echo "|%{$fg_bold[magenta]%}unpushed%{$reset_color%}"
     fi
   fi
 }
@@ -105,7 +105,7 @@ extra_spaces(){
 }
 
 # Actual prompt
-export PROMPT=$'\n$(server_name)$(directory_name)$(git_dirty)$(need_push)\n$(prompt_arrow)$(extra_spaces)'
+export PROMPT=$'\n$(server_name)$(directory_name)$(git_dirty)\n$(prompt_arrow)$(extra_spaces)'
 set_prompt () {
   export RPROMPT="%{$fg[magenta]%}%{$reset_color%}"
 }

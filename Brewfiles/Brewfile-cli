@@ -1,0 +1,15 @@
+# GNU Utils
+coreutils
+moreutils
+findutils
+ack
+
+# Tools
+git
+vim --override-system-vi
+
+# Various languages
+go
+nvm
+python
+scala

@@ -1,8 +1,8 @@
 # Borrowed from holman/dotfiles
 
 # shortcut to this dotfiles path is $ZSH
-export DEFAULT_USER="Alex"
 export ZSH=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
