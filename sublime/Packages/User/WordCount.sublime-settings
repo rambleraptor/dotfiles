@@ -1,6 +1,0 @@
-{
-    "whitelist_syntaxes": ["Plain Text", "Markdown"],
-    "blacklist_syntaxes": ["CSS"],
-    "enable_readtime": true,
-    "readtime_wpm" : 200
-}

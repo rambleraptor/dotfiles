@@ -1,59 +1,49 @@
-" Vundle stuff
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Plugin Setup
+set nocompatible
+filetype plugin off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mhinz/vim-startify'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'altercation/vim-colors-solarized'                       " Solarized color scheme
+Plugin 'kien/ctrlp.vim'                                         " CtrlP
+Plugin 'sjl/gundo.vim'                                          " Undo tree plugin
 
-call vundle#end()   
+call vundle#end()
 filetype plugin indent on
 
-" Vundle stuff ends
-
-
-" Turn off arrow keys.
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-syntax on
-set number
-
-" Fix colors
+" Colors
 let g:solarized_termcolors = 16
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
 set background=dark
+syntax enable
 
-set nofoldenable
-let g:vim_markdown_folding_disabled=1
-filetype plugin on
-filetype plugin indent on
-syntax on
-set encoding=utf-8
+" Misc
+set ttyfast                                                     " faster redraw
+set backspace=indent,eol,start                                  " regular backspace
+nnoremap <Space> @q 						                    " custom macro binding
 
-" Ctl P
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" Spaces and tabs
+set tabstop=4                                                   " number of visual spaces per TAB
+set softtabstop=4   						                    " number of spaces in tab when editing
+set expandtab       						                    " tabs are spaces
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
+" UI 
+set number                                                      " set number
+set showcmd                                                     " show command in bottom bar
+filetype indent on                                              " load indent files for specific filetypes
+set wildmenu                                                    " menu autocomplete
+set lazyredraw                                                  " redraw only when necessary
+set showmatch                                                   " matching brackets
 
-nnoremap <Space> @q
+" Search
+set incsearch                                                   " search as characters entered
+set hlsearch                                                    " highlight matches
 
-" Vim-markdown stuff
-let g:vim_markdown_folding_disabled=1
+" Custom Things
+let mapleader=","                                               " leader is comma
+inoremap jk <esc>                                               " jk is esc
 
-" Mouse
-set mouse=a
-let mapleader = ","

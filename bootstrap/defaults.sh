@@ -31,6 +31,8 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 action "Remove duplicates in the Open With menu (also see `lscleanup` alias)"
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
+running "Reveal IP, hostname, OS, etc. when clicking clock in login window"
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName;ok
 #######################################
 # Trackpad, keyboard
 #######################################
@@ -61,6 +63,12 @@ chflags nohidden ~/Library
 action "Copy email addresses as foo@example.com instead of Foo Bar <foo@example.com> in Mail.app"
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
+######################################
+# Terminal / iTerm
+######################################
+running "Don’t display the annoying prompt when quitting iTerm"
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
+
 #######################################
 # Transmission
 #######################################
@@ -80,6 +88,22 @@ defaults write org.m0k.transmission WarningDonate -bool false
 action "Hide the legal disclaimer"
 defaults write org.m0k.transmission WarningLegal -bool false
 
+###############################################################################
+bot "Activity Monitor"
+###############################################################################
+
+running "Show the main window when launching Activity Monitor"
+defaults write com.apple.ActivityMonitor OpenMainWindow -bool true;ok
+
+running "Visualize CPU usage in the Activity Monitor Dock icon"
+defaults write com.apple.ActivityMonitor IconType -int 5;ok
+
+running "Show all processes in Activity Monitor"
+defaults write com.apple.ActivityMonitor ShowCategory -int 0;ok
+
+running "Sort Activity Monitor results by CPU usage"
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0;ok
 #######################################
 # Kill all apps
 #######################################

@@ -4,6 +4,7 @@ hr
 spark
 sshfs
 wget
+ag
 
 # Tools
 tmux
