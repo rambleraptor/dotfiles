@@ -1,5 +1,29 @@
+# Vim magicks
+unbind-key j
+bind-key j select-pane -D
+unbind-key k
+bind-key k select-pane -U
+unbind-key h
+bind-key h select-pane -L
+unbind-key l
+bind-key l select-pane -R
+set-option -g status-keys vi
+setw -g mode-keys vi
+
+# Global settings
+set -g history-limit 30000
+
+# Colors right
+set -g default-terminal "xterm-256color"
+
 # Reloading tmux file
 bind r source-file ~/.tmux.conf
+
+# Mouse (if I want it)
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
 
 # Rename terminals
 set -g set-titles on
@@ -15,16 +39,3 @@ set -g status-right-length 60
 set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue]#(hostname -s)#[fg=white]::#[fg=yellow]#(ipconfig getifaddr en1)"
 set -g status-justify left
 set -g status-right '#[fg=Cyan]#S #[fg=white]%a %d %b %R'
-
-# Vim magicks
-unbind-key j
-bind-key j select-pane -D
-unbind-key k
-bind-key k select-pane -U
-unbind-key h
-bind-key h select-pane -L
-unbind-key l
-bind-key l select-pane -R
-
-# Colors right
-set -g default-terminal "xterm-256color"
