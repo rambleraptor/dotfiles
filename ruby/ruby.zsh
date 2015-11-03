@@ -1,5 +1,3 @@
-# RVM
-if [ -f $HOME/.rvm ]; then
-  echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
+if [ -d $HOME/.rvm ]; then
+    source $HOME/.rvm/scripts/rvm
 fi
-

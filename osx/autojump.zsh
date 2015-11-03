@@ -1,4 +1,3 @@
-# Autojump
-if [ "$(uname)" "==" "Darwin" ]; then
-    [[ -s `brew --prefix`/etc/autojump.zsh ]] && . `brew --prefix`/etc/autojump.zsh
+if [ "$(uname)" == "Darwin" ]; then
+    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 fi
