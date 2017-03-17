@@ -1,18 +1,30 @@
-function server-ssh() {
-    ssh alex@104.236.221.193;
-}
-
-function umich-mount() {
-    sshfs stepa@login.engin.umich.edu:/afs/umich.edu/user/s/t/stepa /Users/Alex/Documents/Scripts/mount_point;
-    cd /Users/Alex/Documents/Scripts/mount_point;
-}
-
-function umich-unmount() {
-    cd ~;
-    umount /Users/Alex/Documents/Scripts/mount_point;
-}
-function umich-ssh() {
-    ssh stepa@login.engin.umich.edu;
-}
-
 export DEFAULT_USER=`whoami`
+
+# Git
+function gca(){
+  git commit --amend
+}
+function gaa(){
+  git add --all
+}
+function gerrit(){
+  git push origin HEAD:refs/for/master
+}
+
+# Gcloud SSH
+function gcloud-tunnel(){
+  gcloud compute ssh $1 --ssh-flag="-L $2:localhost:$2"
+}
+function gssh() {
+  gcloud compute ssh $1
+}
+# Copying files
+function gcopy-home(){
+  gcloud compute copy-files $1 $2:~
+}
+
+function gcopy-module(){
+  gcloud compute copy-files $1 $2:/home/alexstephen/.puppetlabs/etc/code/modules/$3
+}
+
+

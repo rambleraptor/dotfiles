@@ -122,4 +122,7 @@ if [ "$(uname)" == "Darwin" ]; then
   $DOTFILES/bootstrap/osx.sh
 fi
 
+running "adding vundle for vim"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 bot "Woot! All done."

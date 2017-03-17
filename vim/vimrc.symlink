@@ -6,9 +6,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-sensible'                                     " Sane defaults
 Plugin 'altercation/vim-colors-solarized'                       " Solarized color scheme
-Plugin 'kien/ctrlp.vim'                                         " CtrlP
-Plugin 'sjl/gundo.vim'                                          " Undo tree plugin
+Plugin 'kien/ctrlp.vim'                                         " Ctrl-p
+Plugin 'vim-syntastic/syntastic'                                " Syntastic syntax highlighting
+Plugin 'godlygeek/tabular'                                      " Not entirely sure what this does.
+Plugin 'rodjek/vim-puppet'                                      " Puppet
+
 
 call vundle#end()
 filetype plugin indent on
@@ -24,12 +28,12 @@ syntax enable
 " Misc
 set ttyfast                                                     " faster redraw
 set backspace=indent,eol,start                                  " regular backspace
-nnoremap <Space> @q 						                    " custom macro binding
+nnoremap <Space> @q 						                                " custom macro binding
 
 " Spaces and tabs
-set tabstop=4                                                   " number of visual spaces per TAB
-set softtabstop=4   						                    " number of spaces in tab when editing
-set expandtab       						                    " tabs are spaces
+set expandtab                                                   " tabs are spaces
+set ts=2                                                                         
+set sw=2 
 
 " UI 
 set number                                                      " set number
@@ -43,7 +47,5 @@ set showmatch                                                   " matching brack
 set incsearch                                                   " search as characters entered
 set hlsearch                                                    " highlight matches
 
-" Custom Things
-let mapleader=","                                               " leader is comma
-inoremap jk <esc>                                               " jk is esc
-
+" Ruby Things
+set colorcolumn=80
