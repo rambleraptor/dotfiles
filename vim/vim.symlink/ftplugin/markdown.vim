@@ -1,1 +1,0 @@
-/Users/astephen/.dotfiles/markdown/markdown.vim

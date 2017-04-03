@@ -125,4 +125,7 @@ fi
 running "adding vundle for vim"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+running "Symlinking vim files"
+$DOTFILES/bootstrap/symlink_vim.sh
+
 bot "Woot! All done."
