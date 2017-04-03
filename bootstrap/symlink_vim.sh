@@ -5,6 +5,6 @@ source $DOTFILES/bootstrap/lib.sh
 for source in `find ~/.dotfiles -path ~/.dotfiles/vim -prune -o -name '*.vim' -print`
 do
   filename=`basename ${source}`
-  running "Symlinking file $filename"
+  running "Symlinking file $filename\n"
   ln -s $source ~/.vim/ftplugin/$filename
 done
