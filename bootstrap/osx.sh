@@ -71,34 +71,6 @@ else
     ok "skipped brew package upgrades.";
 fi
 
-bot "Installing homebrew packages"
-read -r -p "Install standard packages? [y|N]" response
-if [[ $response =~ ^(y|yes|Y) ]];then
-    # Upgrade any already-installed formulae
-    brew install $(cat $DOTFILES/Brewfiles/Brewfile | sed 's/#.*//')
-    ok "standard brews installed"
-else
-    ok "skipped standard brews.";
-fi
-
-read -r -p "Install command linepackages? [y|N]" response
-if [[ $response =~ ^(y|yes|Y) ]];then
-    # Upgrade any already-installed formulae
-    brew install $(cat $DOTFILES/Brewfiles/Brewfile-cli | sed 's/#.*//')
-    ok "cli brews installed"
-else
-    ok "skipped cli brews.";
-fi
-
-read -r -p "Install application packages? [y|N]" response
-if [[ $response =~ ^(y|yes|Y) ]];then
-    # Upgrade any already-installed formulae
-    brew cask install $(cat $DOTFILES/Brewfiles/Brewfile-cask | sed 's/#.*//')
-    ok "brew apps installed"
-else
-    ok "skipped brew apps";
-fi
-
 bot "let's talk ruby"
 
 read -r -p "Do you want to install RVM and ruby? [y|N]" response
@@ -110,15 +82,6 @@ if [[ $response =~ ^(y|yes|Y) ]];then
     ok "rvm/ruby installed"
 else
     ok "skipped ruby";
-fi
-read -r -p "Install NVM and node[y|N]" response
-if [[ $response =~ ^(y|yes|Y) ]];then
-    # Upgrade any already-installed formulae
-    require_brew nvm
-    require_nvm stable
-    ok "nvm installed"
-else
-    ok "skipped nvm";
 fi
 
 $DOTFILES/bootstrap/defaults.sh

@@ -10,9 +10,8 @@ Plugin 'tpope/vim-sensible'                                     " Sane defaults
 Plugin 'altercation/vim-colors-solarized'                       " Solarized color scheme
 Plugin 'kien/ctrlp.vim'                                         " Ctrl-p
 Plugin 'vim-syntastic/syntastic'                                " Syntastic syntax highlighting
-Plugin 'godlygeek/tabular'                                      " Not entirely sure what this does.
-Plugin 'rodjek/vim-puppet'                                      " Puppet
-
+Plugin 'junegunn/goyo.vim'                                      " Writing mode for Markdown
+Plugin 'tpope/vim-markdown'                                     " Markdown syntax
 
 call vundle#end()
 filetype plugin indent on
@@ -46,6 +45,3 @@ set showmatch                                                   " matching brack
 " Search
 set incsearch                                                   " search as characters entered
 set hlsearch                                                    " highlight matches
-
-" Ruby Things
-set colorcolumn=80
