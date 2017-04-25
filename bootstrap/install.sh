@@ -6,7 +6,7 @@
 ###########################
 
 DEFAULT_EMAIL="astephen2@gmail.com"
-DEFAULT_GITHUBUSER="astephen2"
+DEFAULT_GITHUBUSER="rambleraptor"
 
 export DOTFILES=$HOME/.dotfiles
 
