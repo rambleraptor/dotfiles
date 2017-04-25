@@ -1,7 +1,9 @@
+# Vim magicks
 set -g default-shell $SHELL 
 set -g default-command "reattach-to-user-namespace -l ${SHELL}"
 set-option -s set-clipboard on
-# Vim magicks
+
+# Vim keybinds for pane switching
 unbind-key j
 bind-key j select-pane -D
 unbind-key k
