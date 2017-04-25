@@ -5,9 +5,6 @@
 # Portions copyright @author Adam Eivy
 ###########################
 
-DEFAULT_EMAIL="astephen2@gmail.com"
-DEFAULT_GITHUBUSER="rambleraptor"
-
 export DOTFILES=$HOME/.dotfiles
 
 # include my library helpers for colorized echo and require_brew, etc
@@ -18,7 +15,7 @@ if [[ ! -e ~/.dotfiles_backup ]]; then
     mkdir ~/.dotfiles_backup
 fi
 
-bot "Hi. I'm going to make your MacOS system better. But first, I need to configure this project based on your info"
+bot "Hi. I'm going to make system better. But first, I need to configure this project based on your info"
 
 echo $0 | grep zsh > /dev/null 2>&1 | true
 if [[ ${PIPESTATUS[0]} != 0 ]]; then
@@ -40,9 +37,6 @@ if [ "$(uname)" == "Darwin" ]; then
   running "setting up sane osx defaults"
   $DOTFILES/bootstrap/lib/macos.sh
 fi
-
-running "adding vundle for vim"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 running "setting up vim"
 $DOTFILES/bootstrap/lib/vim.sh
