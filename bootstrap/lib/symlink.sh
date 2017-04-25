@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #
-# bootstrap installs things.
-# From holman/dotfiles
+# Symlink all the dot files
+# Mostly stolen from @holman
 
-DOTFILES_ROOT="`pwd`"
-source $DOTFILES/bootstrap/lib.sh
+DOTFILES_ROOT="$HOME/.dotfiles"
+source $HOME/.dotfiles/bootstrap/lib/helpers.sh
 
 set -e
 

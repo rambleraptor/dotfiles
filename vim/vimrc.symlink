@@ -45,3 +45,12 @@ set showmatch                                                   " matching brack
 " Search
 set incsearch                                                   " search as characters entered
 set hlsearch                                                    " highlight matches
+
+" Pane switching (like tmux)
+nmap <C-B>j <C-w>j
+nmap <C-B>k <C-w>k
+nmap <C-B>l <C-w>l
+nmap <C-B>h <C-w>h
+
+map <C-B>% :vsplit<CR>
+map <C-B>" :split<CR>

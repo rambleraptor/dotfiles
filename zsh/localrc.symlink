@@ -8,7 +8,7 @@ function gaa(){
   git add --all
 }
 function gerrit(){
-  git push origin HEAD:refs/for/master
+  git push origin HEAD:refs/for/master --recurse-submodules=no
 }
 
 # Gcloud SSH
@@ -27,4 +27,11 @@ function gcopy-module(){
   gcloud compute copy-files $1 $2:/home/alexstephen/.puppetlabs/etc/code/modules/$3
 }
 
+function git-clean(){
+  git stash
+  git clean -fdx
+  git submodule foreach --recursive git stash
+  git submodule foreach --recursive git clean -fdx
+}
 
+alias gcompute="gcloud compute"
