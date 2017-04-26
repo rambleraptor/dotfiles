@@ -5,11 +5,11 @@
 ###
 
 # colors
-col_cyan="\x1b[36m"
-col_green="\x1b[32m"
-col_red="\x1b[31m"
-col_yellow="\x1b[33m"
-col_reset="\x1b[0m"
+col_cyan="\e[36m"
+col_green="\e[32m"
+col_red="\e[31m"
+col_yellow="\e[33m"
+col_reset="\e[0m"
 
 function ok() {
     echo "$col_green[ok]$col_reset "$1

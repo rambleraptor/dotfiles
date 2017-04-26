@@ -1,0 +1,65 @@
+# cheers, @ehrenmurdick
+# http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
+
+# colors
+cyan="\e[36m"
+green="\e[32m"
+red="\e[31m"
+yellow="\e[33m"
+magenta="\e[95m"
+blue="\e[34m"
+col_reset="\e[0m"
+
+git_branch() {
+  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+}
+
+git_dirty() {
+  if $(! $git status -s &> /dev/null)
+  then
+    echo ""
+  else
+    if [[ $($git status --porcelain) == "" ]]
+    then
+      echo "$green$(git_prompt_info)$col_reset$(need_push))"
+    else
+      echo "($red$(git_prompt_info)$col_reset$(need_push))"
+    fi
+  fi
+}
+
+git_prompt_info () {
+ ref=$($git symbolic-ref HEAD 2>/dev/null) || return
+# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
+ echo "${ref#refs/heads/}"
+}
+
+unpushed () {
+  $git cherry -v @{upstream} 2>/dev/null
+}
+
+need_push () {
+  if [[ $(unpushed) == "" ]]
+  then
+    echo ""
+  else
+    echo "|$red unpushed$col_reset"
+  fi
+}
+
+# Current Directory
+directory_name() {
+  echo "$cyan\w$col_reset"
+}
+
+# Current Username
+server_name(){
+  echo "$blue[\u@\H]$col_reset "
+}
+
+prompt_arrow(){
+  echo "$magenta>$col_reset"
+}
+
+# Actual prompt
+export PS1="$(server_name)$(directory_name)$(git_dirty)\n$(prompt_arrow) "
