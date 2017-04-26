@@ -31,3 +31,4 @@ Session.vim
 .nginx/conf.d/*
 Vundle.vim
 vim/vim.symlink
+localrc.symlink

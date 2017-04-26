@@ -5,34 +5,42 @@
 ###
 
 # colors
-col_cyan="\e[36m"
-col_green="\e[32m"
-col_red="\e[31m"
-col_yellow="\e[33m"
-col_reset="\e[0m"
+ESC_SEQ="\x1b["
+col_reset=$ESC_SEQ"39;49;00m"
+col_red=$ESC_SEQ"91;01m"
+col_green=$ESC_SEQ"92;01m"
+col_yellow=$ESC_SEQ"93;01m"
+col_blue=$ESC_SEQ"94;01m"
+col_magenta=$ESC_SEQ"95;01m"
+col_cyan=$ESC_SEQ"96;01m"
+#col_cyan="\e[36m"
+#col_green="\e[32m"
+#col_red="\e[31m"
+#col_yellow="\e[33m"
+#col_reset="\e[0m"
 
 function ok() {
-    echo "$col_green[ok]$col_reset "$1
+    echo -e "$col_green[ok]$col_reset "$1
 }
 
 function bot() {
-    echo "\n$col_green\[._.]/$col_reset - "$1
+    echo -e "\n$col_green\[._.]/$col_reset - "$1
 }
 
 function running() {
-    echo "$col_yellow ⇒ $col_reset"$1": "
+    echo -e "$col_yellow ⇒ $col_reset"$1": "
 }
 
 function action() {
-    echo "\n$col_cyan[action]:$col_reset\n ⇒ $1..."
+    echo -e "\n$col_cyan[action]:$col_reset\n ⇒ $1..."
 }
 
 function warn() {
-    echo "$col_yellow[warning]$col_reset "$1
+    echo -e "$col_yellow[warning]$col_reset "$1
 }
 
 function error() {
-    echo "$col_red[error]$col_reset "$1
+    echo -e "$col_red[error]$col_reset "$1
 }
 
 function require_cask() {
