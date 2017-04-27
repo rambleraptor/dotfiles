@@ -1,6 +1,6 @@
 Dotfiles - Now with Emoji!
 ========
-![iTerm Screenshot](https://raw.githubusercontent.com/astephen2/dotfiles/master/img/dotfiles.png)
+![iTerm Screenshot](https://raw.githubusercontent.com/astephen2/dotfiles/master/docs/dotfiles.png)
 
 These are the dotfiles that I use on my personal machine. The goal of this repo is to create a completely automated process to setup a new machine with my settings and applications.
 
