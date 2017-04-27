@@ -1,5 +1,5 @@
 #!/bin/sh
-# git-clean
+# clean
 # Cleans out git repo fully
 
 git stash
