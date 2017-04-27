@@ -1,0 +1,6 @@
+#!/bin/sh
+# checkout
+# Checkout to proper branch and update submodules
+
+git checkout $1
+git submodule update
