@@ -7,7 +7,7 @@ alias -- -="cd -"
 
 # git aliases
 alias g="git"
-alias master="git checkout master"
+alias master="checkout master"
 alias gaa="git add --all"
 alias gca="git commit --amend"
 
