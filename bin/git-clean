@@ -1,0 +1,7 @@
+#!/bin/sh
+# git-clean
+# Cleans out git repo fully
+git stash
+git clean -fdx
+git submodule foreach --recursive git stash
+git submodule foreach --recursive git clean -fdx
