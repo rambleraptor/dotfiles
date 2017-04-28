@@ -2,7 +2,7 @@
 # checkout
 # Checkout to proper branch and update submodules
 
-if [ $2 = "--clean" ]; then
+if [ $2 == "--clean" ]; then
   echo "Cleaning repo first"
   clean
 fi
