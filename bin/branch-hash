@@ -1,0 +1,10 @@
+#!/bin/sh
+# branch-hash
+# Find the branch for a given hash
+
+if [ ! -d ".git" ]; then
+  echo "Not inside a git folder"
+  exit 1
+fi
+
+git reflog show --all | grep $1
