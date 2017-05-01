@@ -12,3 +12,4 @@ function gcopy-home(){
 }
 
 alias gcompute="gcloud compute"
+alias gcp="gcloud compute copy-files $1 $2~"
