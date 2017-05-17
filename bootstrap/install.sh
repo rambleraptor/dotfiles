@@ -14,16 +14,15 @@ log "Hi. I'm going to make system better. But first, I need to configure this pr
 
 echo $0 | grep zsh > /dev/null 2>&1 | true
 if [[ ${PIPESTATUS[0]} != 0 ]]; then
-  running "changing your login shell to zsh"
-  chsh -s $(which zsh);ok
+  action "You should consider using zsh"
+  log "Run this command: chsh -s $(which zsh)"
 else
-  log "looks like you are already using zsh. woot!"
+  log "looks like you're using zsh!"
 fi
 
 pushd ~ > /dev/null 2>&1
 
 running "creating symlinks for project dotfiles..."
-
 $DOTFILES/bootstrap/lib/symlink.sh
 
 running "setting up vim"
