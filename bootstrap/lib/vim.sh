@@ -6,7 +6,7 @@ running "adding vundle because submodules are awful"
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-running "Symlinking all of the vim files"
+bot "Symlinking all of the vim files"
 for source in `find ~/.dotfiles -path ~/.dotfiles/vim -prune -o -name '*.vim' -print`
 do
   filename=`basename ${source}`

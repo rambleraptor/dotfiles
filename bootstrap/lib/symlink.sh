@@ -13,7 +13,7 @@ link_files () {
   ok "linked $1 to $2"
 }
 
-bot "installing dotfiles"
+running "installing dotfiles"
 
   overwrite_all=false
   backup_all=false

@@ -23,11 +23,11 @@ function ok() {
     echo -e "$col_green[ok]$col_reset "$1
 }
 
-function bot() {
+function running() {
     echo -e "\n$col_green\[._.]/$col_reset - "$1
 }
 
-function running() {
+function log() {
     echo -e "$col_yellow ⇒ $col_reset"$1": "
 }
 
@@ -136,7 +136,7 @@ function require_nvm() {
 
 function promptSudo(){
     # Ask for the administrator password upfront
-    bot "I need you to enter your sudo password so I can install some things:"
+    running "I need you to enter your sudo password so I can install some things:"
     sudo -v
 
     # Keep-alive: update existing sudo time stamp until the script has finished

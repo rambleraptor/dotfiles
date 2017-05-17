@@ -90,7 +90,7 @@ running "Hide the legal disclaimer"
 defaults write org.m0k.transmission WarningLegal -bool false
 
 ###############################################################################
-bot "Activity Monitor"
+# "Activity Monitor"
 ###############################################################################
 
 running "Show the main window when launching Activity Monitor"
@@ -108,6 +108,7 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0;ok
 #######################################
 # Kill all apps
 #######################################
+warn "Killing a bunch of apps. Don't be alarmed"
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
         "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
