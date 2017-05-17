@@ -15,7 +15,12 @@ log "Hi. I'm going to make system better. But first, I need to configure this pr
 echo $0 | grep zsh > /dev/null 2>&1 | true
 if [[ ${PIPESTATUS[0]} != 0 ]]; then
   action "You should consider using zsh"
-  log "Run this command: chsh -s $(which zsh)"
+  if ask "install zsh"; then
+    running "setting zsh to default shell"
+    chsh -s $(which zsh)
+  else
+    log "Run this command: chsh -s $(which zsh)"
+  fi
 else
   log "looks like you're using zsh!"
 fi

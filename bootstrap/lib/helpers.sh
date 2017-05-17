@@ -172,3 +172,14 @@ function mac(){
     return 1
   fi
 }
+
+function ask(){
+  response=1
+  action "Do you want to $1 (y/N)"
+  read -n 1 answer
+
+  if [ $answer == "y" ]; then
+    response=0
+  fi
+  return $response
+}
