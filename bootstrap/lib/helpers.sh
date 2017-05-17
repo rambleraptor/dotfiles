@@ -183,3 +183,12 @@ function ask(){
   fi
   return $response
 }
+
+function zsh(){
+  echo $0 | grep zsh > /dev/null 2>&1 | true
+  if [[ ${PIPESTATUS[0]} != 0 ]]; then
+    return 1
+  else
+    return 0
+  fi
+}

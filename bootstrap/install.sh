@@ -10,8 +10,10 @@ if [[ ! -e ~/.dotfiles_backup ]]; then
     mkdir ~/.dotfiles_backup
 fi
 
+
 log "Hi. I'm going to make system better. But first, I need to configure this project based on your info"
 
+# Deal with ZSH things
 echo $0 | grep zsh > /dev/null 2>&1 | true
 if [[ ${PIPESTATUS[0]} != 0 ]]; then
   action "You should consider using zsh"
@@ -33,10 +35,16 @@ $DOTFILES/bootstrap/lib/symlink.sh
 running "setting up vim"
 $DOTFILES/bootstrap/lib/vim.sh
 
+# Ruby
+if ask "install ruby and rbenv"; then
+  running "installing ruby and rbenv"
+  $DOTFILES/bootstrap/lib/ruby.sh
+do
+
 popd > /dev/null 2>&1
 
 if mac; then
-  log "You run a mac! 😃 "
+  log "You run a mac!"
   running "Setting up mac things"
   $DOTFILES/bootstrap/lib/macos.sh
 fi

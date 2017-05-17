@@ -9,4 +9,10 @@ then
   source ~/.localrc
 fi
 
+# Adding in my bin folder to PATH
 export PATH=$PATH:$DOTFILES/bin
+
+# Adding Rbenv to PATH
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+fi
