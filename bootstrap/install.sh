@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-###########################
-# This script installs the dotfiles and runs all other system configuration scripts
-# Portions copyright @author Adam Eivy
-###########################
-
 export DOTFILES=$HOME/.dotfiles
 
 # include my library helpers for colorized echo and require_brew, etc
@@ -31,15 +26,17 @@ bot "creating symlinks for project dotfiles..."
 
 $DOTFILES/bootstrap/lib/symlink.sh
 
+running "setting up vim"
+$DOTFILES/bootstrap/lib/vim.sh
+
 popd > /dev/null 2>&1
 
-if [ "$(uname)" == "Darwin" ]; then
-  running "setting up sane osx defaults"
+if mac; then
+  running "You run a mac! 😃 "
+  running "Setting up mac things"
   $DOTFILES/bootstrap/lib/macos.sh
 fi
 
-running "setting up vim"
-$DOTFILES/bootstrap/lib/vim.sh
 
 bot "Woot! All done."
 action "If this is default user, set DEFAULT_USER to whoami"

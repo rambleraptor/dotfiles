@@ -33,8 +33,13 @@ git_prompt_info () {
  ref=$($git symbolic-ref HEAD 2>/dev/null)
 # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
  if [[ -z  ${ref// }  ]]; then
-   ref=$($git rev-parse HEAD)
-   echo "${ref}"
+   branch=$(git branch --contains ${ref} | tail -1)
+   if [[ ! $branch == *"HEAD"* ]]; then
+     echo "${branch}" | tr -d '[:space:]'
+   else
+     ref=$($git rev-parse HEAD)
+     echo "${ref}"
+   fi
  else
    echo "${ref#refs/heads/}"
  fi

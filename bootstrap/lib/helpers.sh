@@ -164,3 +164,11 @@ function symlinkifne {
     ln -s ~/.dotfiles/$1 $1
     echo -en '\tlinked';ok
 }
+
+function mac(){
+  if [ "$(uname)" == "Darwin" ]; then
+    return 0
+  else
+    return 1
+  fi
+}

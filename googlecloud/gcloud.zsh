@@ -7,9 +7,5 @@ function gssh() {
   gcloud compute ssh $1
 }
 
-function gcopy-home(){
-  gcloud compute copy-files $1 $2:~
-}
-
 alias gcompute="gcloud compute"
 alias gcp="gcloud compute copy-files $1 $2~"
