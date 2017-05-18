@@ -11,7 +11,7 @@ if [[ ! -e ~/.dotfiles_backup ]]; then
 fi
 
 
-log "Hi. I'm going to make system better. But first, I need to configure this project based on your info"
+log "Hi. Time for magic!"
 
 # Deal with ZSH things
 echo $0 | grep zsh > /dev/null 2>&1 | true
