@@ -1,5 +1,6 @@
-# shortcut to this dotfiles path is $ZSH
+# shortcut to this dotfiles path is $BASH
 export DOTFILES=$HOME/.dotfiles
+source $HOME/.bash_prompt
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -9,5 +10,29 @@ then
   source ~/.localrc
 fi
 
-source $HOME/.bash_prompt
-source $HOME/.dotfiles/alias.zsh
+export BASH=$HOME/.dotfiles
+
+# load the path files
+for file in $DOTFILES/**/path.zsh
+do
+  source $file
+done
+
+# load everything but the path and completion files
+shopt -s extglob
+for file in $DOTFILES/!(zsh)/!(completion|path).zsh
+do
+  source $file
+done
+
+for file in $DOTFILES/!(completion|path).zsh
+do
+  source $file
+done
+shopt -u extglob
+
+# load every completion after autocomplete loads
+for file in $DOTFILES/**/completion.zsh
+do
+  source $file
+done
