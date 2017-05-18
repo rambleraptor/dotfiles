@@ -4,6 +4,9 @@ source $HOME/.dotfiles/bootstrap/lib/helpers.sh
 
 running "adding vundle because submodules are awful"
 mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/swaps
+mkdir -p ~/.vim/undo
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 bot "Symlinking all of the vim files"
