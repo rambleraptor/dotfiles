@@ -54,3 +54,10 @@ nmap <C-B>h <C-w>h
 
 map <C-B>% :vsplit<CR>
 map <C-B>" :split<CR>
+
+" Backups
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+  set undodir=~/.vim/undo
+endif

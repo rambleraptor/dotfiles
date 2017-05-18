@@ -30,5 +30,6 @@ Session.vim
 .rainbow_oauth
 .nginx/conf.d/*
 Vundle.vim
-vim/vim.symlink
 localrc.symlink
+
+vim/vim.symlink/spell
