@@ -1,4 +1,3 @@
-Goyo 80                                                                         " Writing mode
 let g:markdown_fenced_languages = ['javascript', 'ruby']                        " Code blocks in markdown
 setlocal spell                                                                  " Spell check
 highlight clear SpellBad                                                        " Spell check
