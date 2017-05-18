@@ -33,3 +33,6 @@ Vundle.vim
 localrc.symlink
 
 vim/vim.symlink/spell
+vim/vim.symlink/backups
+vim/vim.symlink/swaps
+vim/vim.symlink/undo
