@@ -9,7 +9,7 @@ mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-bot "Symlinking all of the vim files"
+running "Symlinking all of the vim files"
 for source in `find ~/.dotfiles -path ~/.dotfiles/vim -prune -o -name '*.vim' -print`
 do
   filename=`basename ${source}`

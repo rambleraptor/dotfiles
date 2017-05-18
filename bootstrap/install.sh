@@ -39,7 +39,7 @@ $DOTFILES/bootstrap/lib/vim.sh
 if ask "install ruby and rbenv"; then
   running "installing ruby and rbenv"
   $DOTFILES/bootstrap/lib/ruby.sh
-do
+fi
 
 popd > /dev/null 2>&1
 
