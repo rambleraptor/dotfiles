@@ -62,5 +62,5 @@ prompt_arrow(){
 }
 
 # Actual prompt
-export PS1="$(server_name)$(directory_name)$(git_dirty)\n$(prompt_arrow) "
+export PS1="$(server_name)$(directory_name)$(git_dirty) $(prompt_arrow) "
 export PS2=""
