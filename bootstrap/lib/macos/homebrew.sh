@@ -26,7 +26,7 @@ if [[ $? != 0 ]]; then
 fi
 ok
 
-if yesOrNo "install fonts"; then
+if ask "install fonts"; then
   running "installing fonts"
   brew bundle --file $DOTFILES/macos/brew/fonts
 fi
