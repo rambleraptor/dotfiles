@@ -25,3 +25,8 @@ if [[ $? != 0 ]]; then
     require_brew caskroom/cask/brew-cask
 fi
 ok
+
+if yesOrNo "install fonts"; then
+  running "installing fonts"
+  brew bundle --file $DOTFILES/macos/brew/fonts
+fi
