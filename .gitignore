@@ -38,3 +38,7 @@ Session.vim
 !/vim/vim.symlink/undo/.gitkeep
 
 # Local related things
+/local/*
+!/local/path.bash
+!/local/bin/.gitkeep
+!/local/install/.gitkeep
