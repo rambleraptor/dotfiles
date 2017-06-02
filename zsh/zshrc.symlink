@@ -37,3 +37,8 @@ do
 done
 
 unset config_files
+
+for file in $DOTFILES/**/*.bash
+do
+  source $file
+done

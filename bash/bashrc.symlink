@@ -13,26 +13,20 @@ fi
 export BASH=$HOME/.dotfiles
 
 # load the path files
-for file in $DOTFILES/**/path.zsh
+for file in $DOTFILES/**/path.bash
 do
   source $file
 done
 
 # load everything but the path and completion files
 shopt -s extglob
-for file in $DOTFILES/!(zsh)/!(completion|path).zsh
+for file in $DOTFILES/!(zsh)/!(completion|path).bash
 do
   source $file
 done
 
-for file in $DOTFILES/!(completion|path).zsh
+for file in $DOTFILES/!(completion|path).bash
 do
   source $file
 done
 shopt -u extglob
-
-# load every completion after autocomplete loads
-for file in $DOTFILES/**/completion.zsh
-do
-  source $file
-done
