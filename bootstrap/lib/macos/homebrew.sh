@@ -31,3 +31,9 @@ if ask "install fonts"; then
   brew tap Homebrew/bundle
   brew bundle --file $DOTFILES/macos/brew/fonts
 fi
+
+if ask "install util"; then
+  running "installing util"
+  brew tap Homebrew/bundle
+  brew bundle --file $DOTFILES/macos/brew/util
+fi
