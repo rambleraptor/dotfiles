@@ -36,6 +36,7 @@ Session.vim
 !/vim/vim.symlink/spell/.gitkeep
 !/vim/vim.symlink/swaps/.gitkeep
 !/vim/vim.symlink/undo/.gitkeep
+!/vim/**/.gitkeep
 
 # Local related things
 /local/*
