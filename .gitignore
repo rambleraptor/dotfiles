@@ -30,12 +30,12 @@ Session.vim
 
 # Vim related things
 /vim/vim.symlink/*
-!/vim/vim.symlink/backups/.gitkeep
-!/vim/vim.symlink/bundle/.gitkeep
-!/vim/vim.symlink/ftplugin/.gitkeep
-!/vim/vim.symlink/spell/.gitkeep
-!/vim/vim.symlink/swaps/.gitkeep
-!/vim/vim.symlink/undo/.gitkeep
+!vim/vim.symlink/backups/.gitkeep
+!vim/vim.symlink/bundle/.gitkeep
+!vim/vim.symlink/ftplugin/.gitkeep
+!vim/vim.symlink/spell/.gitkeep
+!vim/vim.symlink/swaps/.gitkeep
+!vim/vim.symlink/undo/.gitkeep
 
 # Local related things
 /local/*
