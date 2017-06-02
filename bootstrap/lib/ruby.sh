@@ -13,7 +13,7 @@ else
   git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-running "resourcing your shell to laod rbenv. may fail"
+running "resourcing your shell to load rbenv. may fail"
 if zsh; then
   source ~/.zshrc
 else

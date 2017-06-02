@@ -1,3 +1,4 @@
+*.swp
 vim/vim.symlink/bundle/
 vim/vim.symlink/ftplugin/*.vim
 *localrc*
@@ -33,3 +34,6 @@ Vundle.vim
 localrc.symlink
 
 vim/vim.symlink/spell
+vim/vim.symlink/backups
+vim/vim.symlink/swaps
+vim/vim.symlink/undo

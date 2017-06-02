@@ -46,7 +46,7 @@ popd > /dev/null 2>&1
 if mac; then
   log "You run a mac!"
   running "Setting up mac things"
-  $DOTFILES/bootstrap/lib/macos.sh
+  $DOTFILES/bootstrap/lib/macos/install.sh
 fi
 
 

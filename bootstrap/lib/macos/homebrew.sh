@@ -28,5 +28,6 @@ ok
 
 if ask "install fonts"; then
   running "installing fonts"
+  brew tap Homebrew/bundle
   brew bundle --file $DOTFILES/macos/brew/fonts
 fi
