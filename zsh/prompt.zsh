@@ -116,7 +116,7 @@ extra_spaces(){
 }
 
 # Actual prompt
-export PROMPT=$'\n$(server_name)$(directory_name)$(git_dirty)\n$(prompt_arrow)$(extra_spaces)'
+export PROMPT=$'\n$(server_name)$(directory_name)$(git_dirty) $(prompt_arrow) '
 set_prompt () {
   export RPROMPT="%{$fg[magenta]%}%{$reset_color%}"
 }
