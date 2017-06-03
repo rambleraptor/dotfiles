@@ -178,6 +178,10 @@ function mac(){
 }
 
 function ask(){
+  if [ ! -z "$FULL_RUN" ]; then
+    return 0
+  fi
+
   response=1
   action "Do you want to $1 (y/N)"
   read -n 1 answer
