@@ -13,12 +13,10 @@ else
   git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-running "resourcing your shell to load rbenv. may fail"
-if zsh; then
-  source ~/.zshrc
-else
-  source ~/.bashrc
-fi
+action "you may have to restart your shell"
 
-running "getting ruby 2.3.3. This is going to take forever"
-rbenv install 2.3.3
+log "Installing Ruby 2.3.3 takes absolutely forever"
+if ask "install ruby 2.3.3"; then
+  running "getting ruby 2.3.3. This is going to take forever"
+  rbenv install 2.3.3
+fi

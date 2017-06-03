@@ -10,45 +10,27 @@ if [[ ! -e ~/.dotfiles_backup ]]; then
     mkdir ~/.dotfiles_backup
 fi
 
-
 log "Hi. Time for magic!"
-
-# Deal with ZSH things
-echo $0 | grep zsh > /dev/null 2>&1 | true
-if [[ ${PIPESTATUS[0]} != 0 ]]; then
-  action "You should consider using zsh"
-  if ask "install zsh"; then
-    running "setting zsh to default shell"
-    chsh -s $(which zsh)
-  else
-    log "Run this command: chsh -s $(which zsh)"
-  fi
-else
-  log "looks like you're using zsh!"
-fi
 
 pushd ~ > /dev/null 2>&1
 
 running "creating symlinks for project dotfiles..."
 $DOTFILES/bootstrap/lib/symlink.sh
 
-running "setting up vim"
-$DOTFILES/bootstrap/lib/vim.sh
-
-# Ruby
-if ask "install ruby and rbenv"; then
-  running "installing ruby and rbenv"
-  $DOTFILES/bootstrap/lib/ruby.sh
-fi
-
-popd > /dev/null 2>&1
+for installer in $(find $DOTFILES -name "install.sh" -print | \
+grep -v "macos" | \
+grep -v "bootstrap"); do
+  program=$(dirname $installer | xargs basename)
+  if ask "setup $program"; then
+    sh -c ${installer}
+  fi
+done
 
 if mac; then
-  log "You run a mac!"
-  running "Setting up mac things"
-  $DOTFILES/bootstrap/lib/macos/install.sh
+  log "You're running on a mac!"
+  sh -c $DOTFILES/macos/install.sh
 fi
-
 
 log "Woot! All done."
 action "If this is default user, set DEFAULT_USER to whoami"
+action "You should use zsh. Run 'chsh -s $(which zsh)' to make that happen"
