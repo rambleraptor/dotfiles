@@ -12,21 +12,8 @@ fi
 
 export BASH=$HOME/.dotfiles
 
-# load the path files
-for file in $DOTFILES/**/path.bash
+# load all the things
+for file in $DOTFILES/**/*.bash
 do
   source $file
 done
-
-# load everything but the path and completion files
-shopt -s extglob
-for file in $DOTFILES/!(zsh)/!(completion|path).bash
-do
-  source $file
-done
-
-for file in $DOTFILES/!(completion|path).bash
-do
-  source $file
-done
-shopt -u extglob
