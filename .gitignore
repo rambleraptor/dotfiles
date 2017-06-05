@@ -61,7 +61,3 @@ vim/vim.symlink/undo/*
 local/bin/*
 !/local/bin/path.bash
 !/local/bin/.gitkeep
-
-!/local/install
-local/install/*
-!/local/install/.gitkeep
