@@ -21,7 +21,7 @@ git_dirty() {
   else
     if [[ $(git status --porcelain) == "" ]]
     then
-      echo "$green$(git_prompt_info)$col_reset$(need_push))"
+      echo "($green$(git_prompt_info)$col_reset$(need_push))"
     else
       echo "($red$(git_prompt_info)$col_reset$(need_push))"
     fi
