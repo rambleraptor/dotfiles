@@ -11,15 +11,15 @@ blue="\[\e[34m\]"
 col_reset="\[\e[0m\]"
 
 git_branch() {
-  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
 git_dirty() {
-  if $(! $git status -s &> /dev/null)
+  if $(! git status -s &> /dev/null)
   then
     echo ""
   else
-    if [[ $($git status --porcelain) == "" ]]
+    if [[ $(git status --porcelain) == "" ]]
     then
       echo "$green$(git_prompt_info)$col_reset$(need_push))"
     else
@@ -29,13 +29,13 @@ git_dirty() {
 }
 
 git_prompt_info () {
- ref=$($git symbolic-ref HEAD 2>/dev/null) || return
+ ref=$(git symbolic-ref HEAD 2>/dev/null) || return
 # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
  echo "${ref#refs/heads/}"
 }
 
 unpushed () {
-  $git cherry -v @{upstream} 2>/dev/null
+  git cherry -v @{upstream} 2>/dev/null
 }
 
 need_push () {
