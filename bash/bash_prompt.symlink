@@ -2,13 +2,21 @@
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 # colors
-cyan="\[\e[36m\]"
-green="\[\e[32m\]"
-red="\[\e[31m\]"
-yellow="\[\e[33m\]"
-magenta="\[\e[95m\]"
-blue="\[\e[34m\]"
-col_reset="\[\e[0m\]"
+#cyan="\[\e[36m\]"
+#green="\[\e[32m\]"
+#red="\[\e[31m\]"
+#yellow="\[\e[33m\]"
+#magenta="\[\e[95m\]"
+#blue="\[\e[34m\]"
+#col_reset="\[\e[0m\]"
+
+blue="\[$(tput setaf 4)\]"
+cyan="\[$(tput setaf 6)\]"
+green="\[$(tput setaf 2)\]"
+red="\[$(tput setaf 1)\]"
+yellow="\[$(tput setaf 3)\]"
+magenta="\[$(tput setaf 5)\]"
+col_reset="\[$(tput sgr0)\]"
 
 git_branch() {
   echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
