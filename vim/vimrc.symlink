@@ -5,15 +5,17 @@ filetype plugin off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'                                      " Plugin Manager
 Plugin 'tpope/vim-sensible'                                     " Sane defaults
 Plugin 'altercation/vim-colors-solarized'                       " Solarized color scheme
 Plugin 'kien/ctrlp.vim'                                         " Ctrl-p
 Plugin 'vim-syntastic/syntastic'                                " Syntastic syntax highlighting
-Plugin 'junegunn/goyo.vim'                                      " Writing mode for Markdown
 Plugin 'tpope/vim-markdown'                                     " Markdown syntax
+Plugin 'vim-airline/vim-airline'                                " Status bar
+Plugin 'vim-airline/vim-airline-themes'                         " Status bar themes
 
 call vundle#end()
+
 filetype plugin indent on
 
 " Colors
@@ -61,3 +63,6 @@ set directory=~/.vim/swaps
 if exists("&undodir")
   set undodir=~/.vim/undo
 endif
+
+" Bigger buffers
+set viminfo='20,<1000
