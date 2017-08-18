@@ -1,74 +1,91 @@
-# cheers, @ehrenmurdick
-# http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
+#!/bin/bash
+# vim: set filetype=sh :
 
-# colors
-#cyan="\[\e[36m\]"
-#green="\[\e[32m\]"
-#red="\[\e[31m\]"
-#yellow="\[\e[33m\]"
-#magenta="\[\e[95m\]"
-#blue="\[\e[34m\]"
-#col_reset="\[\e[0m\]"
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+  export TERM='gnome-256color';
+elif infocmp xterm-256color >/dev/null 2>&1; then
+  export TERM='xterm-256color';
+fi;
 
-blue="\[$(tput setaf 4)\]"
-cyan="\[$(tput setaf 6)\]"
-green="\[$(tput setaf 2)\]"
-red="\[$(tput setaf 1)\]"
-yellow="\[$(tput setaf 3)\]"
-magenta="\[$(tput setaf 5)\]"
-col_reset="\[$(tput sgr0)\]"
-
-git_branch() {
-  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+echo_reset() {
+  echo -e "\001${1}\002"
 }
 
-git_dirty() {
-  if $(! git status -s &> /dev/null)
-  then
-    echo ""
-  else
-    if [[ $(git status --porcelain) == "" ]]
-    then
-      echo "($green$(git_prompt_info)$col_reset$(need_push))"
+git_prompt() {
+  local branchName='';
+
+  # Check if the current directory is in a Git repository.
+  if [ "$(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}")" == '0' ]; then
+
+    # Get the short symbolic ref.
+    # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+    # Otherwise, just give up.
+    branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+      git rev-parse --short HEAD 2> /dev/null || \
+      echo '(unknown)')";
+
+    if [[ $(git status --porcelain) == "" ]]; then
+      branchColor="$(echo_reset $bold)$(echo_reset $green)"
     else
-      echo "($red$(git_prompt_info)$col_reset$(need_push))"
+      branchColor="$(echo_reset $bold)$(echo_reset $red)"
     fi
-  fi
-}
 
-git_prompt_info () {
- ref=$(git symbolic-ref HEAD 2>/dev/null) || return
-# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
- echo "${ref#refs/heads/}"
-}
+    echo -e "$(echo_reset $reset)(${branchColor}${branchName}$(echo_reset $reset))"
 
-unpushed () {
-  git cherry -v @{upstream} 2>/dev/null
-}
-
-need_push () {
-  if [[ $(unpushed) == "" ]]
-  then
-    echo ""
   else
-    echo "|$red unpushed$col_reset"
+    return;
+  fi;
+}
+
+cloud=""
+if grep -q "^flags.* hypervisor" /proc/cpuinfo ; then
+  cloud="☁️  "
+fi
+
+if tput setaf 1 &> /dev/null; then
+  tput sgr0; # reset colors
+  bold=$(tput bold);
+  reset=$(tput sgr0);
+  # Solarized colors, taken from http://git.io/solarized-colors.
+  black=$(tput setaf 0);
+  blue=$(tput setaf 33);
+  cyan=$(tput setaf 37);
+  green=$(tput setaf 64);
+  orange=$(tput setaf 166);
+  purple=$(tput setaf 125);
+  red=$(tput setaf 124);
+  violet=$(tput setaf 61);
+  white=$(tput setaf 15);
+  yellow=$(tput setaf 136);
+else
+  bold='';
+  reset="\e[0m";
+  # shellcheck disable=SC2034
+  black="\e[1;30m";
+  blue="\e[1;34m";
+  cyan="\e[1;36m";
+  green="\e[1;32m";
+  # shellcheck disable=SC2034
+  orange="\e[1;33m";
+  # shellcheck disable=SC2034
+  purple="\e[1;35m";
+  red="\e[1;31m";
+  violet="\e[1;35m";
+  white="\e[1;37m";
+  yellow="\e[1;33m";
+fi;
+
+server_name(){
+  if [[ -n $DEFAULT_USER ]]; then
+    echo "🚀  "
+  else
+    echo "${cloud}[\u@\H]"
   fi
 }
 
-# Current Directory
-directory_name() {
-  echo "$cyan\w$col_reset"
-}
-
-# Current Username
-server_name(){
-  echo "$blue[\u@\H]$col_reset "
-}
-
-prompt_arrow(){
-  echo "$magenta>$col_reset"
-}
-
-# Actual prompt
-export PS1="$(server_name)$(directory_name)$(git_dirty) $(prompt_arrow) "
-export PS2=""
+PS1="\n"; # newline
+PS1+="\[${blue}\]$(server_name)\[${reset}\]"; # username
+PS1+="\[${bold}\]\[${cyan}\] \w\[${reset}\]"; # working directory
+PS1+="\$(git_prompt)"
+PS1+="\[${violet}\] › \[${reset}\]"; # working directory
+export PS1;
