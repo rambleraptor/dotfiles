@@ -43,7 +43,7 @@ server_name(){
   if [[ -n $DEFAULT_USER ]]; then
     echo "🚀  "
   else
-    echo "$(cloud)[\u@\H]"
+    echo "$(cloud)%F{blue}[$USER@%m]%f "
   fi
 }
 
