@@ -1,3 +1,3 @@
-[submodule "/Users/alexstephen/.dotfiles/tmux/tmux.symlink/plugins/tpm"]
-	path = /Users/alexstephen/.dotfiles/tmux/tmux.symlink/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+[submodule "tmux/tmux.symlink/plugins/tpm"]
+	path = tmux/tmux.symlink/plugins/tpm
+	url = https://www.github.com/tmux-plugins/tpm
