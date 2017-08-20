@@ -1,7 +1,7 @@
-# Vim magicks
-set -g default-shell $SHELL 
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"
-set-option -s set-clipboard on
+# Plugins
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Vim keybinds for pane switching
 unbind-key j
@@ -21,9 +21,6 @@ set -g history-limit 30000
 # Colors right
 set -g default-terminal "xterm-256color"
 
-# Reloading tmux file
-bind r source-file ~/.tmux.conf
-
 # Mouse (if I want it)
 set -g mouse on
 
@@ -40,3 +37,6 @@ set -g status-right-length 60
 set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue]#(hostname -s)#[fg=white]::#[fg=yellow]#(ipconfig getifaddr en1)"
 set -g status-justify left
 set -g status-right '#[fg=Cyan]#S #[fg=white]%a %d %b %R'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

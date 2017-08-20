@@ -11,6 +11,10 @@ if [[ ! -e ~/.dotfiles_backup ]]; then
 fi
 
 log "Hi. Time for magic!"
+log "Updating your submodules"
+
+git submodule init
+git submodule update --force
 
 pushd ~ > /dev/null 2>&1
 

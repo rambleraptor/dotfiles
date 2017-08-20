@@ -32,10 +32,10 @@ nnoremap <Space> @q 						                                " custom macro binding
 
 " Spaces and tabs
 set expandtab                                                   " tabs are spaces
-set ts=2                                                                         
-set sw=2 
+set ts=2
+set sw=2
 
-" UI 
+" UI
 set number                                                      " set number
 set showcmd                                                     " show command in bottom bar
 filetype indent on                                              " load indent files for specific filetypes
@@ -65,3 +65,11 @@ endif
 
 " Bigger buffers
 set viminfo='20,<1000
+
+" Tmux Clipboard
+" Use system clipboard if inside tmux
+" If not, just use regular buffers because
+" they work just fine.
+if exists('$TMUX')
+  set clipboard=unnamed
+endif
