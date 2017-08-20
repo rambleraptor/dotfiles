@@ -4,7 +4,6 @@ filetype plugin off
 
 call plug#begin()
 
-Plug 'gmarik/Vundle.vim'                                      " Plugin Manager
 Plug 'tpope/vim-sensible'                                     " Sane defaults
 Plug 'altercation/vim-colors-solarized'                       " Solarized color scheme
 Plug 'kien/ctrlp.vim'                                         " Ctrl-p
