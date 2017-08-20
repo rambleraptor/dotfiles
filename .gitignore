@@ -28,31 +28,8 @@ Session.vim
 .rainbow_oauth
 .nginx/conf.d/*
 
-# Vim related things
-/vim/vim.symlink/*
-
-!/vim/vim.symlink/backups/
-vim/vim.symlink/backups/*
-
-!/vim/vim.symlink/bundle/
-vim/vim.symlink/bundle/*
-
-!/vim/vim.symlink/ftplugin/
-vim/vim.symlink/ftplugin/*
-
-!/vim/vim.symlink/spell/
-vim/vim.symlink/spell/*
-
-!/vim/vim.symlink/swaps/
-vim/vim.symlink/swaps/*
-
-!/vim/vim.symlink/swaps/
-vim/vim.symlink/swaps/*
-
-!/vim/vim.symlink/undo/
-vim/vim.symlink/undo/*
-
-!vim/vim.symlink/**/.gitkeep
+# Vim things
+/vim/vim.symlink/plugged
 
 # Local related things
 /local/*
