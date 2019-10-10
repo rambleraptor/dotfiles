@@ -11,13 +11,6 @@ alias master="checkout master"
 alias gaa="git add --all"
 alias gca="git commit --amend"
 
-
-# copy file interactive
-alias cp='cp -i'
-
-# move file interactive
-alias mv='mv -i'
-
 # untar
 alias untar='tar xvf'
 
