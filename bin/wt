@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pushd ~/magic-modules
+git worktree add ~/mm-trees/$1 -b $1
+popd
+
+pushd ~/mm-trees/$1
+git pull upstream master --rebase
+git submodule update --force
+popd
