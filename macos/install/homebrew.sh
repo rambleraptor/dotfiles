@@ -18,12 +18,8 @@ if [[ $? != 0 ]]; then
 fi
 ok
 
-running "checking brew-cask install"
-output=$(brew tap | grep cask)
-if [[ $? != 0 ]]; then
-    running "installing brew-cask"
-    require_brew caskroom/cask/brew-cask
-fi
+running "installing brew-cask"
+output=$(brew cask | grep cask)
 ok
 
 for file in $DOTFILES/macos/brew/*
