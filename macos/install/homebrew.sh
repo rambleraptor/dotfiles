@@ -21,13 +21,3 @@ ok
 running "installing brew-cask"
 output=$(brew cask | grep cask)
 ok
-
-for file in $DOTFILES/macos/brew/*
-do
-  filename=$(basename "$file")
-  filename="${filename%.*}"
-  if ask "install $filename"; then
-    brew tap Homebrew/bundle
-    brew bundle --file=$file
-  fi
-done
