@@ -43,3 +43,7 @@ for file in $DOTFILES/**/*.bash
 do
   source $file
 done
+
+# Enable reverse search in ZSH
+bindkey -v
+bindkey '^R' history-incremental-search-backward
