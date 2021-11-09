@@ -39,6 +39,7 @@ done
 
 unset config_files
 
+# load all of the bash files
 for file in $DOTFILES/**/*.bash
 do
   source $file
