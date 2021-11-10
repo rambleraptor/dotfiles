@@ -1,0 +1,6 @@
+# shortcut to this dotfiles path is $ZSH
+export DOTFILES=$HOME/.dotfiles
+export EDITOR=/usr/bin/vim
+
+# DEFAULT_USER should be set in a local file if you are the default user.
+source $DOTFILES/zsh/shellconfig
