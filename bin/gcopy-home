@@ -1,9 +1,0 @@
-#!/bin/bash
-# gcopy-home
-# copy to the home directory of a gcloud machine
-
-if [ "$#" -ne 2 ]; then
-  echo "gcopy-home <file name> <machine_name>"
-  exit 1
-fi
-gcloud compute copy-files $1 $2:~
