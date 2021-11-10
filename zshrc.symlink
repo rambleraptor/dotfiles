@@ -3,4 +3,5 @@ export DOTFILES=$HOME/.dotfiles
 export EDITOR=/usr/bin/vim
 
 # DEFAULT_USER should be set in a local file if you are the default user.
+# export DEFAULT_USER=1
 source $DOTFILES/zsh/shellconfig
