@@ -28,3 +28,12 @@ if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
     vim +'PlugInstall --sync' +qa
   fi
 fi
+
+# Install tpm for tmux
+if type tmux >/dev/null 2>/dev/null; then
+  if [[ ! -e "$HOME/.tmux/plugins/tpm" ]]; then
+    if ask "Install tpm (tmux package manager)?"; then
+      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+  fi
+fi
