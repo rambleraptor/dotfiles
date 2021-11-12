@@ -4,6 +4,12 @@ if [ -d "$HOME/.rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
+# Adding Go to PATH
+if [ -d "$HOME/go" ]; then
+  export GOPATH="$HOME/go"
+  export PATH="$PATH:$HOME/go/bin"
+fi
+
 # Binary folders
 export PATH=$PATH:$DOTFILES/bin
 
