@@ -19,7 +19,7 @@ running "installing dotfiles"
   backup_all=false
   skip_all=false
 
-  for source in `find $DOTFILES_ROOT -maxdepth 4 -name \*.symlink`
+  for source in `find $DOTFILES_ROOT -maxdepth 4 -name \*.symlink -not -path "*.git*"`
   do
     dest="$HOME/.`basename \"${source%.*}\"`"
 

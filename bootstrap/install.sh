@@ -11,30 +11,29 @@ if [[ ! -e ~/.dotfiles_backup ]]; then
 fi
 
 log "Hi. Time for magic!"
-log "Updating your submodules"
-
-git submodule init
-git submodule update --force
-
 pushd ~ > /dev/null 2>&1
 
+# Symlink all proper files.
 running "creating symlinks for project dotfiles..."
 $DOTFILES/bootstrap/lib/symlink.sh
 
-for installer in $(find $DOTFILES -name "install.sh" -print | \
-grep -v "macos" | \
-grep -v "bootstrap"); do
-  program=$(dirname $installer | xargs basename)
-  if ask "setup $program"; then
-    sh -c ${installer}
-  fi
-done
+# Install vim-plug if not found already.
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
+  if ask "Install vim-plug?"; then
+    mkdir -p $HOME/.vim/autoload
 
-if mac; then
-  log "You're running on a mac!"
-  sh -c $DOTFILES/macos/install.sh
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    vim +'PlugInstall --sync' +qa
+  fi
 fi
 
-log "Woot! All done."
-action "If this is default user, set DEFAULT_USER to whoami"
-action "You should use zsh. Run 'chsh -s $(which zsh)' to make that happen"
+# Install tpm for tmux
+if type tmux >/dev/null 2>/dev/null; then
+  if [[ ! -e "$HOME/.tmux/plugins/tpm" ]]; then
+    if ask "Install tpm (tmux package manager)?"; then
+      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+  fi
+fi
