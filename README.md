@@ -4,12 +4,16 @@ Dotfiles - Now with Emoji!
 
 These are the dotfiles that I use on my personal machine. The goal of this repo is to create a completely automated process to setup a new machine with my settings and applications.
 
-Special Features
-================
-* Sort Vim and ZSH things by topics
-* Fancy separated install scripts!
-* Bash + ZSH prompts
+## How To Run
 
-How To Run
-==========
 Simply run bootstrap/install.sh and follow the instructions! Or go into bootstrap/lib and run parts individually
+
+## Local Files
+
+The following local files can exist in $DOTFILES/local. They will not be committed to git.
+
+* path.bash: all path alterations
+* .localrc - any zshrc customizations for this machine only.
+* bin/ - any binaries for just this machine
+
+
