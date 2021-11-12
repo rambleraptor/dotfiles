@@ -10,6 +10,10 @@ if [ -d "$HOME/go" ]; then
   export PATH="$PATH:$HOME/go/bin"
 fi
 
+if [ -f "$DOTFILES/local/path.bash" ]; then
+  source $DOTFILES/local/path.bash
+fi
+
 # Binary folders
 export PATH=$PATH:$DOTFILES/bin
 
