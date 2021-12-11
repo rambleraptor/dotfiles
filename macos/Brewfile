@@ -1,0 +1,11 @@
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+
+brew "neovim"
+brew "tmux"
+
+cask "google-chrome"
+cask "raycast"
+cask "rectangle"
+cask "spotify"
+cask "visual-studio-code"
