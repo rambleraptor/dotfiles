@@ -8,3 +8,6 @@ source $DOTFILES/zsh/shellconfig
 
 # Tmux: Get colors working
 export TERM=xterm-256color
+
+# Go Path
+export GOPATH=$HOME/go
