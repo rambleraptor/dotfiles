@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/.dotfiles/bootstrap/lib/helpers.sh
+source $HOME/.dotfiles/script/lib/helpers.sh
 # OSX Defaults
 # Mostly stolen from https://mths.be/osx
 
