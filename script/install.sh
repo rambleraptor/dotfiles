@@ -3,7 +3,7 @@
 export DOTFILES=$HOME/.dotfiles
 
 # include my library helpers for colorized echo and require_brew, etc
-source $DOTFILES/bootstrap/lib/helpers.sh
+source $DOTFILES/script/lib/helpers.sh
 
 # make a backup directory for overwritten dotfiles
 if [[ ! -e ~/.dotfiles_backup ]]; then
@@ -15,7 +15,7 @@ pushd ~ > /dev/null 2>&1
 
 # Symlink all proper files.
 running "creating symlinks for project dotfiles..."
-$DOTFILES/bootstrap/lib/symlink.sh
+$DOTFILES/script/symlink.sh
 
 # Install vim-plug if not found already.
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then

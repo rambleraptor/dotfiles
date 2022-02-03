@@ -4,7 +4,7 @@
 # Mostly stolen from @holman
 
 DOTFILES_ROOT="$HOME/.dotfiles"
-source $HOME/.dotfiles/bootstrap/lib/helpers.sh
+source $HOME/.dotfiles/script/lib/helpers.sh
 
 set -e
 

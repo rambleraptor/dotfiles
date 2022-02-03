@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 brew "neovim"
 brew "tmux"
 
+cask "iterm2"
 cask "google-chrome"
 cask "raycast"
 cask "rectangle"
