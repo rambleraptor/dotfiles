@@ -2,3 +2,6 @@
 
 # DEFAULT_USER should be set if this machine is your main machine.
 export DEFAULT_USER=1
+
+# USE_STARSHIP should be set if you want to use the starship (starship.rs) prompt
+export USE_STARSHIP=1

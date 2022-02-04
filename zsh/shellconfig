@@ -46,5 +46,7 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # Load starship
-export STARSHIP_CONFIG=$HOME/.starship/config.toml
-eval "$(starship init zsh)"
+if [[ -n $USE_STARSHIP ]]; then
+  export STARSHIP_CONFIG=$HOME/.starship/config.toml
+  eval "$(starship init zsh)"
+fi
