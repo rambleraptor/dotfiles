@@ -44,3 +44,9 @@ done
 # Enable reverse search in ZSH
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+# Load starship
+if [[ -n $USE_STARSHIP ]]; then
+  export STARSHIP_CONFIG=$HOME/.starship/config.toml
+  eval "$(starship init zsh)"
+fi
