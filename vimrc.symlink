@@ -5,7 +5,7 @@ filetype plugin off
 call plug#begin()
 
 Plug 'tpope/vim-sensible'                                     " Sane defaults
-Plug 'dracula/vim', {'as': 'dracula'}                         " Dracula color scheme
+Plug 'altercation/vim-colors-solarized'                       " Solarized color scheme
 Plug 'kien/ctrlp.vim'                                         " Ctrl-p
 Plug 'vim-syntastic/syntastic'                                " Syntastic syntax highlighting
 Plug 'tpope/vim-markdown'                                     " Markdown syntax
@@ -17,8 +17,12 @@ call plug#end()
 filetype plugin indent on
 
 " Colors
+let g:solarized_termcolors = 16
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+colorscheme solarized
+set background=dark
 syntax enable
-colorscheme dracula
 
 " Misc
 set ttyfast                                                     " faster redraw
