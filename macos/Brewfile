@@ -3,6 +3,7 @@ tap "homebrew/cask-fonts"
 
 brew "neovim"
 brew "tmux"
+brew "font-sauce-code-pro-nerd-font"
 
 cask "iterm2"
 cask "google-chrome"
