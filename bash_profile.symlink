@@ -1,7 +1,0 @@
-#!/bin/bash
-# ZSH please
-# But only if you have zsh, or else bad things happen.
-if which zsh > /dev/null 2>&1; then
-  export SHELL=/bin/zsh
-  exec /bin/zsh -l
-fi
