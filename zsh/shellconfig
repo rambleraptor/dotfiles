@@ -1,11 +1,6 @@
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
-if [[ -a "$DOTFILES/local/.localrc" ]]
-then
-  source $DOTFILES/local/.localrc
-fi
-
 # all of our zsh files
 export ZSH=$HOME/.dotfiles
 typeset -U config_files
@@ -45,8 +40,7 @@ done
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-# Load starship
-if [[ -n $USE_STARSHIP ]]; then
-  export STARSHIP_CONFIG=$HOME/.starship/config.toml
-  eval "$(starship init zsh)"
-fi
+# nvm config
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

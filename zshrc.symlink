@@ -11,3 +11,14 @@ export TERM=xterm-256color
 
 # Go Path
 export GOPATH=$HOME/go
+
+if [[ -a "$DOTFILES/local/.localrc" ]]
+then
+  source $DOTFILES/local/.localrc
+fi
+
+# Load starship
+if [[ -n $USE_STARSHIP ]]; then
+  export STARSHIP_CONFIG=$HOME/.starship/config.toml
+  eval "$(starship init zsh)"
+fi
