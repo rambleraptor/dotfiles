@@ -4,6 +4,7 @@ version: '3'
 
 includes:
   mac: ./tasks/mac-defaults.yml
+  symlink: ./tasks/symlink.yml
 
 vars:
   GREETING: Hello, World!
