@@ -47,7 +47,7 @@ tasks:
 
     vars:
       DOTFILES:
-        - "tmux.conf.symlink|$HOME/.tmux.conf"
+        - "packages/tmux/tmux.conf.symlink|$HOME/.tmux.conf"
         - "packages/zsh/zshrc|$HOME/.zshrc"
         - "packages/vim/vimrc|$HOME/.vimrc"
         - "packages/starship/config.toml|$HOME/.starship/config.toml"
