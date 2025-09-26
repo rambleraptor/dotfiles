@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: '3'
+
+includes:
+  mac: ./tasks/mac-defaults.yml
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
