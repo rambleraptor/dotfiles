@@ -51,6 +51,7 @@ tasks:
         - "packages/zsh/zshrc|$HOME/.zshrc"
         - "packages/vim/vimrc|$HOME/.vimrc"
         - "packages/starship/config.toml|$HOME/.starship/config.toml"
+        - "packages/mise/config.toml|$HOME/.config/mise.toml"
 
     cmds:
       - for:

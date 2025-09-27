@@ -1,0 +1,18 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[tools]
+# core tools
+go = "latest"
+node = "latest"
+python = "latest"
+rust = "latest"
+java = "openjdk-21"
+
+
+[settings]
+experimental = true
+# disabled until https://github.com/jdx/mise/issues/4600 is resolved
+#python.uv_venv_auto = true
+pipx.uvx = true
+# sqelches a warning RE: changing default behavior in mise 2025.10.0
+idiomatic_version_file_enable_tools = []
