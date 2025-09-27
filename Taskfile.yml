@@ -5,12 +5,9 @@ version: '3'
 includes:
   mac: ./tasks/mac-defaults.yml
   symlink: ./tasks/symlink.yml
-
-vars:
-  GREETING: Hello, World!
+  brew: ./tasks/brew.yml
 
 tasks:
   default:
-    cmds:
-      - echo "{{.GREETING}}"
+    cmd: task -l
     silent: true
