@@ -1,0 +1,216 @@
+{
+  "defaults" : {
+    "almostMaximizeWidth" : {
+      "float" : 0
+    },
+    "SUEnableAutomaticChecks" : {
+      "bool" : false
+    },
+    "resizeOnDirectionalMove" : {
+      "bool" : false
+    },
+    "windowSnapping" : {
+      "int" : 0
+    },
+    "almostMaximizeHeight" : {
+      "float" : 0
+    },
+    "footprintAlpha" : {
+      "float" : 0.3
+    },
+    "snapEdgeMarginRight" : {
+      "float" : 5
+    },
+    "screenEdgeGapRight" : {
+      "float" : 0
+    },
+    "centeredDirectionalMove" : {
+      "int" : 0
+    },
+    "relaunchOpensMenu" : {
+      "bool" : false
+    },
+    "attemptMatchOnNextPrevDisplay" : {
+      "int" : 0
+    },
+    "snapEdgeMarginLeft" : {
+      "float" : 5
+    },
+    "altThirdCycle" : {
+      "int" : 0
+    },
+    "obtainWindowOnClick" : {
+      "int" : 0
+    },
+    "minimumWindowHeight" : {
+      "float" : 0
+    },
+    "fullIgnoreBundleIds" : {
+
+    },
+    "footprintFade" : {
+      "int" : 0
+    },
+    "unsnapRestore" : {
+      "int" : 0
+    },
+    "screenEdgeGapBottom" : {
+      "float" : 0
+    },
+    "alternateDefaultShortcuts" : {
+      "bool" : false
+    },
+    "specifiedHeight" : {
+      "float" : 1050
+    },
+    "notifiedOfProblemApps" : {
+      "bool" : false
+    },
+    "ignoredSnapAreas" : {
+      "int" : 0
+    },
+    "todoMode" : {
+      "bool" : true
+    },
+    "snapEdgeMarginBottom" : {
+      "float" : 5
+    },
+    "disabledApps" : {
+
+    },
+    "footprintColor" : {
+
+    },
+    "subsequentExecutionMode" : {
+      "int" : 1
+    },
+    "snapEdgeMarginTop" : {
+      "float" : 5
+    },
+    "curtainChangeSize" : {
+      "int" : 0
+    },
+    "hideMenubarIcon" : {
+      "bool" : false
+    },
+    "todo" : {
+      "int" : 0
+    },
+    "showAllActionsInMenu" : {
+      "int" : 0
+    },
+    "allowAnyShortcut" : {
+      "bool" : false
+    },
+    "moveCursorAcrossDisplays" : {
+      "int" : 0
+    },
+    "specifiedWidth" : {
+      "float" : 1680
+    },
+    "todoApplication" : {
+
+    },
+    "gapSize" : {
+      "float" : 0
+    },
+    "snapModifiers" : {
+      "int" : 0
+    },
+    "centerHalfCycles" : {
+      "int" : 0
+    },
+    "screenEdgeGapTop" : {
+      "float" : 0
+    },
+    "footprintBorderWidth" : {
+      "float" : 2
+    },
+    "todoSidebarWidth" : {
+      "float" : 400
+    },
+    "minimumWindowWidth" : {
+      "float" : 0
+    },
+    "launchOnLogin" : {
+      "bool" : true
+    },
+    "sizeOffset" : {
+      "float" : 0
+    },
+    "screenEdgeGapLeft" : {
+      "float" : 0
+    },
+    "traverseSingleScreen" : {
+      "int" : 0
+    }
+  },
+  "version" : "54",
+  "bundleId" : "com.knollsoft.Rectangle",
+  "shortcuts" : {
+    "rightHalf" : {
+      "modifierFlags" : 1572864,
+      "keyCode" : 124
+    },
+    "nextDisplay" : {
+      "keyCode" : 124,
+      "modifierFlags" : 1835008
+    },
+    "leftHalf" : {
+      "modifierFlags" : 1572864,
+      "keyCode" : 123
+    },
+    "smaller" : {
+      "modifierFlags" : 917504,
+      "keyCode" : 123
+    },
+    "maximizeHeight" : {
+      "modifierFlags" : 917504,
+      "keyCode" : 126
+    },
+    "bottomRight" : {
+      "modifierFlags" : 1441792,
+      "keyCode" : 124
+    },
+    "previousDisplay" : {
+      "modifierFlags" : 1835008,
+      "keyCode" : 123
+    },
+    "larger" : {
+      "modifierFlags" : 917504,
+      "keyCode" : 124
+    },
+    "bottomLeft" : {
+      "modifierFlags" : 1441792,
+      "keyCode" : 123
+    },
+    "center" : {
+      "keyCode" : 8,
+      "modifierFlags" : 1572864
+    },
+    "topHalf" : {
+      "modifierFlags" : 1572864,
+      "keyCode" : 126
+    },
+    "restore" : {
+      "keyCode" : 51,
+      "modifierFlags" : 786432
+    },
+    "bottomHalf" : {
+      "modifierFlags" : 1572864,
+      "keyCode" : 125
+    },
+    "maximize" : {
+      "modifierFlags" : 1572864,
+      "keyCode" : 3
+    },
+    "topLeft" : {
+      "modifierFlags" : 1310720,
+      "keyCode" : 123
+    },
+    "topRight" : {
+      "modifierFlags" : 1310720,
+      "keyCode" : 124
+    }
+  }
+}
