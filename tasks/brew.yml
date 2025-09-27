@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  DOTFILES: "{{.ROOT_DIR}}"
+
+tasks:
+  install:
+    platforms: [darwin]
+    desc: Install Homebrew and tools defined in Brewfile
+    cmds:
+      - task: install:homebrew
+      - task: install:tools
+
+  install:homebrew:
+    internal: true
+    platforms: [darwin]
+    status:
+      - which brew
+    cmds:
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  install:tools:
+    internal: true
+    platforms: [darwin]
+    # NOTE: the leading slash here is a bit annoying, but required due to a bug
+    # in go-task see https://github.com/go-task/task/issues/828
+    dir: "/{{.DOTFILES}}"
+    deps:
+      - install:homebrew
+    cmds:
+      - brew bundle
