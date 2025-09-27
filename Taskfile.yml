@@ -6,6 +6,7 @@ includes:
   mac: ./tasks/mac-defaults.yml
   symlink: ./tasks/symlink.yml
   brew: ./tasks/brew.yml
+  mise: ./tasks/mise.yml
 
 tasks:
   default:
