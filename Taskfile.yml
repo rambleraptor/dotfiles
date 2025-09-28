@@ -12,3 +12,13 @@ tasks:
   default:
     cmd: task -l
     silent: true
+
+  install:
+    desc: Complete system setup - installs dependencies
+    summary: |
+      Performs a full system setup by
+    cmds:
+      - task: brew:install
+      - task: mac:mac-defaults
+      - task: symlink:install
+      - task: mise:install

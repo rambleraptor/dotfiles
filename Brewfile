@@ -1,5 +1,7 @@
+brew "go-task"
 brew "mise"
 brew "neovim"
+brew "starship"
 brew "tmux"
 
 cask "font-sauce-code-pro-nerd-font"
