@@ -4,6 +4,7 @@ brew "neovim"
 brew "starship"
 brew "tmux"
 
+cask "1password"
 cask "font-sauce-code-pro-nerd-font"
 cask "ghostty"
 cask "google-chrome"
