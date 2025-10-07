@@ -1,3 +1,4 @@
+brew "gh"
 brew "go-task"
 brew "mise"
 brew "neovim"
