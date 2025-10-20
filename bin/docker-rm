@@ -1,0 +1,3 @@
+#!/bin/bash
+# removes all running docker containers
+docker stop $(docker ps -aq)
