@@ -6,6 +6,7 @@ brew "starship"
 brew "tmux"
 
 cask "1password"
+cask "flux-app"
 cask "font-sauce-code-pro-nerd-font"
 cask "ghostty"
 cask "google-chrome"
