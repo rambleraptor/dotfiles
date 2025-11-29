@@ -1,9 +1,11 @@
 brew "gh"
 brew "go-task"
+brew "jq"
 brew "mise"
 brew "neovim"
 brew "starship"
 brew "tmux"
+brew "yq"
 
 cask "1password"
 cask "flux-app"
