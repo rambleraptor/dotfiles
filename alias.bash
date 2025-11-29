@@ -14,7 +14,4 @@ alias gca="git commit --amend"
 # untar
 alias untar='tar xvf'
 
-# homebrew
-alias cask='brew cask'
-
 alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
