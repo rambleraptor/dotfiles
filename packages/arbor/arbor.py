@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import List, Optional
 
@@ -40,7 +41,41 @@ def get_arbor_dir(worktrees_dir: Path) -> Path:
     return arbor_dir
 
 def get_worktree_file(worktrees_dir: Path, name: str) -> Path:
-    return get_arbor_dir(worktrees_dir) / f"{name}.json"
+    file_path = get_arbor_dir(worktrees_dir) / f"{name}.json"
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+    return file_path
+
+def find_project_by_path(config: Config, path: Path) -> Optional[str]:
+    target = path.resolve()
+    for name, p in config.projects.items():
+        if p.resolve() == target:
+            return name
+    return None
+
+def get_git_info(path: Path):
+    try:
+        # Get absolute path to the git common directory (main repo .git)
+        res = subprocess.run(
+            ["git", "-C", str(path), "rev-parse", "--git-common-dir"],
+            capture_output=True, text=True, check=True
+        )
+        common_dir_str = res.stdout.strip()
+        common_dir = Path(common_dir_str)
+        if not common_dir.is_absolute():
+            common_dir = (path / common_dir).resolve()
+        else:
+            common_dir = common_dir.resolve()
+        
+        # Get absolute path to the current worktree's top level
+        res = subprocess.run(
+            ["git", "-C", str(path), "rev-parse", "--show-toplevel"],
+            capture_output=True, text=True, check=True
+        )
+        toplevel = Path(res.stdout.strip()).resolve()
+        
+        return common_dir, toplevel
+    except subprocess.CalledProcessError:
+        return None, None
 
 @app.command()
 def init(worktrees_dir: str):
@@ -54,22 +89,60 @@ def init(worktrees_dir: str):
     console.print(f"Worktrees: {config.worktrees_dir}")
 
 @app.command("import")
-def import_project(path: str, name: Optional[str] = None):
-    """Import a git repository into arbor."""
+def import_command(
+    path: Optional[str] = typer.Argument(None, help="Path to the repository or worktree"),
+    name: Optional[str] = typer.Option(None, "--name", "-n", help="Name for the project (if importing a repository)")
+):
+    """Import a git repository or worktree into arbor."""
     config = get_config()
     if not config:
         console.print("[red]Arbor not initialized. Run 'arbor init' first.[/red]")
         raise typer.Exit(1)
 
-    repo_path = Path(path).expanduser().resolve()
-    if not (repo_path / ".git").exists():
-        console.print(f"[red]Path {repo_path} does not appear to be a git repository.[/red]")
+    target_path = Path(path or ".").expanduser().resolve()
+    common_dir, toplevel = get_git_info(target_path)
+    
+    if not common_dir:
+        console.print(f"[red]Path {target_path} does not appear to be a git repository.[/red]")
         raise typer.Exit(1)
 
-    repo_name = name or repo_path.name
-    config.projects[repo_name] = repo_path
-    save_config(config)
-    console.print(f"[green]Imported {repo_name} from {repo_path}[/green]")
+    # The main repo is the parent of the common .git directory
+    main_repo_path = common_dir.parent
+    
+    if main_repo_path == toplevel:
+        # It's a main repository, import as project
+        repo_name = name or toplevel.name
+        config.projects[repo_name] = toplevel
+        save_config(config)
+        console.print(f"[green]Imported project [bold]{repo_name}[/bold] from {toplevel}[/green]")
+    else:
+        # It's a worktree
+        # Verify it's inside the worktrees_dir
+        try:
+            toplevel.relative_to(config.worktrees_dir)
+        except ValueError:
+            console.print(f"[red]Worktree {toplevel} must be located inside the configured worktrees directory: {config.worktrees_dir}[/red]")
+            raise typer.Exit(1)
+            
+        repo_name = find_project_by_path(config, main_repo_path)
+        if not repo_name:
+            console.print(f"[red]Main repository {main_repo_path} is not imported into Arbor.[/red]")
+            console.print(f"Please run 'arbor import {main_repo_path}' first to register the project.")
+            raise typer.Exit(1)
+            
+        # Get branch name
+        branch = subprocess.run(
+            ["git", "-C", str(toplevel), "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True, text=True, check=True
+        ).stdout.strip()
+        
+        # We use the relative path from worktrees_dir as the worktree name
+        worktree_name = str(toplevel.relative_to(config.worktrees_dir))
+        info = WorktreeInfo(name=worktree_name, repo_name=repo_name, branch=branch)
+        get_worktree_file(config.worktrees_dir, worktree_name).write_text(info.model_dump_json(indent=2))
+        
+        console.print(f"[green]Imported worktree [bold]{worktree_name}[/bold] for project [bold]{repo_name}[/bold][/green]")
+        console.print(f"Branch: [yellow]{branch}[/yellow]")
 
 @app.command()
 def create(repo_name: str, branch: str):
@@ -143,6 +216,48 @@ def get_gh_pr_status(repo_path: Path, branch: str) -> tuple[Optional[int], Optio
         pass
     return None, None
 
+@app.command("cd")
+@app.command("c", hidden=True)
+def cd_command(name: str):
+    """Print the path to a worktree for shell integration."""
+    config = get_config()
+    if not config:
+        print("Arbor not initialized. Run 'arbor init' first.", file=sys.stderr)
+        raise typer.Exit(1)
+
+    # Try direct path first
+    worktree_path = config.worktrees_dir / name
+    if worktree_path.exists() and (worktree_path / ".git").exists():
+        print(worktree_path)
+        return
+
+    # Try searching metadata
+    arbor_dir = get_arbor_dir(config.worktrees_dir)
+    # Check if a direct json file exists
+    meta_file = arbor_dir / f"{name}.json"
+    if meta_file.exists():
+        info = WorktreeInfo.model_validate_json(meta_file.read_text())
+        print(config.worktrees_dir / info.name)
+        return
+
+    # Recursive search
+    json_files = list(arbor_dir.glob("**/*.json"))
+    for f in json_files:
+        # Check if the name matches the stem (e.g. "feature-branch") 
+        # or the full relative path name in metadata
+        if f.stem == name:
+            info = WorktreeInfo.model_validate_json(f.read_text())
+            print(config.worktrees_dir / info.name)
+            return
+        
+        info = WorktreeInfo.model_validate_json(f.read_text())
+        if info.name == name:
+            print(config.worktrees_dir / info.name)
+            return
+
+    print(f"Worktree '{name}' not found.", file=sys.stderr)
+    raise typer.Exit(1)
+
 @app.command()
 def status():
     """Show the status of all worktrees and their PRs."""
@@ -152,7 +267,7 @@ def status():
         raise typer.Exit(1)
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
-    json_files = list(arbor_dir.glob("*.json"))
+    json_files = list(arbor_dir.glob("**/*.json"))
     
     if not json_files:
         console.print("No worktrees found.")
@@ -206,7 +321,7 @@ def cleanup():
         raise typer.Exit(1)
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
-    json_files = list(arbor_dir.glob("*.json"))
+    json_files = list(arbor_dir.glob("**/*.json"))
     
     cleaned = 0
     for f in json_files:
