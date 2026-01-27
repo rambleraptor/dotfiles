@@ -20,6 +20,12 @@ def temp_arbor_env(tmp_path, monkeypatch):
     worktrees_dir = tmp_path / "worktrees"
     worktrees_dir.mkdir()
     
+    # Set dummy git identity for CI
+    monkeypatch.setenv("GIT_AUTHOR_NAME", "Arbor Test")
+    monkeypatch.setenv("GIT_AUTHOR_EMAIL", "test@example.com")
+    monkeypatch.setenv("GIT_COMMITTER_NAME", "Arbor Test")
+    monkeypatch.setenv("GIT_COMMITTER_EMAIL", "test@example.com")
+
     # Monkeypatch CONFIG_PATH in the arbor module
     import arbor
     monkeypatch.setattr(arbor, "CONFIG_PATH", config_file)
