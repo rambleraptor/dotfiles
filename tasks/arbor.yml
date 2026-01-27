@@ -1,0 +1,12 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  install:
+    desc: Install arbor CLI locally using uv
+    dir: packages/arbor
+    cmds:
+      - uv tool install --editable . --force
+    status:
+      - which arbor

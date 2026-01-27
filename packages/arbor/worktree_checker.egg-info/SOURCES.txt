@@ -1,0 +1,9 @@
+README.md
+arbor.py
+pyproject.toml
+worktree_checker.egg-info/PKG-INFO
+worktree_checker.egg-info/SOURCES.txt
+worktree_checker.egg-info/dependency_links.txt
+worktree_checker.egg-info/entry_points.txt
+worktree_checker.egg-info/requires.txt
+worktree_checker.egg-info/top_level.txt
