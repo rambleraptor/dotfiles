@@ -12,7 +12,7 @@ Arbor is a specialized CLI tool for managing Git worktrees and tracking their as
 ## Capabilities
 
 - **Worktree Management**: Create and delete Git worktrees with ease.
-- **Status Tracking**: Unified view of PR status across multiple projects and worktrees.
+- **List & Status Tracking**: Unified view of PR status across multiple projects and worktrees.
 - **Cleanup**: Bulk removal of stale worktrees.
 
 ## Commands
@@ -35,10 +35,10 @@ Creates a new worktree for a registered project on a specific branch. If the bra
 arbor create my-project feature/cool-thing
 ```
 
-### `status`
+### `list`
 Displays a table of all active worktrees, their associated project, branch, PR number, and current GitHub status.
 ```bash
-arbor status
+arbor list
 ```
 
 ### `cleanup`

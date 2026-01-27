@@ -126,3 +126,21 @@ def test_import_worktree(temp_arbor_env):
     result = runner.invoke(app, ["cd", "my-worktree"])
     assert result.exit_code == 0
     assert result.stdout.strip() == str(wt_path.resolve())
+
+def test_list_command(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    
+    # Run list (should be empty but succeed)
+    result = runner.invoke(app, ["list"])
+    assert result.exit_code == 0
+    assert "No worktrees found" in result.stdout
+
+def test_status_alias(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    
+    # Run status alias
+    result = runner.invoke(app, ["status"])
+    assert result.exit_code == 0
+    assert "No worktrees found" in result.stdout

@@ -201,23 +201,26 @@ def create(repo_name: str, branch: str):
 
 def get_gh_pr_status(repo_path: Path, branch: str) -> tuple[Optional[int], Optional[str]]:
     """Get PR number and status using 'gh' CLI."""
+    if not branch or branch == "HEAD":
+        return None, None
+        
     try:
-        # Check if there is a PR for this branch
+        # Search for PRs matching this head branch
         result = subprocess.run(
-            ["gh", "pr", "view", branch, "--json", "number,state"],
+            ["gh", "pr", "list", "--head", branch, "--state", "all", "--limit", "1", "--json", "number,state"],
             cwd=repo_path,
             capture_output=True,
             text=True
         )
         if result.returncode == 0:
             data = json.loads(result.stdout)
-            return data["number"], data["state"]
+            if data and len(data) > 0:
+                return data[0]["number"], data[0]["state"]
     except Exception:
         pass
     return None, None
 
 @app.command("cd")
-@app.command("c", hidden=True)
 def cd_command(name: str):
     """Print the path to a worktree for shell integration."""
     config = get_config()
@@ -225,10 +228,13 @@ def cd_command(name: str):
         print("Arbor not initialized. Run 'arbor init' first.", file=sys.stderr)
         raise typer.Exit(1)
 
+    # Sync first to ensure we have the latest metadata
+    sync(quiet=True)
+
     # Try direct path first
     worktree_path = config.worktrees_dir / name
     if worktree_path.exists() and (worktree_path / ".git").exists():
-        print(worktree_path)
+        print(str(worktree_path))
         return
 
     # Try searching metadata
@@ -237,7 +243,7 @@ def cd_command(name: str):
     meta_file = arbor_dir / f"{name}.json"
     if meta_file.exists():
         info = WorktreeInfo.model_validate_json(meta_file.read_text())
-        print(config.worktrees_dir / info.name)
+        print(str(config.worktrees_dir / info.name))
         return
 
     # Recursive search
@@ -247,24 +253,118 @@ def cd_command(name: str):
         # or the full relative path name in metadata
         if f.stem == name:
             info = WorktreeInfo.model_validate_json(f.read_text())
-            print(config.worktrees_dir / info.name)
+            print(str(config.worktrees_dir / info.name))
             return
         
         info = WorktreeInfo.model_validate_json(f.read_text())
         if info.name == name:
-            print(config.worktrees_dir / info.name)
+            print(str(config.worktrees_dir / info.name))
             return
 
     print(f"Worktree '{name}' not found.", file=sys.stderr)
     raise typer.Exit(1)
 
+@app.command("c", hidden=True)
+def c_alias(name: str):
+    """Alias for cd."""
+    cd_command(name)
+
 @app.command()
-def status():
-    """Show the status of all worktrees and their PRs."""
+def sync(quiet: bool = typer.Option(False, "--quiet", "-q")):
+    """Sync worktrees from git into arbor metadata and remove stale metadata."""
+    config = get_config()
+    if not config:
+        if not quiet:
+            console.print("[red]Arbor not initialized. Run 'arbor init' first.[/red]")
+        return
+
+    synced = 0
+    tracked_names = set()
+
+    for repo_name, repo_path in config.projects.items():
+        if not repo_path.exists():
+            continue
+            
+        try:
+            result = subprocess.run(
+                ["git", "-C", str(repo_path), "worktree", "list", "--porcelain"],
+                capture_output=True, text=True, check=True
+            )
+            
+            current_worktree = None
+            for line in result.stdout.splitlines():
+                if line.startswith("worktree "):
+                    current_worktree = Path(line[9:]).resolve()
+                elif (line.startswith("branch ") or line == "detached") and current_worktree:
+                    branch = "HEAD"
+                    if line.startswith("branch "):
+                        branch = line[7:]
+                        if branch.startswith("refs/heads/"):
+                            branch = branch[11:]
+                    
+                    try:
+                        rel_path = current_worktree.relative_to(config.worktrees_dir)
+                        worktree_name = str(rel_path)
+                        tracked_names.add(worktree_name)
+                        
+                        meta_file = get_worktree_file(config.worktrees_dir, worktree_name)
+                        if not meta_file.exists():
+                            info = WorktreeInfo(name=worktree_name, repo_name=repo_name, branch=branch)
+                            meta_file.write_text(info.model_dump_json(indent=2))
+                            synced += 1
+                    except ValueError:
+                        pass
+        except Exception as e:
+            if not quiet:
+                console.print(f"[yellow]Failed to sync worktrees for {repo_name}: {e}[/yellow]")
+
+    # Remove stale metadata
+    arbor_dir = get_arbor_dir(config.worktrees_dir)
+    removed = 0
+    for f in arbor_dir.glob("**/*.json"):
+        # Relativize to arbor_dir and remove .json extension
+        meta_name = str(f.relative_to(arbor_dir).with_suffix(""))
+        if meta_name not in tracked_names:
+            if not (config.worktrees_dir / meta_name).exists():
+                f.unlink()
+                removed += 1
+
+    if not quiet:
+        if synced > 0 or removed > 0:
+            console.print(f"[green]Synced: added {synced}, removed {removed} stale metadata files.[/green]")
+        else:
+            console.print("Already in sync.")
+
+@app.command("list")
+def list_command():
+    """List all worktree names."""
     config = get_config()
     if not config:
         console.print("[red]Arbor not initialized. Run 'arbor init' first.[/red]")
         raise typer.Exit(1)
+
+    sync(quiet=True)
+    arbor_dir = get_arbor_dir(config.worktrees_dir)
+    json_files = list(arbor_dir.glob("**/*.json"))
+    
+    if not json_files:
+        console.print("No worktrees found.")
+        return
+
+    for f in sorted(json_files):
+        info = WorktreeInfo.model_validate_json(f.read_text())
+        console.print(info.name)
+
+@app.command("status")
+def status_command():
+    """Show the detailed status of all worktrees and their PRs."""
+    config = get_config()
+    if not config:
+        console.print("[red]Arbor not initialized. Run 'arbor init' first.[/red]")
+        raise typer.Exit(1)
+
+    # Auto-sync first
+    sync(quiet=True)
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
     json_files = list(arbor_dir.glob("**/*.json"))
@@ -280,7 +380,7 @@ def status():
     table.add_column("PR", style="blue")
     table.add_column("Status", style="yellow")
 
-    for f in json_files:
+    for f in sorted(json_files, key=lambda x: x.name):
         info = WorktreeInfo.model_validate_json(f.read_text())
         repo_path = config.projects.get(info.repo_name)
         
