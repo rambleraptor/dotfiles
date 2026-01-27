@@ -22,3 +22,7 @@ if [[ -n $USE_STARSHIP ]]; then
   export STARSHIP_CONFIG=$HOME/.starship/config.toml
   eval "$(starship init zsh)"
 fi
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
