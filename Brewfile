@@ -1,9 +1,13 @@
+tap "toby/try"
+
 brew "gh"
 brew "go-task"
 brew "mise"
 brew "neovim"
 brew "starship"
 brew "tmux"
+brew "try"
+brew "uv"
 
 cask "1password"
 cask "flux-app"

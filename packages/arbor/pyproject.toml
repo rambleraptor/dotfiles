@@ -1,0 +1,15 @@
+[project]
+name = "worktree-checker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "gitpython>=3.1.46",
+    "pydantic>=2.12.5",
+    "rich>=14.3.1",
+    "typer[all]>=0.21.1",
+]
+
+[project.scripts]
+arbor = "arbor:app"
