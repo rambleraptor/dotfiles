@@ -38,3 +38,19 @@ Session.vim
 local/bin/*
 !/local/bin/path.bash
 !/local/bin/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+
+# OS X
+.DS_Store
