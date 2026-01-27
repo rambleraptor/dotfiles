@@ -1,0 +1,24 @@
+name: Arbor Tests
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'packages/arbor/**'
+      - '.github/workflows/test-arbor.yml'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'packages/arbor/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Set up Python
+        run: uv python install
+      - name: Run tests
+        run: uv run --project packages/arbor pytest packages/arbor/tests

@@ -11,5 +11,11 @@ dependencies = [
     "typer[all]>=0.21.1",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-mock>=3.14.0",
+]
+
 [project.scripts]
 arbor = "arbor:app"

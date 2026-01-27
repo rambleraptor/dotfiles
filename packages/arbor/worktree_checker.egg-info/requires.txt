@@ -1,4 +1,0 @@
-gitpython>=3.1.46
-pydantic>=2.12.5
-rich>=14.3.1
-typer[all]>=0.21.1

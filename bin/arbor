@@ -1,0 +1,16 @@
+#!/bin/bash
+# Shim for arbor CLI
+# Executes the local development version of arbor using 'uv run' 
+# to ensure changes are reflected immediately without re-installing.
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ARBOR_DIR="$DOTFILES_ROOT/packages/arbor"
+
+# Check if uv is available
+if ! command -v uv &> /dev/null; then
+    echo "Error: 'uv' not found. Please install uv to use arbor." >&2
+    exit 1
+fi
+
+# Run arbor
+uv run --project "$ARBOR_DIR" "$ARBOR_DIR/arbor.py" "$@"
