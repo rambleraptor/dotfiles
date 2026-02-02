@@ -4,7 +4,7 @@
 # core tools
 go = "latest"
 node = "latest"
-python = "latest"
+python = "3.14"
 rust = "latest"
 java = "openjdk-21"
 

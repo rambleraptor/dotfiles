@@ -45,6 +45,12 @@ def get_worktree_file(worktrees_dir: Path, name: str) -> Path:
     file_path.parent.mkdir(parents=True, exist_ok=True)
     return file_path
 
+def get_context_dir(worktrees_dir: Path, repo_name: str, branch: str) -> Path:
+    # Use branch name directly, subdirectories will be created if branch has slashes
+    ctx_dir = get_arbor_dir(worktrees_dir) / "contexts" / repo_name / branch
+    ctx_dir.mkdir(parents=True, exist_ok=True)
+    return ctx_dir
+
 def find_project_by_path(config: Config, path: Path) -> Optional[str]:
     target = path.resolve()
     for name, p in config.projects.items():
@@ -76,6 +82,87 @@ def get_git_info(path: Path):
         return common_dir, toplevel
     except subprocess.CalledProcessError:
         return None, None
+
+def is_git_dirty(path: Path) -> bool:
+    res = subprocess.run(
+        ["git", "-C", str(path), "status", "--porcelain"],
+        capture_output=True, text=True, check=True
+    )
+    return bool(res.stdout.strip())
+
+def ensure_git_exclude(common_git_dir: Path):
+    exclude_file = common_git_dir / "info" / "exclude"
+    exclude_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    if not exclude_file.exists():
+        exclude_file.touch()
+        
+    content = exclude_file.read_text()
+    if "GEMINI.md" not in content:
+        with exclude_file.open("a") as f:
+            if content and not content.endswith("\n"):
+                f.write("\n")
+            f.write("GEMINI.md\n")
+
+def setup_gemini_context(config: Config, repo_name: str, branch: str, worktree_path: Path):
+    # 1. Provision Shadow Context
+    ctx_dir = get_context_dir(config.worktrees_dir, repo_name, branch)
+    shadow_file = ctx_dir / "GEMINI.md"
+    if not shadow_file.exists():
+        shadow_file.touch()
+    
+    # 2. Inject via Symlink
+    target_link = worktree_path / "GEMINI.md"
+    if target_link.exists() or target_link.is_symlink():
+        target_link.unlink()
+    target_link.symlink_to(shadow_file)
+    
+    # 3. "Invisible" Ignore
+    common_dir, _ = get_git_info(worktree_path)
+    if common_dir:
+        ensure_git_exclude(common_dir)
+
+def _create_worktree(config: Config, repo_name: str, branch: str, repo_path: Path):
+    worktree_path = config.worktrees_dir / branch
+    if worktree_path.exists():
+        console.print(f"[red]Worktree directory {worktree_path} already exists.[/red]")
+        raise typer.Exit(1)
+
+    console.print(f"Creating worktree for [blue]{repo_name}[/blue] on branch [yellow]{branch}[/yellow]...")
+    
+    try:
+        # Check if branch exists
+        result = subprocess.run(
+            ["git", "-C", str(repo_path), "rev-parse", "--verify", branch],
+            capture_output=True,
+            text=True
+        )
+        
+        cmd = ["git", "-C", str(repo_path), "worktree", "add", str(worktree_path)]
+        if result.returncode != 0:
+            console.print(f"Branch [yellow]{branch}[/yellow] does not exist. Creating it.")
+            cmd.append("-b")
+        
+        cmd.append(branch)
+        
+        subprocess.run(
+            cmd,
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        
+        # Setup Gemini Context
+        setup_gemini_context(config, repo_name, branch, worktree_path)
+        
+        # Save metadata
+        info = WorktreeInfo(name=branch, repo_name=repo_name, branch=branch)
+        get_worktree_file(config.worktrees_dir, branch).write_text(info.model_dump_json(indent=2))
+        
+        console.print(f"[green]Worktree created at {worktree_path}[/green]")
+    except subprocess.CalledProcessError as e:
+        console.print(f"[red]Failed to create worktree: {e.stderr}[/red]")
+        raise typer.Exit(1)
 
 @app.command()
 def init(worktrees_dir: str):
@@ -111,10 +198,33 @@ def import_command(
     
     if main_repo_path == toplevel:
         # It's a main repository, import as project
+        
+        if is_git_dirty(toplevel):
+            console.print("[red]Repo has uncommitted changes. Please commit or stash them first.[/red]")
+            raise typer.Exit(1)
+
         repo_name = name or toplevel.name
         config.projects[repo_name] = toplevel
         save_config(config)
         console.print(f"[green]Imported project [bold]{repo_name}[/bold] from {toplevel}[/green]")
+        
+        # Check current branch and convert to worktree if applicable
+        res = subprocess.run(
+            ["git", "-C", str(toplevel), "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True, text=True, check=True
+        )
+        current_branch = res.stdout.strip()
+        
+        if current_branch != "HEAD":
+            console.print(f"Converting current branch [yellow]{current_branch}[/yellow] into a worktree...")
+            subprocess.run(["git", "-C", str(toplevel), "checkout", "--detach"], check=True)
+            try:
+                _create_worktree(config, repo_name, current_branch, toplevel)
+            except Exception:
+                console.print(f"[red]Failed to create worktree for {current_branch}. Restoring checkout...[/red]")
+                subprocess.run(["git", "-C", str(toplevel), "checkout", current_branch], check=False)
+                raise
+            
     else:
         # It's a worktree
         # Verify it's inside the worktrees_dir
@@ -136,6 +246,9 @@ def import_command(
             capture_output=True, text=True, check=True
         ).stdout.strip()
         
+        # Setup Gemini Context
+        setup_gemini_context(config, repo_name, branch, toplevel)
+
         # We use the relative path from worktrees_dir as the worktree name
         worktree_name = str(toplevel.relative_to(config.worktrees_dir))
         info = WorktreeInfo(name=worktree_name, repo_name=repo_name, branch=branch)
@@ -161,43 +274,7 @@ def create(repo_name: str, branch: str):
         console.print(f"[red]Repo path {repo_path} for {repo_name} no longer exists.[/red]")
         raise typer.Exit(1)
 
-    worktree_path = config.worktrees_dir / branch
-    if worktree_path.exists():
-        console.print(f"[red]Worktree directory {worktree_path} already exists.[/red]")
-        raise typer.Exit(1)
-
-    console.print(f"Creating worktree for [blue]{repo_name}[/blue] on branch [yellow]{branch}[/yellow]...")
-    
-    try:
-        # Check if branch exists
-        result = subprocess.run(
-            ["git", "-C", str(repo_path), "rev-parse", "--verify", branch],
-            capture_output=True,
-            text=True
-        )
-        
-        cmd = ["git", "-C", str(repo_path), "worktree", "add", str(worktree_path)]
-        if result.returncode != 0:
-            console.print(f"Branch [yellow]{branch}[/yellow] does not exist. Creating it.")
-            cmd.append("-b")
-        
-        cmd.append(branch)
-        
-        subprocess.run(
-            cmd,
-            check=True,
-            capture_output=True,
-            text=True
-        )
-        
-        # Save metadata
-        info = WorktreeInfo(name=branch, repo_name=repo_name, branch=branch)
-        get_worktree_file(config.worktrees_dir, branch).write_text(info.model_dump_json(indent=2))
-        
-        console.print(f"[green]Worktree created at {worktree_path}[/green]")
-    except subprocess.CalledProcessError as e:
-        console.print(f"[red]Failed to create worktree: {e.stderr}[/red]")
-        raise typer.Exit(1)
+    _create_worktree(config, repo_name, branch, repo_path)
 
 def get_gh_pr_status(repo_path: Path, branch: str) -> tuple[Optional[int], Optional[str]]:
     """Get PR number and status using 'gh' CLI."""
@@ -349,6 +426,13 @@ def cleanup():
                     capture_output=True,
                     text=True
                 )
+                
+                # Cleanup Shadow Context
+                ctx_dir = get_context_dir(config.worktrees_dir, info.repo_name, info.branch)
+                if ctx_dir.exists():
+                    import shutil
+                    shutil.rmtree(ctx_dir)
+                
                 # Remove metadata file
                 f.unlink()
                 cleaned += 1
