@@ -13,4 +13,4 @@ if ! command -v uv &> /dev/null; then
 fi
 
 # Run arbor
-uv run --project "$ARBOR_DIR" "$ARBOR_DIR/arbor.py" "$@"
+uv run --quiet --project "$ARBOR_DIR" "$ARBOR_DIR/arbor.py" "$@"

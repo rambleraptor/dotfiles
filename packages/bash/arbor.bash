@@ -1,11 +1,12 @@
-# Arbor shell integration
+# Arbor shell integration for Bash
 # This allows 'arbor cd <name>' to actually change your directory.
 
-function arbor() {
+arbor() {
   if [[ "$1" == "cd" || "$1" == "c" ]]; then
     if [[ -n "$2" ]]; then
       # Try to get the path from arbor
       local target
+      # We use 'command arbor' to bypass this function and call the actual binary
       # Use the absolute path if DOTFILES is set to be extra safe
       if [[ -n "$DOTFILES" ]]; then
         target=$("$DOTFILES/bin/arbor" cd "$2" 2>/dev/null)
