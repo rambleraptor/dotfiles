@@ -6,6 +6,7 @@ includes:
   mac: ./tasks/mac-defaults.yml
   symlink: ./tasks/symlink.yml
   brew: ./tasks/brew.yml
+  linux: ./tasks/linux.yml
   mise: ./tasks/mise.yml
   arbor: ./tasks/arbor.yml
 
@@ -21,6 +22,7 @@ tasks:
     cmds:
       - task: brew:install
       - task: mac:mac-defaults
+      - task: linux:install
       - task: symlink:install
       - task: mise:install
       - task: arbor:install

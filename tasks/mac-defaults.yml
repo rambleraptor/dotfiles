@@ -6,6 +6,7 @@ version: '3'
 tasks:
   mac-defaults:
     desc: "Apply macOS defaults settings"
+    platforms: [darwin]
     deps: []
     cmds:
       - task: mac-defaults:general-ui
@@ -18,6 +19,7 @@ tasks:
   mac-defaults:general-ui:
     desc: "Configure general UI settings"
     internal: true
+    platforms: [darwin]
     cmds:
       - |
         echo "Use AirDrop over every interface. srsly this should be a default."
@@ -49,6 +51,7 @@ tasks:
   mac-defaults:trackpad-keyboard:
     desc: "Configure trackpad and keyboard settings"
     internal: true
+    platforms: [darwin]
     cmds:
       - |
         echo "Disable press-and-hold for keys in favor of key repeat"
@@ -61,6 +64,7 @@ tasks:
   mac-defaults:finder:
     desc: "Configure Finder settings"
     internal: true
+    platforms: [darwin]
     cmds:
       - |
         echo "When performing a search, search the current folder by default"
@@ -78,6 +82,7 @@ tasks:
   mac-defaults:terminal:
     desc: "Configure Terminal/iTerm settings"
     internal: true
+    platforms: [darwin]
     cmds:
       - |
         echo "Don't display the annoying prompt when quitting iTerm"
@@ -86,6 +91,7 @@ tasks:
   mac-defaults:activity-monitor:
     desc: "Configure Activity Monitor settings"
     internal: true
+    platforms: [darwin]
     cmds:
       - |
         echo "Show the main window when launching Activity Monitor"
@@ -104,6 +110,7 @@ tasks:
   mac-defaults:restart-apps:
     desc: "Restart applications to apply changes"
     internal: true
+    platforms: [darwin]
     cmds:
       - |
         echo "Killing a bunch of apps. Don't be alarmed"
