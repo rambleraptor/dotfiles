@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  DOTFILES: "{{.ROOT_DIR}}"
+
+tasks:
+  install:
+    platforms: [linux]
+    desc: Install CLI tools for Linux (apt + upstream installers)
+    cmds:
+      - task: install:apt
+      - task: install:mise
+      - task: install:starship
+      - task: install:uv
+
+  install:apt:
+    internal: true
+    platforms: [linux]
+    desc: Install distro packages via apt
+    cmds:
+      - sudo apt-get update
+      - sudo apt-get install -y
+          ca-certificates
+          curl
+          git
+          build-essential
+          tmux
+          neovim
+          gh
+
+  install:mise:
+    internal: true
+    platforms: [linux]
+    status:
+      - which mise
+    cmds:
+      - curl https://mise.run | sh
+
+  install:starship:
+    internal: true
+    platforms: [linux]
+    status:
+      - which starship
+    cmds:
+      - curl -sS https://starship.rs/install.sh | sh -s -- --yes
+
+  install:uv:
+    internal: true
+    platforms: [linux]
+    status:
+      - which uv
+    cmds:
+      - curl -LsSf https://astral.sh/uv/install.sh | sh
