@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "gitpython>=3.1.47",
+    "gitpython>=3.1.49",
     "pydantic>=2.12.5",
     "rich>=14.3.1",
     "typer[all]>=0.21.1",
