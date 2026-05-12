@@ -5,6 +5,7 @@
 go = "latest"
 node = "latest"
 python = "3.14"
+ruby = "latest"
 rust = "latest"
 java = "openjdk-21"
 

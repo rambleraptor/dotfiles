@@ -1,0 +1,26 @@
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
+export ZSH=$HOME/.dotfiles
+
+# Enable ** recursive globbing for the loader below.
+shopt -s globstar nullglob
+
+# load all of the bash files (skip zsh-specific packages)
+for file in "$DOTFILES"/**/*.bash; do
+  case "$file" in
+    "$DOTFILES"/packages/zsh/*) continue ;;
+  esac
+  source "$file"
+done
+
+shopt -u nullglob
+
+# Vi mode with ctrl-r kept on reverse-search-history.
+set -o vi
+bind '"\C-r": reverse-search-history' 2>/dev/null
+
+# nvm config
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

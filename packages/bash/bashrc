@@ -1,10 +1,10 @@
-# shortcut to this dotfiles path is $ZSH
+# shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
 export EDITOR=/usr/bin/vim
 
 # DEFAULT_USER should be set in a local file if you are the default user.
 # export DEFAULT_USER=1
-source $DOTFILES/packages/zsh/shellconfig
+source $DOTFILES/packages/bash/shellconfig
 
 # Tmux: Get colors working
 export TERM=xterm-256color
@@ -12,19 +12,14 @@ export TERM=xterm-256color
 # Go Path
 export GOPATH=$HOME/go
 
-if [[ -a "$DOTFILES/local/.localrc" ]]
-then
-  source $DOTFILES/local/.localrc
+if [[ -a "$DOTFILES/local/.localrc" ]]; then
+  source "$DOTFILES/local/.localrc"
 fi
 
 # Load starship
 if [[ -n $USE_STARSHIP ]]; then
   export STARSHIP_CONFIG=$HOME/.starship/config.toml
-  eval "$(starship init zsh)"
+  eval "$(starship init bash)"
 fi
 
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
-
-zstyle ':completion:*' menu select
-
-eval "$(mise activate zsh)"
+eval "$(mise activate bash)"

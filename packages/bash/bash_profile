@@ -1,0 +1,4 @@
+# Login shells read .bash_profile; source .bashrc so interactive config applies.
+if [ -f "$HOME/.bashrc" ]; then
+  source "$HOME/.bashrc"
+fi

@@ -30,9 +30,10 @@ done
 
 unset config_files
 
-# load all of the bash files
+# load all of the bash files (skip bash-specific packages)
 for file in $DOTFILES/**/*.bash
 do
+  [[ "$file" == "$DOTFILES/packages/bash/"* ]] && continue
   source $file
 done
 
