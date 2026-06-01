@@ -9,6 +9,7 @@ includes:
   linux: ./tasks/linux.yml
   mise: ./tasks/mise.yml
   arbor: ./tasks/arbor.yml
+  try: ./tasks/try.yml
 
 tasks:
   default:
@@ -26,3 +27,4 @@ tasks:
       - task: symlink:install
       - task: mise:install
       - task: arbor:install
+      - task: try:install

@@ -72,3 +72,8 @@ set viminfo='20,<1000
 if exists('$TMUX')
   set clipboard=unnamed
 endif
+
+" Enable 24-bit true color support
+if has('termguicolors')
+  set termguicolors
+endif
