@@ -172,34 +172,104 @@ def test_import_converts_branch_to_worktree(temp_arbor_env):
     res = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=repo_path, capture_output=True, text=True)
     assert res.stdout.strip() == "HEAD"
 
-def test_gemini_sidecar_context(temp_arbor_env):
+def _make_repo_with_upstream(tmp_path, name="work-repo"):
+    """Create a repo with an 'upstream' remote that has a 'main' branch."""
+    upstream = tmp_path / f"{name}-upstream.git"
+    subprocess.run(["git", "init", "--bare", "-b", "main", str(upstream)], check=True)
+
+    repo = tmp_path / name
+    repo.mkdir()
+    subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True)
+    (repo / "file.txt").write_text("v1")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
+    subprocess.run(["git", "remote", "add", "upstream", str(upstream)], cwd=repo, check=True)
+    subprocess.run(["git", "push", "upstream", "main"], cwd=repo, check=True)
+    return repo
+
+def test_research_base(temp_arbor_env):
     worktrees_dir = temp_arbor_env["worktrees_dir"]
     runner.invoke(app, ["init", str(worktrees_dir)])
-    
-    repo_path = temp_arbor_env["tmp_path"] / "gemini-repo"
-    repo_path.mkdir()
-    subprocess.run(["git", "init", "-b", "main"], cwd=repo_path, check=True)
-    (repo_path / "file.txt").write_text("v1")
-    subprocess.run(["git", "add", "."], cwd=repo_path, check=True)
-    subprocess.run(["git", "commit", "-m", "init"], cwd=repo_path, check=True)
-    
-    runner.invoke(app, ["import", str(repo_path), "--name", "my-gemini-proj"])
-    runner.invoke(app, ["create", "my-gemini-proj", "feature-gemini"])
-    
-    wt_path = worktrees_dir / "feature-gemini"
-    assert wt_path.exists()
-    
-    # Check symlink
-    gemini_link = wt_path / "GEMINI.md"
-    assert gemini_link.is_symlink()
-    
-    # Check shadow file
-    shadow_path = worktrees_dir / ".arbor" / "contexts" / "my-gemini-proj" / "feature-gemini" / "GEMINI.md"
-    assert shadow_path.exists()
-    assert gemini_link.resolve() == shadow_path.resolve()
-    
-    # Check git exclude
-    res = subprocess.run(["git", "-C", str(repo_path), "rev-parse", "--git-common-dir"], capture_output=True, text=True)
-    common_dir = (repo_path / res.stdout.strip()).resolve()
-    exclude_file = common_dir / "info" / "exclude"
-    assert "GEMINI.md" in exclude_file.read_text()
+
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    result = runner.invoke(app, ["research", "proj"])
+    assert result.exit_code == 0, result.stdout
+
+    # Worktree lives under the research/ subdirectory
+    wt = worktrees_dir / "research" / "base"
+    assert wt.exists()
+    assert (wt / "file.txt").exists()
+
+    # The bare worktree path is printed to stdout so the shell wrapper can cd in
+    assert Path(result.stdout.strip()).resolve() == wt.resolve()
+
+    # Metadata is marked as research with a timestamp
+    meta = worktrees_dir / ".arbor" / "research" / "base.json"
+    assert meta.exists()
+    info = json.loads(meta.read_text())
+    assert info["kind"] == "research"
+    assert info["created_at"]
+    assert info["branch"] == "upstream/main"
+
+    # It's a detached checkout (no owned branch)
+    res = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=wt, capture_output=True, text=True)
+    assert res.stdout.strip() == "HEAD"
+
+    # cd resolves by short name
+    result = runner.invoke(app, ["cd", "base"])
+    assert result.exit_code == 0
+    assert result.stdout.strip() == str(wt.resolve())
+
+def test_research_falls_back_to_origin(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    # No upstream remote: build a repo whose only remote is 'origin'
+    origin = temp_arbor_env["tmp_path"] / "origin.git"
+    subprocess.run(["git", "init", "--bare", "-b", "main", str(origin)], check=True)
+    repo = temp_arbor_env["tmp_path"] / "origin-repo"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True)
+    (repo / "file.txt").write_text("v1")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
+    subprocess.run(["git", "remote", "add", "origin", str(origin)], cwd=repo, check=True)
+    subprocess.run(["git", "push", "origin", "main"], cwd=repo, check=True)
+
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    result = runner.invoke(app, ["research", "proj"])
+    assert result.exit_code == 0, result.stdout
+
+    info = json.loads((worktrees_dir / ".arbor" / "research" / "base.json").read_text())
+    assert info["branch"] == "origin/main"
+
+def test_research_cleanup_ttl(temp_arbor_env):
+    from datetime import datetime, timezone, timedelta
+
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    runner.invoke(app, ["research", "proj"])
+
+    meta = worktrees_dir / ".arbor" / "research" / "base.json"
+    wt = worktrees_dir / "research" / "base"
+
+    # Fresh research worktree survives cleanup
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert wt.exists()
+
+    # Backdate it past the TTL -> cleanup removes it
+    info = json.loads(meta.read_text())
+    info["created_at"] = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
+    meta.write_text(json.dumps(info))
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert "expired research worktree" in result.stdout
+    assert not wt.exists()
+    assert not meta.exists()

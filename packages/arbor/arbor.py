@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -13,8 +14,18 @@ from rich.table import Table
 
 app = typer.Typer()
 console = Console()
+# Use for human-facing output on commands whose stdout is consumed by the shell
+# wrapper (e.g. 'arbor research' prints the worktree path to stdout so the shell
+# can cd into it).
+err_console = Console(stderr=True)
 
 CONFIG_PATH = Path.home() / ".arbor_config.json"
+
+# Research worktrees are short-lived, detached checkouts used to give LLMs
+# context. They live under this subdirectory so they don't clutter the regular
+# worktrees, and are auto-expired after RESEARCH_TTL_DAYS.
+RESEARCH_SUBDIR = "research"
+RESEARCH_TTL_DAYS = 3
 
 class Config(BaseModel):
     worktrees_dir: Path
@@ -26,6 +37,10 @@ class WorktreeInfo(BaseModel):
     branch: str
     pr_number: Optional[int] = None
     pr_status: Optional[str] = "None"
+    # "work" (a normal branch worktree) or "research" (short-lived, detached).
+    kind: str = "work"
+    # ISO-8601 UTC timestamp, set for research worktrees to drive TTL cleanup.
+    created_at: Optional[str] = None
 
 def get_config() -> Optional[Config]:
     if not CONFIG_PATH.exists():
@@ -44,12 +59,6 @@ def get_worktree_file(worktrees_dir: Path, name: str) -> Path:
     file_path = get_arbor_dir(worktrees_dir) / f"{name}.json"
     file_path.parent.mkdir(parents=True, exist_ok=True)
     return file_path
-
-def get_context_dir(worktrees_dir: Path, repo_name: str, branch: str) -> Path:
-    # Use branch name directly, subdirectories will be created if branch has slashes
-    ctx_dir = get_arbor_dir(worktrees_dir) / "contexts" / repo_name / branch
-    ctx_dir.mkdir(parents=True, exist_ok=True)
-    return ctx_dir
 
 def find_project_by_path(config: Config, path: Path) -> Optional[str]:
     target = path.resolve()
@@ -90,38 +99,6 @@ def is_git_dirty(path: Path) -> bool:
     )
     return bool(res.stdout.strip())
 
-def ensure_git_exclude(common_git_dir: Path):
-    exclude_file = common_git_dir / "info" / "exclude"
-    exclude_file.parent.mkdir(parents=True, exist_ok=True)
-    
-    if not exclude_file.exists():
-        exclude_file.touch()
-        
-    content = exclude_file.read_text()
-    if "GEMINI.md" not in content:
-        with exclude_file.open("a") as f:
-            if content and not content.endswith("\n"):
-                f.write("\n")
-            f.write("GEMINI.md\n")
-
-def setup_gemini_context(config: Config, repo_name: str, branch: str, worktree_path: Path):
-    # 1. Provision Shadow Context
-    ctx_dir = get_context_dir(config.worktrees_dir, repo_name, branch)
-    shadow_file = ctx_dir / "GEMINI.md"
-    if not shadow_file.exists():
-        shadow_file.touch()
-    
-    # 2. Inject via Symlink
-    target_link = worktree_path / "GEMINI.md"
-    if target_link.exists() or target_link.is_symlink():
-        target_link.unlink()
-    target_link.symlink_to(shadow_file)
-    
-    # 3. "Invisible" Ignore
-    common_dir, _ = get_git_info(worktree_path)
-    if common_dir:
-        ensure_git_exclude(common_dir)
-
 def _create_worktree(config: Config, repo_name: str, branch: str, repo_path: Path):
     worktree_path = config.worktrees_dir / branch
     if worktree_path.exists():
@@ -151,9 +128,6 @@ def _create_worktree(config: Config, repo_name: str, branch: str, repo_path: Pat
             capture_output=True,
             text=True
         )
-        
-        # Setup Gemini Context
-        setup_gemini_context(config, repo_name, branch, worktree_path)
         
         # Save metadata
         info = WorktreeInfo(name=branch, repo_name=repo_name, branch=branch)
@@ -246,9 +220,6 @@ def import_command(
             capture_output=True, text=True, check=True
         ).stdout.strip()
         
-        # Setup Gemini Context
-        setup_gemini_context(config, repo_name, branch, toplevel)
-
         # We use the relative path from worktrees_dir as the worktree name
         worktree_name = str(toplevel.relative_to(config.worktrees_dir))
         info = WorktreeInfo(name=worktree_name, repo_name=repo_name, branch=branch)
@@ -275,6 +246,162 @@ def create(repo_name: str, branch: str):
         raise typer.Exit(1)
 
     _create_worktree(config, repo_name, branch, repo_path)
+
+def _ref_exists(repo_path: Path, ref: str) -> bool:
+    return subprocess.run(
+        ["git", "-C", str(repo_path), "rev-parse", "--verify", "--quiet", ref],
+        capture_output=True, text=True
+    ).returncode == 0
+
+def get_remote_default_branch(repo_path: Path, remote: str) -> Optional[str]:
+    """Return the default branch of a remote as e.g. 'origin/main'."""
+    def _read_head() -> Optional[str]:
+        res = subprocess.run(
+            ["git", "-C", str(repo_path), "symbolic-ref", f"refs/remotes/{remote}/HEAD"],
+            capture_output=True, text=True
+        )
+        if res.returncode == 0:
+            return res.stdout.strip().replace("refs/remotes/", "", 1)
+        return None
+
+    ref = _read_head()
+    if ref:
+        return ref
+    # The remote HEAD may not be recorded locally yet; ask the remote.
+    subprocess.run(
+        ["git", "-C", str(repo_path), "remote", "set-head", remote, "-a"],
+        capture_output=True, text=True
+    )
+    return _read_head()
+
+def resolve_research_base(repo_path: Path) -> str:
+    """Resolve the base ref for a research worktree.
+
+    Prefers upstream/main, fetching upstream first. Falls back to origin's
+    default branch when no upstream remote exists.
+    """
+    remotes = subprocess.run(
+        ["git", "-C", str(repo_path), "remote"],
+        capture_output=True, text=True, check=True
+    ).stdout.split()
+
+    if "upstream" in remotes:
+        err_console.print("Fetching [blue]upstream[/blue]...")
+        subprocess.run(["git", "-C", str(repo_path), "fetch", "--quiet", "upstream"], check=True)
+        if _ref_exists(repo_path, "upstream/main"):
+            return "upstream/main"
+        default = get_remote_default_branch(repo_path, "upstream")
+        if default and _ref_exists(repo_path, default):
+            return default
+
+    if "origin" in remotes:
+        err_console.print("Fetching [blue]origin[/blue]...")
+        subprocess.run(["git", "-C", str(repo_path), "fetch", "--quiet", "origin"], check=True)
+        default = get_remote_default_branch(repo_path, "origin")
+        if default and _ref_exists(repo_path, default):
+            return default
+        for candidate in ("origin/main", "origin/master"):
+            if _ref_exists(repo_path, candidate):
+                return candidate
+
+    err_console.print("[red]Could not resolve a base ref (no upstream/origin default branch found).[/red]")
+    raise typer.Exit(1)
+
+def research_age_days(info: WorktreeInfo) -> Optional[int]:
+    if not info.created_at:
+        return None
+    try:
+        created = datetime.fromisoformat(info.created_at)
+    except ValueError:
+        return None
+    if created.tzinfo is None:
+        created = created.replace(tzinfo=timezone.utc)
+    return (datetime.now(timezone.utc) - created).days
+
+@app.command()
+def research(
+    repo_name: str,
+    pr: Optional[int] = typer.Option(None, "--pr", help="PR number to check out (default: base branch HEAD)"),
+    name: Optional[str] = typer.Option(None, "--name", "-n", help="Name for the research worktree"),
+):
+    """Create a short-lived research worktree for feeding context to an LLM.
+
+    With --pr, checks out that PR (detached). Otherwise checks out the base
+    branch HEAD (upstream/main, falling back to origin's default branch).
+    Research worktrees live under '<worktrees>/research/' and are auto-expired
+    by 'arbor cleanup' after a few days.
+    """
+    config = get_config()
+    if not config:
+        err_console.print("[red]Arbor not initialized. Run 'arbor init' first.[/red]")
+        raise typer.Exit(1)
+
+    repo_path = config.projects.get(repo_name)
+    if not repo_path:
+        err_console.print(f"[red]Repo {repo_name} not found in arbor. Use 'arbor import' to add it.[/red]")
+        raise typer.Exit(1)
+    if not repo_path.exists():
+        err_console.print(f"[red]Repo path {repo_path} for {repo_name} no longer exists.[/red]")
+        raise typer.Exit(1)
+
+    if not name:
+        name = f"pr-{pr}" if pr else "base"
+    rel_name = f"{RESEARCH_SUBDIR}/{name}"
+    worktree_path = config.worktrees_dir / rel_name
+
+    if worktree_path.exists():
+        err_console.print(f"[red]Research worktree {worktree_path} already exists.[/red]")
+        err_console.print("Remove it first or pass a different [yellow]--name[/yellow].")
+        raise typer.Exit(1)
+
+    worktree_path.parent.mkdir(parents=True, exist_ok=True)
+
+    try:
+        if pr is not None:
+            err_console.print(f"Creating research worktree for [blue]{repo_name}[/blue] PR [yellow]#{pr}[/yellow]...")
+            # Create an empty detached worktree, then let gh fetch + check out the PR.
+            subprocess.run(
+                ["git", "-C", str(repo_path), "worktree", "add", "--detach", str(worktree_path)],
+                check=True, capture_output=True, text=True
+            )
+            try:
+                subprocess.run(
+                    ["gh", "pr", "checkout", str(pr), "--detach"],
+                    cwd=worktree_path, check=True, capture_output=True, text=True
+                )
+            except subprocess.CalledProcessError as e:
+                subprocess.run(
+                    ["git", "-C", str(repo_path), "worktree", "remove", "--force", str(worktree_path)],
+                    check=False, capture_output=True, text=True
+                )
+                err_console.print(f"[red]Failed to check out PR #{pr}: {e.stderr}[/red]")
+                raise typer.Exit(1)
+            branch_desc = f"PR #{pr}"
+        else:
+            base = resolve_research_base(repo_path)
+            err_console.print(f"Creating research worktree for [blue]{repo_name}[/blue] at [yellow]{base}[/yellow]...")
+            subprocess.run(
+                ["git", "-C", str(repo_path), "worktree", "add", "--detach", str(worktree_path), base],
+                check=True, capture_output=True, text=True
+            )
+            branch_desc = base
+    except subprocess.CalledProcessError as e:
+        err_console.print(f"[red]Failed to create research worktree: {e.stderr}[/red]")
+        raise typer.Exit(1)
+
+    info = WorktreeInfo(
+        name=rel_name,
+        repo_name=repo_name,
+        branch=branch_desc,
+        pr_number=pr,
+        kind="research",
+        created_at=datetime.now(timezone.utc).isoformat(),
+    )
+    get_worktree_file(config.worktrees_dir, rel_name).write_text(info.model_dump_json(indent=2))
+
+    err_console.print(f"[green]Research worktree created at {worktree_path}[/green]")
+    # Print the bare path to stdout so the shell wrapper can cd into it.
+    print(worktree_path)
 
 def get_gh_pr_status(repo_path: Path, branch: str) -> tuple[Optional[int], Optional[str]]:
     """Get PR number and status using 'gh' CLI."""
@@ -345,53 +472,88 @@ def status():
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
     json_files = list(arbor_dir.glob("**/*.json"))
-    
+
     if not json_files:
         console.print("No worktrees found.")
         return
 
-    table = Table(title="Arbor Worktrees")
-    table.add_column("Worktree", style="cyan")
-    table.add_column("Repo", style="magenta")
-    table.add_column("Branch", style="green")
-    table.add_column("PR", style="blue")
-    table.add_column("Status", style="yellow")
+    infos = [(f, WorktreeInfo.model_validate_json(f.read_text())) for f in json_files]
+    work = [(f, i) for f, i in infos if i.kind != "research"]
+    research = [(f, i) for f, i in infos if i.kind == "research"]
 
-    for f in json_files:
-        info = WorktreeInfo.model_validate_json(f.read_text())
-        repo_path = config.projects.get(info.repo_name)
-        
-        if not repo_path:
-            # Maybe the repo was removed from arbor config
+    if work:
+        table = Table(title="Arbor Worktrees")
+        table.add_column("Worktree", style="cyan")
+        table.add_column("Repo", style="magenta")
+        table.add_column("Branch", style="green")
+        table.add_column("PR", style="blue")
+        table.add_column("Status", style="yellow")
+
+        for f, info in work:
+            repo_path = config.projects.get(info.repo_name)
+
+            if not repo_path:
+                # Maybe the repo was removed from arbor config
+                table.add_row(
+                    info.name,
+                    f"{info.repo_name} (Missing)",
+                    info.branch,
+                    str(info.pr_number) if info.pr_number else "-",
+                    info.pr_status or "None"
+                )
+                continue
+
+            # Update status from GH
+            pr_number, pr_status = get_gh_pr_status(repo_path, info.branch)
+            if pr_status:
+                info.pr_number = pr_number
+                info.pr_status = pr_status
+                f.write_text(info.model_dump_json(indent=2))
+
             table.add_row(
                 info.name,
-                f"{info.repo_name} (Missing)",
+                info.repo_name,
                 info.branch,
                 str(info.pr_number) if info.pr_number else "-",
                 info.pr_status or "None"
             )
-            continue
 
-        # Update status from GH
-        pr_number, pr_status = get_gh_pr_status(repo_path, info.branch)
-        if pr_status:
-            info.pr_number = pr_number
-            info.pr_status = pr_status
-            f.write_text(info.model_dump_json(indent=2))
-        
-        table.add_row(
-            info.name,
-            info.repo_name,
-            info.branch,
-            str(info.pr_number) if info.pr_number else "-",
-            info.pr_status or "None"
-        )
+        console.print(table)
 
-    console.print(table)
+    if research:
+        rtable = Table(title="Research Worktrees")
+        rtable.add_column("Worktree", style="cyan")
+        rtable.add_column("Repo", style="magenta")
+        rtable.add_column("Source", style="green")
+        rtable.add_column("Age", style="yellow")
+
+        for f, info in research:
+            age = research_age_days(info)
+            age_str = "-" if age is None else (f"{age}d" if age else "today")
+            rtable.add_row(info.name, info.repo_name, info.branch, age_str)
+
+        console.print(rtable)
+
+def _remove_worktree(repo_path: Path, worktree_path: Path, meta_file: Path, force: bool = False) -> bool:
+    cmd = ["git", "-C", str(repo_path), "worktree", "remove", str(worktree_path)]
+    if force:
+        cmd.append("--force")
+    try:
+        subprocess.run(cmd, check=True, capture_output=True, text=True)
+        meta_file.unlink()
+        return True
+    except subprocess.CalledProcessError as e:
+        console.print(f"[red]Failed to remove worktree {worktree_path.name}: {e.stderr}[/red]")
+        return False
 
 @app.command()
-def cleanup():
-    """Delete worktrees where PRs have been merged."""
+def cleanup(
+    research_ttl: int = typer.Option(
+        RESEARCH_TTL_DAYS, "--research-ttl",
+        help="Remove research worktrees older than this many days."
+    ),
+):
+    """Delete merged worktrees and expired research worktrees."""
     config = get_config()
     if not config:
         console.print("[red]Arbor not initialized. Run 'arbor init' first.[/red]")
@@ -399,45 +561,36 @@ def cleanup():
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
     json_files = list(arbor_dir.glob("**/*.json"))
-    
+
     cleaned = 0
     for f in json_files:
         info = WorktreeInfo.model_validate_json(f.read_text())
         repo_path = config.projects.get(info.repo_name)
-        
+
         if not repo_path:
             console.print(f"[yellow]Skipping {info.name}: Repo {info.repo_name} not found in config.[/yellow]")
             continue
-            
+
+        worktree_path = config.worktrees_dir / info.name
+
+        if info.kind == "research":
+            age = research_age_days(info)
+            if age is not None and age >= research_ttl:
+                console.print(f"Cleaning up expired research worktree: [blue]{info.name}[/blue] ({age}d old)")
+                # Research worktrees are detached and disposable; force removal.
+                if _remove_worktree(repo_path, worktree_path, f, force=True):
+                    cleaned += 1
+            continue
+
         _, pr_status = get_gh_pr_status(repo_path, info.branch)
-        
+
         # Use updated status if available, otherwise use cached
         current_status = pr_status or info.pr_status
-        
+
         if current_status and current_status.upper() == "MERGED":
             console.print(f"Cleaning up merged worktree: [blue]{info.name}[/blue]")
-            worktree_path = config.worktrees_dir / info.name
-            
-            try:
-                # Remove worktree
-                subprocess.run(
-                    ["git", "-C", str(repo_path), "worktree", "remove", str(worktree_path)],
-                    check=True,
-                    capture_output=True,
-                    text=True
-                )
-                
-                # Cleanup Shadow Context
-                ctx_dir = get_context_dir(config.worktrees_dir, info.repo_name, info.branch)
-                if ctx_dir.exists():
-                    import shutil
-                    shutil.rmtree(ctx_dir)
-                
-                # Remove metadata file
-                f.unlink()
+            if _remove_worktree(repo_path, worktree_path, f):
                 cleaned += 1
-            except subprocess.CalledProcessError as e:
-                console.print(f"[red]Failed to remove worktree {info.name}: {e.stderr}[/red]")
 
     if cleaned == 0:
         console.print("Nothing to clean up.")
