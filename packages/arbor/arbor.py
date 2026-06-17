@@ -1,5 +1,6 @@
 import json
 import os
+import secrets
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -26,6 +27,28 @@ CONFIG_PATH = Path.home() / ".arbor_config.json"
 # worktrees, and are auto-expired after RESEARCH_TTL_DAYS.
 RESEARCH_SUBDIR = "research"
 RESEARCH_TTL_DAYS = 3
+
+# Memorable, throwaway names for ephemeral research worktrees. We pair an
+# adjective with a noun (e.g. "brave-otter") so each worktree is easy to refer
+# to with 'arbor cd <name>' while still being unique.
+_RESEARCH_ADJECTIVES = [
+    "brave", "calm", "clever", "swift", "quiet", "bright", "bold", "lush",
+    "keen", "spry", "merry", "nimble", "sunny", "gentle", "wily", "amber",
+]
+_RESEARCH_NOUNS = [
+    "otter", "falcon", "maple", "cedar", "heron", "lynx", "willow", "raven",
+    "badger", "ferret", "marten", "sparrow", "thistle", "comet", "harbor", "fern",
+]
+
+def generate_research_name(worktrees_dir: Path) -> str:
+    """Return a memorable name for a research worktree that isn't in use yet."""
+    research_dir = worktrees_dir / RESEARCH_SUBDIR
+    for _ in range(100):
+        name = f"{secrets.choice(_RESEARCH_ADJECTIVES)}-{secrets.choice(_RESEARCH_NOUNS)}"
+        if not (research_dir / name).exists():
+            return name
+    # Astronomically unlikely; fall back to a random suffix to guarantee progress.
+    return f"research-{secrets.token_hex(4)}"
 
 class Config(BaseModel):
     worktrees_dir: Path
@@ -345,7 +368,11 @@ def research(
         raise typer.Exit(1)
 
     if not name:
-        name = f"pr-{pr}" if pr else "base"
+        # Research worktrees are ephemeral: give each a unique, memorable name
+        # rather than reusing a single "base" slot.
+        name = generate_research_name(config.worktrees_dir)
+        if pr:
+            name = f"pr-{pr}-{name}"
     rel_name = f"{RESEARCH_SUBDIR}/{name}"
     worktree_path = config.worktrees_dir / rel_name
 

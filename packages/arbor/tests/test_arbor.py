@@ -197,16 +197,18 @@ def test_research_base(temp_arbor_env):
     result = runner.invoke(app, ["research", "proj"])
     assert result.exit_code == 0, result.stdout
 
-    # Worktree lives under the research/ subdirectory
-    wt = worktrees_dir / "research" / "base"
+    # The bare worktree path is printed to stdout so the shell wrapper can cd in
+    wt = Path(result.stdout.strip())
     assert wt.exists()
     assert (wt / "file.txt").exists()
 
-    # The bare worktree path is printed to stdout so the shell wrapper can cd in
-    assert Path(result.stdout.strip()).resolve() == wt.resolve()
+    # It lives under the research/ subdirectory with a generated (non-"base") name
+    assert wt.parent == (worktrees_dir / "research").resolve()
+    name = wt.name
+    assert name != "base"
 
     # Metadata is marked as research with a timestamp
-    meta = worktrees_dir / ".arbor" / "research" / "base.json"
+    meta = worktrees_dir / ".arbor" / "research" / f"{name}.json"
     assert meta.exists()
     info = json.loads(meta.read_text())
     assert info["kind"] == "research"
@@ -218,9 +220,27 @@ def test_research_base(temp_arbor_env):
     assert res.stdout.strip() == "HEAD"
 
     # cd resolves by short name
-    result = runner.invoke(app, ["cd", "base"])
+    result = runner.invoke(app, ["cd", name])
     assert result.exit_code == 0
     assert result.stdout.strip() == str(wt.resolve())
+
+def test_research_unique_names(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    # Two un-named research worktrees should coexist with distinct names.
+    r1 = runner.invoke(app, ["research", "proj"])
+    r2 = runner.invoke(app, ["research", "proj"])
+    assert r1.exit_code == 0, r1.stdout
+    assert r2.exit_code == 0, r2.stdout
+
+    p1 = Path(r1.stdout.strip())
+    p2 = Path(r2.stdout.strip())
+    assert p1 != p2
+    assert p1.exists() and p2.exists()
 
 def test_research_falls_back_to_origin(temp_arbor_env):
     worktrees_dir = temp_arbor_env["worktrees_dir"]
@@ -242,7 +262,8 @@ def test_research_falls_back_to_origin(temp_arbor_env):
     result = runner.invoke(app, ["research", "proj"])
     assert result.exit_code == 0, result.stdout
 
-    info = json.loads((worktrees_dir / ".arbor" / "research" / "base.json").read_text())
+    name = Path(result.stdout.strip()).name
+    info = json.loads((worktrees_dir / ".arbor" / "research" / f"{name}.json").read_text())
     assert info["branch"] == "origin/main"
 
 def test_research_cleanup_ttl(temp_arbor_env):
@@ -253,10 +274,10 @@ def test_research_cleanup_ttl(temp_arbor_env):
 
     repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
     runner.invoke(app, ["import", str(repo), "--name", "proj"])
-    runner.invoke(app, ["research", "proj"])
+    res = runner.invoke(app, ["research", "proj"])
 
-    meta = worktrees_dir / ".arbor" / "research" / "base.json"
-    wt = worktrees_dir / "research" / "base"
+    wt = Path(res.stdout.strip())
+    meta = worktrees_dir / ".arbor" / "research" / f"{wt.name}.json"
 
     # Fresh research worktree survives cleanup
     result = runner.invoke(app, ["cleanup"])
