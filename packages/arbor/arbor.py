@@ -1,11 +1,13 @@
 import json
-import os
+import re
 import secrets
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
-from typing import List, Optional
+from typing import NamedTuple, Optional
 
 import typer
 from git import Repo
@@ -21,6 +23,11 @@ console = Console()
 err_console = Console(stderr=True)
 
 CONFIG_PATH = Path.home() / ".arbor_config.json"
+
+# PR lookups are network-bound, so we run them concurrently. Each call also gets
+# a timeout so one hung request can't stall the whole table.
+PR_LOOKUP_WORKERS = 8
+GH_TIMEOUT_SECONDS = 30
 
 # Research worktrees are short-lived, detached checkouts used to give LLMs
 # context. They live under this subdirectory so they don't clutter the regular
@@ -430,22 +437,108 @@ def research(
     # Print the bare path to stdout so the shell wrapper can cd into it.
     print(worktree_path)
 
-def get_gh_pr_status(repo_path: Path, branch: str) -> tuple[Optional[int], Optional[str]]:
-    """Get PR number and status using 'gh' CLI."""
+class PRLookup(NamedTuple):
+    """Outcome of a PR lookup: found, absent, or failed.
+
+    These are three distinct states, not two: a PR was found (number/state
+    set), there is genuinely no PR (all fields None), or the lookup itself
+    failed (error set). Collapsing the third into the second hides broken 'gh'
+    auth and makes 'cleanup' silently do nothing, so callers must branch on
+    'error' before reading 'state'.
+    """
+    number: Optional[int] = None
+    state: Optional[str] = None
+    error: Optional[str] = None
+
+
+_GITHUB_REMOTE_RE = re.compile(r"github\.com[:/](?P<owner>[^/]+)/")
+
+
+@lru_cache(maxsize=None)
+def get_origin_owner(repo_path: Path) -> Optional[str]:
+    """GitHub owner of the 'origin' remote, used to disambiguate PR matches."""
+    res = subprocess.run(
+        ["git", "-C", str(repo_path), "remote", "get-url", "origin"],
+        capture_output=True, text=True
+    )
+    if res.returncode != 0:
+        return None
+    match = _GITHUB_REMOTE_RE.search(res.stdout.strip())
+    return match.group("owner") if match else None
+
+
+def _pick_pr(prs: list[dict], owner: Optional[str]) -> dict:
+    """Choose the most relevant PR when a head branch name matches several."""
+    def rank(pr: dict):
+        head_owner = (pr.get("headRepositoryOwner") or {}).get("login")
+        return (
+            owner is not None and head_owner == owner,
+            (pr.get("state") or "").upper() == "OPEN",
+            pr.get("number") or 0,
+        )
+    return max(prs, key=rank)
+
+
+def get_gh_pr_status(repo_path: Path, branch: str) -> PRLookup:
+    """Look up the PR for a branch using the 'gh' CLI.
+
+    Uses 'gh pr list --head', not 'gh pr view <branch>': in a fork workflow the
+    PR head is '<fork-owner>:<branch>' on the upstream repo, which 'pr view'
+    does not resolve. '--state all' is required to see MERGED/CLOSED PRs.
+    """
     try:
-        # Check if there is a PR for this branch
         result = subprocess.run(
-            ["gh", "pr", "view", branch, "--json", "number,state"],
+            [
+                "gh", "pr", "list", "--head", branch, "--state", "all",
+                "--json", "number,state,headRepositoryOwner", "--limit", "10",
+            ],
             cwd=repo_path,
             capture_output=True,
-            text=True
+            text=True,
+            timeout=GH_TIMEOUT_SECONDS,
         )
-        if result.returncode == 0:
-            data = json.loads(result.stdout)
-            return data["number"], data["state"]
-    except Exception:
-        pass
-    return None, None
+    except FileNotFoundError:
+        return PRLookup(error="gh CLI not found")
+    except subprocess.TimeoutExpired:
+        return PRLookup(error=f"gh timed out after {GH_TIMEOUT_SECONDS}s")
+
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip().splitlines()
+        return PRLookup(error=detail[0] if detail else f"gh exited {result.returncode}")
+
+    try:
+        prs = json.loads(result.stdout or "[]")
+    except json.JSONDecodeError:
+        return PRLookup(error="could not parse gh output")
+
+    if not prs:
+        return PRLookup()
+
+    pr = _pick_pr(prs, get_origin_owner(repo_path))
+    return PRLookup(number=pr.get("number"), state=pr.get("state"))
+
+
+def lookup_prs(jobs: dict[Path, tuple[Path, str]]) -> dict[Path, PRLookup]:
+    """Resolve PR status for many worktrees at once, keyed by metadata file."""
+    if not jobs:
+        return {}
+
+    keys = list(jobs)
+    with err_console.status(f"Checking {len(keys)} branches on GitHub..."):
+        with ThreadPoolExecutor(max_workers=PR_LOOKUP_WORKERS) as pool:
+            results = pool.map(lambda k: get_gh_pr_status(*jobs[k]), keys)
+            return dict(zip(keys, results))
+
+
+def apply_lookup(info: WorktreeInfo, lookup: PRLookup, meta_file: Path) -> None:
+    """Persist a successful lookup, writing only when something changed."""
+    if lookup.error:
+        return
+    if info.pr_number == lookup.number and info.pr_status == lookup.state:
+        return
+    info.pr_number = lookup.number
+    info.pr_status = lookup.state
+    meta_file.write_text(info.model_dump_json(indent=2))
 
 @app.command("cd")
 @app.command("c", hidden=True)
@@ -490,7 +583,11 @@ def cd_command(name: str):
     raise typer.Exit(1)
 
 @app.command()
-def status():
+def status(
+    offline: bool = typer.Option(
+        False, "--offline", help="Show cached PR status without calling 'gh'."
+    ),
+):
     """Show the status of all worktrees and their PRs."""
     config = get_config()
     if not config:
@@ -498,7 +595,7 @@ def status():
         raise typer.Exit(1)
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
-    json_files = list(arbor_dir.glob("**/*.json"))
+    json_files = sorted(arbor_dir.glob("**/*.json"))
 
     if not json_files:
         console.print("No worktrees found.")
@@ -509,6 +606,15 @@ def status():
     research = [(f, i) for f, i in infos if i.kind == "research"]
 
     if work:
+        jobs = {}
+        if not offline:
+            jobs = {
+                f: (config.projects[i.repo_name], i.branch)
+                for f, i in work
+                if i.repo_name in config.projects
+            }
+        lookups = lookup_prs(jobs)
+
         table = Table(title="Arbor Worktrees")
         table.add_column("Worktree", style="cyan")
         table.add_column("Repo", style="magenta")
@@ -516,36 +622,32 @@ def status():
         table.add_column("PR", style="blue")
         table.add_column("Status", style="yellow")
 
+        failures = []
         for f, info in work:
-            repo_path = config.projects.get(info.repo_name)
-
-            if not repo_path:
+            if info.repo_name not in config.projects:
                 # Maybe the repo was removed from arbor config
-                table.add_row(
-                    info.name,
-                    f"{info.repo_name} (Missing)",
-                    info.branch,
-                    str(info.pr_number) if info.pr_number else "-",
-                    info.pr_status or "None"
-                )
-                continue
+                repo_label = f"{info.repo_name} (Missing)"
+            else:
+                repo_label = info.repo_name
 
-            # Update status from GH
-            pr_number, pr_status = get_gh_pr_status(repo_path, info.branch)
-            if pr_status:
-                info.pr_number = pr_number
-                info.pr_status = pr_status
-                f.write_text(info.model_dump_json(indent=2))
+            lookup = lookups.get(f)
+            if lookup:
+                apply_lookup(info, lookup, f)
 
-            table.add_row(
-                info.name,
-                info.repo_name,
-                info.branch,
-                str(info.pr_number) if info.pr_number else "-",
-                info.pr_status or "None"
-            )
+            if lookup and lookup.error:
+                # Don't pass a failed lookup off as "no PR" - say so out loud.
+                failures.append((info.name, lookup.error))
+                pr_cell, status_cell = "?", "[red]lookup failed[/red]"
+            else:
+                pr_cell = str(info.pr_number) if info.pr_number else "-"
+                status_cell = info.pr_status or "None"
+
+            table.add_row(info.name, repo_label, info.branch, pr_cell, status_cell)
 
         console.print(table)
+
+        for name, error in failures:
+            console.print(f"[yellow]PR lookup failed for {name}: {error}[/yellow]")
 
     if research:
         rtable = Table(title="Research Worktrees")
@@ -587,9 +689,11 @@ def cleanup(
         raise typer.Exit(1)
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
-    json_files = list(arbor_dir.glob("**/*.json"))
+    json_files = sorted(arbor_dir.glob("**/*.json"))
 
     cleaned = 0
+    jobs = {}
+    work = []
     for f in json_files:
         info = WorktreeInfo.model_validate_json(f.read_text())
         repo_path = config.projects.get(info.repo_name)
@@ -609,12 +713,22 @@ def cleanup(
                     cleaned += 1
             continue
 
-        _, pr_status = get_gh_pr_status(repo_path, info.branch)
+        work.append((f, info, repo_path, worktree_path))
+        jobs[f] = (repo_path, info.branch)
 
-        # Use updated status if available, otherwise use cached
-        current_status = pr_status or info.pr_status
+    lookups = lookup_prs(jobs)
 
-        if current_status and current_status.upper() == "MERGED":
+    for f, info, repo_path, worktree_path in work:
+        lookup = lookups[f]
+        if lookup.error:
+            # Removing a worktree is destructive, so never act on a stale cached
+            # status when we couldn't confirm it against GitHub.
+            console.print(f"[yellow]Skipping {info.name}: PR lookup failed ({lookup.error}).[/yellow]")
+            continue
+
+        apply_lookup(info, lookup, f)
+
+        if lookup.state and lookup.state.upper() == "MERGED":
             console.print(f"Cleaning up merged worktree: [blue]{info.name}[/blue]")
             if _remove_worktree(repo_path, worktree_path, f):
                 cleaned += 1

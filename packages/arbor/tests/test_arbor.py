@@ -294,3 +294,169 @@ def test_research_cleanup_ttl(temp_arbor_env):
     assert "expired research worktree" in result.stdout
     assert not wt.exists()
     assert not meta.exists()
+
+
+# --- PR lookup ---------------------------------------------------------------
+#
+# A fake 'gh' on PATH lets us pin down the fork-workflow behaviour that broke PR
+# tracking: 'gh pr view <branch>' finds nothing when the PR head lives on a fork,
+# while 'gh pr list --head <branch> --state all' finds it.
+
+FAKE_GH = '''#!/usr/bin/env python3
+import json, os, sys
+
+args = sys.argv[1:]
+log = os.environ.get("FAKE_GH_LOG")
+if log:
+    with open(log, "a") as fh:
+        fh.write(" ".join(args) + "\\n")
+
+if os.environ.get("FAKE_GH_MODE") == "fail":
+    sys.stderr.write("could not determine what repo to use\\n")
+    sys.exit(1)
+
+if args[:2] == ["pr", "view"]:
+    sys.stderr.write('no pull requests found for branch "%s"\\n' % args[2])
+    sys.exit(1)
+
+if args[:2] == ["pr", "list"]:
+    head = args[args.index("--head") + 1]
+    print(json.dumps(json.loads(os.environ.get("FAKE_GH_PRS", "{}")).get(head, [])))
+    sys.exit(0)
+
+sys.exit(1)
+'''
+
+
+@pytest.fixture
+def fake_gh(tmp_path, monkeypatch):
+    bin_dir = tmp_path / "fakebin"
+    bin_dir.mkdir()
+    gh = bin_dir / "gh"
+    gh.write_text(FAKE_GH)
+    gh.chmod(0o755)
+    monkeypatch.setenv("PATH", f"{bin_dir}{os.pathsep}{os.environ['PATH']}")
+
+    log = tmp_path / "gh.log"
+
+    def configure(prs=None, mode=None):
+        monkeypatch.setenv("FAKE_GH_PRS", json.dumps(prs or {}))
+        monkeypatch.setenv("FAKE_GH_MODE", mode or "ok")
+        monkeypatch.setenv("FAKE_GH_LOG", str(log))
+
+    configure()
+    configure.log = log
+    return configure
+
+
+def _fork_repo(tmp_path, name="fork-repo"):
+    """A repo whose 'origin' is a fork and 'upstream' is the canonical repo."""
+    repo = tmp_path / name
+    repo.mkdir()
+    subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True)
+    (repo / "file.txt").write_text("v1")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
+    subprocess.run(
+        ["git", "remote", "add", "origin", "git@github.com:me/proj.git"], cwd=repo, check=True
+    )
+    subprocess.run(
+        ["git", "remote", "add", "upstream", "git@github.com:apache/proj.git"], cwd=repo, check=True
+    )
+    return repo
+
+
+def _setup_worktree(temp_arbor_env, fake_gh, branch="feature-pr"):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _fork_repo(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    runner.invoke(app, ["create", "proj", branch])
+    return repo, worktrees_dir / branch, worktrees_dir / ".arbor" / f"{branch}.json"
+
+
+def test_status_finds_pr_on_fork(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "OPEN", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["status"])
+    assert result.exit_code == 0
+    assert "42" in result.stdout
+    assert "OPEN" in result.stdout
+
+    info = json.loads(meta.read_text())
+    assert info["pr_number"] == 42
+    assert info["pr_status"] == "OPEN"
+
+    # It must query by head branch across all states, not 'gh pr view'.
+    calls = fake_gh.log.read_text()
+    assert "pr list --head feature-pr --state all" in calls
+    assert "pr view" not in calls
+
+
+def test_status_reports_lookup_failure(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(mode="fail")
+
+    result = runner.invoke(app, ["status"])
+    assert result.exit_code == 0
+    # A broken lookup must not masquerade as "no PR".
+    assert "lookup failed" in result.stdout
+    assert "could not determine what repo to use" in result.stdout
+
+
+def test_status_offline_skips_gh(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [{"number": 7, "state": "OPEN", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["status", "--offline"])
+    assert result.exit_code == 0
+    assert not fake_gh.log.exists()
+
+
+def test_status_prefers_pr_from_origin_owner(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [
+        {"number": 10, "state": "OPEN", "headRepositoryOwner": {"login": "someone-else"}},
+        {"number": 11, "state": "OPEN", "headRepositoryOwner": {"login": "me"}},
+    ]})
+
+    runner.invoke(app, ["status"])
+    assert json.loads(meta.read_text())["pr_number"] == 11
+
+
+def test_cleanup_removes_merged_worktree(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "MERGED", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert "Cleaning up merged worktree" in result.stdout
+    assert not wt.exists()
+    assert not meta.exists()
+
+
+def test_cleanup_skips_when_lookup_fails(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+
+    # Even with a cached MERGED status, an unverifiable lookup must not delete.
+    info = json.loads(meta.read_text())
+    info["pr_status"] = "MERGED"
+    meta.write_text(json.dumps(info))
+
+    fake_gh(mode="fail")
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert "PR lookup failed" in result.stdout
+    assert wt.exists()
+    assert meta.exists()
+
+
+def test_cleanup_keeps_open_pr_worktree(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "OPEN", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert wt.exists()
+    assert json.loads(meta.read_text())["pr_status"] == "OPEN"
