@@ -142,7 +142,7 @@ def test_import_dirty_repo_fails(temp_arbor_env):
     
     result = runner.invoke(app, ["import", str(repo_path)])
     assert result.exit_code == 1
-    assert "Repo has uncommitted changes" in result.stdout
+    assert "Repo has uncommitted changes" in result.stderr
 
 def test_import_converts_branch_to_worktree(temp_arbor_env):
     worktrees_dir = temp_arbor_env["worktrees_dir"]
@@ -324,6 +324,11 @@ if args[:2] == ["pr", "list"]:
     print(json.dumps(json.loads(os.environ.get("FAKE_GH_PRS", "{}")).get(head, [])))
     sys.exit(0)
 
+if args[:2] == ["pr", "create"]:
+    repo = args[args.index("--repo") + 1]
+    print("https://github.com/%s/pull/%s" % (repo, os.environ.get("FAKE_GH_NEW_PR", "99")))
+    sys.exit(0)
+
 sys.exit(1)
 '''
 
@@ -350,18 +355,36 @@ def fake_gh(tmp_path, monkeypatch):
 
 
 def _fork_repo(tmp_path, name="fork-repo"):
-    """A repo whose 'origin' is a fork and 'upstream' is the canonical repo."""
+    """A repo set up the way a real fork workflow is.
+
+    Both remotes carry github.com URLs, because that is what arbor reads to work
+    out which repo a PR targets and whose fork the head branch lives on. Pushes
+    to 'origin' are redirected to a bare repo on disk with pushInsteadOf, which
+    (unlike insteadOf) leaves 'git remote get-url' reporting the github URL. The
+    upstream tracking ref is created directly, so callers pass --no-fetch rather
+    than reaching for the network.
+    """
     repo = tmp_path / name
     repo.mkdir()
     subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True)
     (repo / "file.txt").write_text("v1")
     subprocess.run(["git", "add", "."], cwd=repo, check=True)
     subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
+
+    fork = tmp_path / f"{name}-fork.git"
+    subprocess.run(["git", "init", "--bare", "-b", "main", str(fork)], check=True)
     subprocess.run(
         ["git", "remote", "add", "origin", "git@github.com:me/proj.git"], cwd=repo, check=True
     )
     subprocess.run(
+        ["git", "config", f"url.{fork}.pushInsteadOf", "git@github.com:me/proj.git"],
+        cwd=repo, check=True,
+    )
+    subprocess.run(
         ["git", "remote", "add", "upstream", "git@github.com:apache/proj.git"], cwd=repo, check=True
+    )
+    subprocess.run(
+        ["git", "update-ref", "refs/remotes/upstream/main", "HEAD"], cwd=repo, check=True
     )
     return repo
 
@@ -371,7 +394,7 @@ def _setup_worktree(temp_arbor_env, fake_gh, branch="feature-pr"):
     runner.invoke(app, ["init", str(worktrees_dir)])
     repo = _fork_repo(temp_arbor_env["tmp_path"])
     runner.invoke(app, ["import", str(repo), "--name", "proj"])
-    runner.invoke(app, ["create", "proj", branch])
+    runner.invoke(app, ["create", "proj", branch, "--no-fetch"])
     return repo, worktrees_dir / branch, worktrees_dir / ".arbor" / f"{branch}.json"
 
 
@@ -460,3 +483,334 @@ def test_cleanup_keeps_open_pr_worktree(temp_arbor_env, fake_gh):
     assert result.exit_code == 0
     assert wt.exists()
     assert json.loads(meta.read_text())["pr_status"] == "OPEN"
+
+
+# --- Base ref ----------------------------------------------------------------
+#
+# Every worktree has to start from the upstream main branch. Branching from the
+# main repo's HEAD instead means a fan-out of parallel PRs stacks on whatever
+# commit that repo was last left at.
+
+def _upstream_head(repo):
+    return subprocess.run(
+        ["git", "rev-parse", "upstream/main"], cwd=repo, capture_output=True, text=True
+    ).stdout.strip()
+
+
+def test_create_branches_from_upstream_main(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    # Move the main repo's HEAD off of upstream/main, the way day-to-day work does.
+    subprocess.run(["git", "checkout", "--detach"], cwd=repo, check=True)
+    (repo / "stray.txt").write_text("not part of any PR")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "stray local commit"], cwd=repo, check=True)
+
+    result = runner.invoke(app, ["create", "proj", "feature-a"])
+    assert result.exit_code == 0, result.stderr
+
+    wt = Path(result.stdout.strip())
+    assert wt == worktrees_dir / "feature-a"
+    # The new branch starts at upstream/main, not at the stray local commit.
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=wt, capture_output=True, text=True
+    ).stdout.strip()
+    assert head == _upstream_head(repo)
+    assert not (wt / "stray.txt").exists()
+
+
+def test_create_parallel_branches_share_a_base(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    heads = []
+    for branch in ("fix-one", "fix-two", "fix-three"):
+        result = runner.invoke(app, ["create", "proj", branch])
+        assert result.exit_code == 0, result.stderr
+        wt = Path(result.stdout.strip())
+        heads.append(
+            subprocess.run(
+                ["git", "rev-parse", "HEAD"], cwd=wt, capture_output=True, text=True
+            ).stdout.strip()
+        )
+
+    # Independent PRs must not stack on each other.
+    assert len(set(heads)) == 1
+    assert heads[0] == _upstream_head(repo)
+
+
+def test_create_honours_explicit_base(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    base_sha = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=repo, capture_output=True, text=True
+    ).stdout.strip()
+    subprocess.run(["git", "checkout", "--detach"], cwd=repo, check=True)
+    (repo / "later.txt").write_text("later")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "later"], cwd=repo, check=True)
+    subprocess.run(["git", "push", "upstream", "HEAD:main"], cwd=repo, check=True)
+
+    result = runner.invoke(app, ["create", "proj", "on-older-base", "--base", base_sha])
+    assert result.exit_code == 0, result.stderr
+    wt = Path(result.stdout.strip())
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=wt, capture_output=True, text=True
+    ).stdout.strip()
+    assert head == base_sha
+
+
+# --- Machine-readable output --------------------------------------------------
+
+def test_create_json_output(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    result = runner.invoke(app, [
+        "create", "proj", "feature-json",
+        "--task", "fix the flaky test", "--owner", "agent-3", "--json",
+    ])
+    assert result.exit_code == 0, result.stderr
+
+    # stdout is exactly one JSON document: no Rich output mixed in.
+    payload = json.loads(result.stdout)
+    assert payload["ok"] is True
+    assert payload["path"] == str(worktrees_dir / "feature-json")
+    assert payload["base"] == "upstream/main"
+    assert payload["task"] == "fix the flaky test"
+    assert payload["owner"] == "agent-3"
+
+    info = json.loads((worktrees_dir / ".arbor" / "feature-json.json").read_text())
+    assert info["task"] == "fix the flaky test"
+    assert info["owner"] == "agent-3"
+
+
+def test_errors_are_json_in_json_mode(temp_arbor_env):
+    runner.invoke(app, ["init", str(temp_arbor_env["worktrees_dir"])])
+
+    result = runner.invoke(app, ["create", "nope", "some-branch", "--json"])
+    assert result.exit_code == 1
+    payload = json.loads(result.stdout)
+    assert payload["ok"] is False
+    assert payload["code"] == "unknown_project"
+
+
+def test_status_json(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "OPEN", "headRepositoryOwner": {"login": "me"}}]})
+
+    (wt / "new.txt").write_text("work in progress")
+
+    result = runner.invoke(app, ["status", "--json"])
+    assert result.exit_code == 0, result.stderr
+
+    payload = json.loads(result.stdout)
+    entry = next(w for w in payload["worktrees"] if w["name"] == "feature-pr")
+    assert entry["pr_number"] == 42
+    assert entry["pr_status"] == "OPEN"
+    assert entry["path"] == str(wt)
+    assert entry["git"]["dirty"] is True
+    assert entry["git"]["ahead"] == 0
+
+
+def test_status_repo_filter(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+
+    result = runner.invoke(app, ["status", "--repo", "other", "--json"])
+    assert result.exit_code == 0
+    assert json.loads(result.stdout)["worktrees"] == []
+
+    result = runner.invoke(app, ["status", "--repo", "proj", "--offline", "--json"])
+    worktrees = json.loads(result.stdout)["worktrees"]
+    assert {w["repo"] for w in worktrees} == {"proj"}
+    assert "feature-pr" in {w["name"] for w in worktrees}
+
+
+def test_config_json(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    result = runner.invoke(app, ["config", "--json"])
+    assert result.exit_code == 0
+    payload = json.loads(result.stdout)
+    assert payload["projects"]["proj"] == str(repo)
+    assert payload["worktrees_dir"] == str(worktrees_dir.resolve())
+
+
+def test_cleanup_dry_run_json(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "MERGED", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["cleanup", "--dry-run", "--json"])
+    assert result.exit_code == 0
+    payload = json.loads(result.stdout)
+    assert [r["name"] for r in payload["removed"]] == ["feature-pr"]
+    # --dry-run reports without touching anything.
+    assert wt.exists()
+
+
+# --- exec ---------------------------------------------------------------------
+
+def test_exec_runs_in_worktree(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+
+    result = runner.invoke(app, ["exec", "feature-pr", "--", "pwd"])
+    assert result.exit_code == 0
+
+
+def test_exec_propagates_exit_code(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+
+    result = runner.invoke(app, ["exec", "feature-pr", "--", "false"])
+    assert result.exit_code == 1
+
+
+def test_exec_unknown_worktree(temp_arbor_env):
+    runner.invoke(app, ["init", str(temp_arbor_env["worktrees_dir"])])
+    result = runner.invoke(app, ["exec", "ghost", "--", "pwd"])
+    assert result.exit_code == 1
+    assert "not found" in result.stderr
+
+
+# --- pr -----------------------------------------------------------------------
+
+def _commit_in(wt, message="a change"):
+    (wt / "change.txt").write_text(message)
+    subprocess.run(["git", "add", "."], cwd=wt, check=True)
+    subprocess.run(["git", "commit", "-m", message], cwd=wt, check=True)
+
+
+def test_pr_pushes_and_targets_upstream(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    fake_gh(prs={})
+    _commit_in(wt)
+
+    result = runner.invoke(app, ["pr", "feature-pr", "--title", "Fix the thing", "--no-fetch", "--json"])
+    assert result.exit_code == 0, result.stderr
+
+    payload = json.loads(result.stdout)
+    assert payload["pr_number"] == 99
+    assert payload["created"] is True
+
+    calls = fake_gh.log.read_text()
+    # The fork workflow has to be spelled out so gh never prompts: PR against
+    # the upstream repo, head namespaced to the fork's owner.
+    assert "--repo apache/proj" in calls
+    assert "--head me:feature-pr" in calls
+    assert "--base main" in calls
+
+    # The PR number is recorded immediately, not on the next 'status'.
+    assert json.loads(meta.read_text())["pr_number"] == 99
+
+
+def test_pr_is_idempotent(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    _commit_in(wt)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "OPEN", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["pr", "feature-pr", "--title", "Fix the thing", "--no-fetch", "--json"])
+    assert result.exit_code == 0, result.stderr
+
+    payload = json.loads(result.stdout)
+    assert payload["pr_number"] == 42
+    assert payload["created"] is False
+    assert "pr create" not in fake_gh.log.read_text()
+
+
+def test_pr_refuses_without_commits(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+
+    result = runner.invoke(app, ["pr", "feature-pr", "--title", "Nothing", "--no-fetch", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "no_commits"
+
+
+def test_pr_refuses_dirty_worktree(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    _commit_in(wt)
+    (wt / "uncommitted.txt").write_text("forgot to commit this")
+
+    result = runner.invoke(app, ["pr", "feature-pr", "--title", "Fix", "--no-fetch", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "dirty_worktree"
+
+
+def test_pr_requires_a_title(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    _commit_in(wt)
+
+    result = runner.invoke(app, ["pr", "feature-pr", "--no-fetch", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "missing_title"
+
+
+def test_pr_rejects_research_worktree(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    res = runner.invoke(app, ["research", "proj"])
+    name = Path(res.stdout.strip()).name
+
+    result = runner.invoke(app, ["pr", name, "--title", "nope", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "research_worktree"
+
+
+# --- Locking ------------------------------------------------------------------
+
+def test_lock_is_exclusive(temp_arbor_env):
+    import fcntl
+    import arbor
+
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    with arbor.arbor_lock(worktrees_dir):
+        # A second holder must not get in while the first is inside.
+        with open(worktrees_dir / ".arbor" / "lock", "w") as other:
+            with pytest.raises(OSError):
+                fcntl.flock(other, fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+    # Released on exit.
+    with open(worktrees_dir / ".arbor" / "lock", "w") as other:
+        fcntl.flock(other, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        fcntl.flock(other, fcntl.LOCK_UN)
+
+
+def test_status_json_stays_valid_without_a_base_ref(temp_arbor_env):
+    """A project with no upstream/origin must not corrupt the JSON payload."""
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+
+    # A repo with no remotes at all: base-ref resolution finds nothing.
+    repo = temp_arbor_env["tmp_path"] / "remoteless"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True)
+    (repo / "file.txt").write_text("v1")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    result = runner.invoke(app, ["status", "--offline", "--json"])
+    assert result.exit_code == 0, result.stderr
+
+    payload = json.loads(result.stdout)
+    entry = payload["worktrees"][0]
+    assert entry["git"]["ahead"] is None
+    assert entry["git"]["dirty"] is False

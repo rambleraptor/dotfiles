@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  DOTFILES_DIR: "{{.ROOT_DIR}}"
+  # The skills CLI: https://github.com/vercel-labs/skills
+  # Pinned here so there is one place to change the version.
+  SKILLS_CLI: "npx -y skills@latest"
+  # Install for Claude Code only. '*' would install to every agent the CLI
+  # knows about, which is not what this machine wants.
+  AGENT: "claude-code"
+
+tasks:
+  install:
+    desc: Install every skill in skills/ for Claude Code
+    summary: |
+      Installs each skill under the dotfiles 'skills/' directory globally,
+      using the skills CLI.
+
+      Adding a skill later needs no change here: '--skill *' picks up whatever
+      the directory contains. Scaffold a new one with:
+
+        cd skills && npx -y skills@latest init <name>
+
+      Skills are copied into ~/.claude/skills, so re-run this task after
+      editing one in the dotfiles.
+    cmds:
+      - "{{.SKILLS_CLI}} add {{.DOTFILES_DIR}}/skills --global --agent {{.AGENT}} --skill '*' --yes"
+    preconditions:
+      - sh: command -v npx
+        msg: "npx not found. Install Node.js, then re-run 'task skills:install'."
+
+  list:
+    desc: List the skills currently installed for Claude Code
+    cmds:
+      - cmd: "{{.SKILLS_CLI}} list --global --agent {{.AGENT}}"
+        silent: true
