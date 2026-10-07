@@ -1,3 +1,5 @@
 #!/bin/bash
-# removes all running docker containers
-docker stop $(docker ps -aq)
+# removes all docker containers, stopping any that are running
+ids=$(docker ps -aq)
+[ -z "$ids" ] && exit 0
+docker rm -f $ids

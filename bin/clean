@@ -1,6 +1,13 @@
 #!/bin/sh
 # clean
-# Cleans out git repo fully
+# Cleans out git repo fully (stashes changes, deletes untracked and ignored files)
+
+printf 'This stashes changes and deletes all untracked and ignored files in %s. Continue? [y/N] ' "$(git rev-parse --show-toplevel)"
+read -r answer
+case "$answer" in
+  [yY]*) ;;
+  *) exit 1 ;;
+esac
 
 git stash
 git clean -fdx

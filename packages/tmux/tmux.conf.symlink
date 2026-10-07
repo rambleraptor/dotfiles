@@ -19,14 +19,15 @@ setw -g mode-keys vi
 set -g history-limit 30000
 
 # Colors right
-set -g default-terminal "xterm-256color"
+set -g default-terminal "tmux-256color"
+set -as terminal-features ",xterm*:RGB"
 
 # Mouse (if I want it)
 set -g mouse on
 
 # Rename terminals
 set -g set-titles on
-set -g set-titles-string '#(whoami)::#h::#(ipconfig getifaddr en1)'
+set -g set-titles-string '#(whoami)::#h'
 
 # Status bar customization
 set -g status-bg black
@@ -34,9 +35,9 @@ set -g status-fg white
 set -g status-interval 5
 set -g status-left-length 90
 set -g status-right-length 60
-set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue]#(hostname -s)#[fg=white]::#[fg=yellow]#(ipconfig getifaddr en1)"
+set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue]#(hostname -s)"
 set -g status-justify left
 set -g status-right '#[fg=Cyan]#S #[fg=white]%a %d %b %R'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'
+if-shell 'test -x ~/.tmux/plugins/tpm/tpm' "run '~/.tmux/plugins/tpm/tpm'"

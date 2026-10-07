@@ -11,6 +11,7 @@ includes:
   arbor: ./tasks/arbor.yml
   skills: ./tasks/skills.yml
   try: ./tasks/try.yml
+  tmux: ./tasks/tmux.yml
 
 tasks:
   default:
@@ -30,3 +31,4 @@ tasks:
       - task: arbor:install
       - task: skills:install
       - task: try:install
+      - task: tmux:install

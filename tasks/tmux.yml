@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  install:
+    desc: Install the tmux plugin manager (tpm)
+    cmds:
+      - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    status:
+      - test -d ~/.tmux/plugins/tpm

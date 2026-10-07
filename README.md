@@ -4,15 +4,17 @@
 
 These are the dotfiles that I use on my personal machine. The goal of this repo is to create a completely automated process to setup a new machine with my settings and applications.
 
-# Install Scripts
+# Install
 
-This repo contains the following install scripts:
+Run `./install` on a new machine. It installs [Task](https://taskfile.dev) if
+needed, then runs `task install`, which installs packages (Homebrew on macOS,
+apt on Linux), applies macOS defaults, symlinks the dotfiles, and installs mise
+tools, arbor, skills, try, and tmux plugins.
 
-* `script/install.sh`: The main install script. Symlinks all files together. Used for GitHub Codespaces.
-* `script/symlink.sh`: Symlinks all files together.
-* `script/mac_defaults.sh`: Registry changes for Mac OS systems.
+Run `task -l` to see the individual tasks.
 
-
+Machine-specific settings go in `local/.localrc`, which is not committed. See
+`config_template` for an example.
 
 # Agent Skills
 

@@ -1,3 +1,3 @@
 if command -v try >/dev/null 2>&1; then
-  eval "$(try init)"
+  eval "$(try init ~/src/tries)"
 fi

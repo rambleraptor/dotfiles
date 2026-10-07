@@ -6,9 +6,6 @@ export EDITOR=/usr/bin/vim
 # export DEFAULT_USER=1
 source $DOTFILES/packages/zsh/shellconfig
 
-# Tmux: Get colors working
-export TERM=xterm-256color
-
 # Go Path
 export GOPATH=$HOME/go
 
@@ -22,8 +19,6 @@ if [[ -n $USE_STARSHIP ]]; then
   export STARSHIP_CONFIG=$HOME/.starship/config.toml
   eval "$(starship init zsh)"
 fi
-
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
 
