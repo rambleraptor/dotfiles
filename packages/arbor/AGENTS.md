@@ -24,7 +24,9 @@ arbor init ~/worktrees
 ```
 
 ### `import`
-Adds a local Git repository to Arbor's registry.
+Adds a local Git repository to Arbor's registry. If the repo has a feature
+branch checked out, that branch is moved into its own worktree and the repo is
+left detached; the main branch is left where it is.
 ```bash
 arbor import /path/to/repo --name my-project
 ```
@@ -32,11 +34,28 @@ arbor import /path/to/repo --name my-project
 ### `create`
 Creates a new worktree for a registered project on a specific branch, branched
 from the project's main branch. If the branch doesn't exist, it creates it.
+An existing branch is checked out as-is: a local branch is used directly, a
+branch that only exists on `origin`/`upstream` is tracked, and a branch checked
+out in the main repo is moved into the worktree (the main repo is detached).
+If the branch already has a worktree in the worktrees dir, that path is
+returned instead of failing.
 The worktree path is printed to stdout; everything else goes to stderr.
 ```bash
 arbor create my-project feature/cool-thing
 WT=$(arbor create my-project fix-the-thing)   # capture the path directly
 ```
+Pass a comma-separated list of projects to make a multi-repo group: one
+worktree per repo, all on the same branch, under a shared folder named after
+the branch. The group folder's path is printed; `--json` lists each member.
+If any repo fails, the worktrees (and newly created branches) already made for
+the group are rolled back, so you get all of them or none.
+```bash
+arbor create api,web feature/cool-thing
+# ~/worktrees/feature/cool-thing/api  and  ~/worktrees/feature/cool-thing/web
+```
+Members are addressed as `<branch>/<repo>` (`arbor pr feature/cool-thing/api`);
+the bare group name resolves to the folder (`arbor cd`, `arbor exec`). A short
+name matching more than one worktree is an `ambiguous_worktree` error.
 The base is resolved fresh every time (fetch `upstream`, prefer `upstream/main`,
 fall back to origin's default branch), so several branches cut for independent
 PRs all start from the same current commit instead of stacking on each other.
@@ -72,8 +91,9 @@ arbor status --repo my-project --offline
 
 ### `cleanup`
 Scans all active worktrees and removes those whose PRs have been merged on
-GitHub, plus research worktrees past their TTL. `--dry-run` reports without
-removing.
+GitHub, plus research worktrees past their TTL. A multi-repo group is only
+removed once every member's PR is merged, and then the whole group goes.
+`--dry-run` reports without removing.
 ```bash
 arbor cleanup
 ```
@@ -92,7 +112,7 @@ In JSON mode stdout carries exactly one JSON document and every human-facing
 message moves to stderr, so the output can be parsed without stripping terminal
 formatting. Errors are reported the same way — `{"ok": false, "error": ...,
 "code": ...}` on stdout, exit code 1 — with a stable `code` to branch on
-(`unknown_project`, `worktree_exists`, `dirty_worktree`, `no_commits`,
+(`unknown_project`, `worktree_exists`, `branch_checked_out`, `dirty_worktree`, `no_commits`,
 `missing_title`, `no_base_ref`, `lock_timeout`, ...).
 
 `arbor status --json` additionally reports each worktree's local git state
@@ -126,7 +146,7 @@ exclusive lock in `{worktrees_dir}/.arbor/lock`, because `git fetch` and
 
 ### Configuration
 - **Global Config**: Stored at `~/.arbor_config.json`. It tracks the `worktrees_dir` and a mapping of project names to their local filesystem paths.
-- **Worktree Metadata**: Each worktree has a corresponding JSON file in `{worktrees_dir}/.arbor/{branch_name}.json`, storing specific metadata like the repo name and cached PR info.
+- **Worktree Metadata**: Each worktree has a corresponding JSON file in `{worktrees_dir}/.arbor/{branch_name}.json`, storing specific metadata like the repo name and cached PR info. Group members live at `.arbor/{branch_name}/{repo}.json` with `group` set to the branch name.
 
 ### Dependencies
 - **Typer**: CLI framework.

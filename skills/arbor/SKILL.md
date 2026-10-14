@@ -27,6 +27,10 @@ PR, or anything that shouldn't disturb the current checkout.
 # The path goes to stdout, so it can be captured directly.
 WT=$(arbor create <project> <branch> --task "what this is for")
 
+# One change spanning several repos: a worktree per repo on the same branch,
+# under one folder ($WT/<project>). All are created or none are.
+WT=$(arbor create <project>,<project> <branch>)
+
 # Run a command inside a worktree, by name. Exits with the command's own code.
 arbor exec <branch> -- pytest tests/
 
@@ -61,6 +65,9 @@ arbor cleanup --dry-run
   `behind` means the branch needs a rebase before it will review cleanly.
 - Reading `status` for every project is slow (it hits GitHub once per branch).
   Pass `--repo`, and `--offline` when cached PR state is good enough.
+- Members of a multi-repo group are named `<branch>/<project>`; use that
+  name for `pr` and `exec`. `cleanup` keeps a group until every member's PR
+  has merged.
 - `create` and `research` serialize on a lock, because both write to the shared
   main repo. Concurrent callers wait rather than corrupting each other.
 
