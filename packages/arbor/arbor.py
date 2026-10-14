@@ -134,11 +134,14 @@ class WorktreeInfo(BaseModel):
     pr_status: Optional[str] = "None"
     # "work" (a normal branch worktree) or "research" (short-lived, detached).
     kind: str = "work"
-    # ISO-8601 UTC timestamp, set for research worktrees to drive TTL cleanup.
+    # ISO-8601 UTC timestamp of creation. Drives TTL cleanup for research
+    # worktrees and recency ordering for everything; absent on older metadata.
     created_at: Optional[str] = None
-    # Free-form note describing what this worktree is for, so a session that
+    # Free-form description of what this worktree is for, so a session that
     # fanned out several of them can tell them apart later.
     task: Optional[str] = None
+    # Labels for finding worktrees again with 'arbor search --tag'.
+    tags: list[str] = Field(default_factory=list)
     # Who asked for this worktree - typically an agent or session identifier.
     owner: Optional[str] = None
     # Set when this worktree was created alongside others on the same branch in
@@ -182,6 +185,14 @@ def get_worktree_file(worktrees_dir: Path, name: str) -> Path:
     file_path = get_arbor_dir(worktrees_dir) / f"{name}.json"
     file_path.parent.mkdir(parents=True, exist_ok=True)
     return file_path
+
+def load_worktrees(config: Config) -> list[tuple[Path, WorktreeInfo]]:
+    """Every worktree arbor knows about, as (metadata file, info) pairs."""
+    arbor_dir = get_arbor_dir(config.worktrees_dir)
+    return [
+        (f, WorktreeInfo.model_validate_json(f.read_text()))
+        for f in sorted(arbor_dir.glob("**/*.json"))
+    ]
 
 def find_project_by_path(config: Config, path: Path) -> Optional[str]:
     target = path.resolve()
@@ -253,6 +264,7 @@ def _create_worktree(
     owner: Optional[str] = None,
     name: Optional[str] = None,
     group: Optional[str] = None,
+    tags: Optional[list[str]] = None,
 ) -> tuple[Path, WorktreeInfo]:
     """Add a worktree for 'branch' and record its metadata.
 
@@ -274,7 +286,8 @@ def _create_worktree(
             info = WorktreeInfo.model_validate_json(meta_file.read_text())
         else:
             info = WorktreeInfo(
-                name=name, repo_name=repo_name, branch=branch, task=task, owner=owner, group=group
+                name=name, repo_name=repo_name, branch=branch, task=task, owner=owner,
+                group=group, tags=tags or [], created_at=now_iso(),
             )
             meta_file.write_text(info.model_dump_json(indent=2))
         return worktree_path, info
@@ -326,7 +339,8 @@ def _create_worktree(
         raise fail(f"Failed to create worktree: {e.stderr}", "worktree_add_failed")
 
     info = WorktreeInfo(
-        name=name, repo_name=repo_name, branch=branch, task=task, owner=owner, group=group
+        name=name, repo_name=repo_name, branch=branch, task=task, owner=owner,
+        group=group, tags=tags or [], created_at=now_iso(),
     )
     meta_file.write_text(info.model_dump_json(indent=2))
 
@@ -405,6 +419,7 @@ def _create_group(
     fetch: bool,
     task: Optional[str],
     owner: Optional[str],
+    tags: list[str],
 ) -> list[tuple[Path, WorktreeInfo, str]]:
     """Create a worktree per repo under '{worktrees_dir}/{branch}/', all or nothing.
 
@@ -439,7 +454,7 @@ def _create_group(
             created.append(member)
             path, info = _create_worktree(
                 config, name, branch, repo_path, base=bases[name], task=task, owner=owner,
-                name=f"{branch}/{name}", group=branch,
+                name=f"{branch}/{name}", group=branch, tags=tags,
             )
             results.append((path, info, bases[name]))
     except BaseException:
@@ -552,10 +567,14 @@ def create(
         help="Resolve the base from local refs instead of fetching first."
     ),
     task: Optional[str] = typer.Option(
-        None, "--task", help="What this worktree is for; recorded in metadata."
+        None, "--description", "--task", "-d",
+        help="What this worktree is for; recorded in metadata.",
     ),
     owner: Optional[str] = typer.Option(
         None, "--owner", help="Who owns this worktree, e.g. an agent or session id."
+    ),
+    tag: Optional[list[str]] = typer.Option(
+        None, "--tag", "-t", help="Tag to attach; repeat for several."
     ),
     json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
 ):
@@ -569,11 +588,12 @@ def create(
     set_json_mode(json_out)
     config = require_config()
     repo_names = parse_repo_names(repo_name)
+    tags = normalize_tags(tag)
 
     if len(repo_names) > 1:
         with arbor_lock(config.worktrees_dir):
             members = _create_group(
-                config, repo_names, branch, base, not no_fetch, task, owner
+                config, repo_names, branch, base, not no_fetch, task, owner, tags
             )
         group_path = config.worktrees_dir / branch
         if json_out:
@@ -584,6 +604,7 @@ def create(
                 "branch": branch,
                 "task": task,
                 "owner": owner,
+                "tags": tags,
                 "worktrees": [
                     {"name": info.name, "path": str(path), "repo": info.repo_name, "base": member_base}
                     for path, info, member_base in members
@@ -599,7 +620,8 @@ def create(
     with arbor_lock(config.worktrees_dir):
         start_point = base or resolve_base_ref(repo_path, fetch=not no_fetch)
         worktree_path, info = _create_worktree(
-            config, repo_name, branch, repo_path, base=start_point, task=task, owner=owner
+            config, repo_name, branch, repo_path, base=start_point, task=task, owner=owner,
+            tags=tags,
         )
 
     if json_out:
@@ -612,6 +634,7 @@ def create(
             "base": start_point,
             "task": task,
             "owner": owner,
+            "tags": tags,
         })
     else:
         print(worktree_path)
@@ -695,7 +718,10 @@ def base_branch_name(base_ref: str) -> str:
     """Strip the remote prefix from a base ref: 'upstream/main' -> 'main'."""
     return base_ref.split("/", 1)[1] if "/" in base_ref else base_ref
 
-def research_age_days(info: WorktreeInfo) -> Optional[int]:
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+def parse_created_at(info: WorktreeInfo) -> Optional[datetime]:
     if not info.created_at:
         return None
     try:
@@ -704,7 +730,23 @@ def research_age_days(info: WorktreeInfo) -> Optional[int]:
         return None
     if created.tzinfo is None:
         created = created.replace(tzinfo=timezone.utc)
+    return created
+
+def research_age_days(info: WorktreeInfo) -> Optional[int]:
+    created = parse_created_at(info)
+    if not created:
+        return None
     return (datetime.now(timezone.utc) - created).days
+
+def normalize_tags(tags: Optional[list[str]]) -> list[str]:
+    """Dedupe tags, keeping order; '--tag a,b' is accepted as two tags."""
+    result: list[str] = []
+    for raw in tags or []:
+        for tag in raw.split(","):
+            tag = tag.strip()
+            if tag and tag not in result:
+                result.append(tag)
+    return result
 
 @app.command()
 def research(
@@ -712,10 +754,14 @@ def research(
     pr: Optional[int] = typer.Option(None, "--pr", help="PR number to check out (default: base branch HEAD)"),
     name: Optional[str] = typer.Option(None, "--name", "-n", help="Name for the research worktree"),
     task: Optional[str] = typer.Option(
-        None, "--task", help="What this worktree is for; recorded in metadata."
+        None, "--description", "--task", "-d",
+        help="What this worktree is for; recorded in metadata.",
     ),
     owner: Optional[str] = typer.Option(
         None, "--owner", help="Who owns this worktree, e.g. an agent or session id."
+    ),
+    tag: Optional[list[str]] = typer.Option(
+        None, "--tag", "-t", help="Tag to attach; repeat for several."
     ),
     json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
 ):
@@ -786,9 +832,10 @@ def research(
         branch=branch_desc,
         pr_number=pr,
         kind="research",
-        created_at=datetime.now(timezone.utc).isoformat(),
+        created_at=now_iso(),
         task=task,
         owner=owner,
+        tags=normalize_tags(tag),
     )
     get_worktree_file(config.worktrees_dir, rel_name).write_text(info.model_dump_json(indent=2))
 
@@ -804,6 +851,7 @@ def research(
             "kind": "research",
             "task": task,
             "owner": owner,
+            "tags": info.tags,
         })
     else:
         # Print the bare path to stdout so the shell wrapper can cd into it.
@@ -978,12 +1026,24 @@ def require_worktree(config: Config, name: str) -> ResolvedWorktree:
 
 @app.command("cd")
 @app.command("c", hidden=True)
-def cd_command(name: str):
+def cd_command(
+    name: Optional[str] = typer.Argument(
+        None, help="Worktree to go to; defaults to the most recently active one."
+    ),
+):
     """Print the path to a worktree for shell integration."""
     config = get_config()
     if not config:
         print("Arbor not initialized. Run 'arbor init' first.", file=sys.stderr)
         raise typer.Exit(1)
+
+    if name is None:
+        recent = by_recent_activity(config, load_worktrees(config))
+        if not recent:
+            print("No worktrees found.", file=sys.stderr)
+            raise typer.Exit(1)
+        print(config.worktrees_dir / recent[0].info.name)
+        return
 
     found = resolve_worktree(config, name)
     if not found:
@@ -1107,10 +1167,7 @@ def status(
     set_json_mode(json_out)
     config = require_config()
 
-    arbor_dir = get_arbor_dir(config.worktrees_dir)
-    json_files = sorted(arbor_dir.glob("**/*.json"))
-
-    infos = [(f, WorktreeInfo.model_validate_json(f.read_text())) for f in json_files]
+    infos = load_worktrees(config)
     if repo:
         infos = [(f, i) for f, i in infos if i.repo_name == repo]
 
@@ -1154,6 +1211,7 @@ def status(
                     "group": info.group,
                     "task": info.task,
                     "owner": info.owner,
+                    "tags": info.tags,
                     "created_at": info.created_at,
                     "pr_number": info.pr_number,
                     "pr_status": info.pr_status,
@@ -1211,6 +1269,324 @@ def status(
 
         console.print(rtable)
 
+class RecentWorktree(NamedTuple):
+    meta_file: Path
+    info: WorktreeInfo
+    last_active: Optional[datetime]
+
+
+def last_activity(worktree_path: Path, info: WorktreeInfo) -> Optional[datetime]:
+    """When a worktree was last touched: created, committed to, or edited.
+
+    Uncommitted edits count, so a worktree an agent is still working in ranks
+    above one that merely has a newer commit.
+    """
+    created = parse_created_at(info)
+    if not worktree_path.exists():
+        return created
+
+    times = []
+    if created:
+        times.append(created.timestamp())
+    else:
+        # Metadata written before creation times were recorded. A worktree's
+        # '.git' file is written once, when the worktree is added.
+        try:
+            times.append((worktree_path / ".git").stat().st_mtime)
+        except OSError:
+            pass
+
+    commit = subprocess.run(
+        ["git", "-C", str(worktree_path), "log", "-1", "--format=%ct"],
+        capture_output=True, text=True
+    )
+    if commit.returncode == 0 and commit.stdout.strip():
+        times.append(int(commit.stdout.strip()))
+
+    changes = subprocess.run(
+        ["git", "-C", str(worktree_path), "status", "--porcelain", "-z"],
+        capture_output=True, text=True
+    )
+    entries = changes.stdout.split("\0") if changes.returncode == 0 else []
+    i = 0
+    while i < len(entries):
+        entry = entries[i]
+        i += 1
+        if len(entry) < 4:
+            continue
+        if entry[0] in "RC":
+            # Renames and copies are followed by the original path.
+            i += 1
+        try:
+            times.append((worktree_path / entry[3:]).lstat().st_mtime)
+        except OSError:
+            # Deleted files have nothing to stat.
+            pass
+
+    return datetime.fromtimestamp(max(times), timezone.utc) if times else None
+
+
+def by_recent_activity(
+    config: Config, infos: list[tuple[Path, WorktreeInfo]]
+) -> list[RecentWorktree]:
+    """Worktrees ordered most recently active first; unknown activity sorts last."""
+    def activity(item):
+        f, info = item
+        return RecentWorktree(f, info, last_activity(config.worktrees_dir / info.name, info))
+
+    with ThreadPoolExecutor(max_workers=PR_LOOKUP_WORKERS) as pool:
+        recent = list(pool.map(activity, infos))
+    oldest = datetime.min.replace(tzinfo=timezone.utc)
+    return sorted(recent, key=lambda r: r.last_active or oldest, reverse=True)
+
+
+def format_ago(when: Optional[datetime]) -> str:
+    if when is None:
+        return "-"
+    seconds = (datetime.now(timezone.utc) - when).total_seconds()
+    if seconds < 60:
+        return "just now"
+    for unit, size in (("d", 86400), ("h", 3600), ("m", 60)):
+        if seconds >= size:
+            return f"{int(seconds // size)}{unit} ago"
+    return "just now"
+
+
+def matches_query(info: WorktreeInfo, words: list[str]) -> bool:
+    """Every word must appear somewhere in the worktree's searchable fields."""
+    haystack = " ".join(
+        filter(None, [info.name, info.branch, info.repo_name, info.task, info.owner, *info.tags])
+    ).lower()
+    return all(word in haystack for word in words)
+
+
+def worktree_summary(
+    config: Config, info: WorktreeInfo, last_active: Optional[datetime]
+) -> dict[str, Any]:
+    return {
+        "name": info.name,
+        "path": str(config.worktrees_dir / info.name),
+        "repo": info.repo_name,
+        "branch": info.branch,
+        "kind": info.kind,
+        "group": info.group,
+        "task": info.task,
+        "owner": info.owner,
+        "tags": info.tags,
+        "created_at": info.created_at,
+        "last_active": last_active.isoformat() if last_active else None,
+        "pr_number": info.pr_number,
+        "pr_status": info.pr_status,
+    }
+
+
+@app.command()
+def search(
+    query: Optional[str] = typer.Argument(
+        None, help="Words to match against name, branch, repo, description, owner and tags."
+    ),
+    tag: Optional[list[str]] = typer.Option(
+        None, "--tag", "-t", help="Only worktrees with this tag; repeat to require several."
+    ),
+    repo: Optional[str] = typer.Option(
+        None, "--repo", help="Only worktrees belonging to this project."
+    ),
+    limit: Optional[int] = typer.Option(
+        None, "--limit", "-n", help="Show at most this many worktrees."
+    ),
+    json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
+):
+    """Find worktrees by text or tag, most recently active first.
+
+    With no arguments, lists every worktree by recency. Reads only local
+    metadata and git state, so it is fast and works offline.
+    """
+    set_json_mode(json_out)
+    config = require_config()
+
+    words = (query or "").lower().split()
+    required_tags = normalize_tags(tag)
+    infos = [
+        (f, i) for f, i in load_worktrees(config)
+        if (not repo or i.repo_name == repo)
+        and all(t in i.tags for t in required_tags)
+        and matches_query(i, words)
+    ]
+    results = by_recent_activity(config, infos)[:limit]
+
+    if json_out:
+        emit({
+            "ok": True,
+            "worktrees": [worktree_summary(config, r.info, r.last_active) for r in results],
+        })
+        return
+
+    if not results:
+        console.print("No matching worktrees.")
+        return
+
+    table = Table(title="Arbor Worktrees")
+    table.add_column("Worktree", style="cyan", no_wrap=True)
+    table.add_column("Repo", style="magenta")
+    table.add_column("Tags", style="green")
+    table.add_column("Description")
+    table.add_column("Active", style="yellow")
+    for r in results:
+        table.add_row(
+            r.info.name, r.info.repo_name, ", ".join(r.info.tags),
+            r.info.task or "", format_ago(r.last_active),
+        )
+    console.print(table)
+
+
+@app.command()
+def show(
+    name: Optional[str] = typer.Argument(
+        None, help="Worktree to show; defaults to the most recently active one."
+    ),
+    json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
+):
+    """Show what a worktree is for and what has happened in it.
+
+    Lists its metadata, the commits it has on top of the base branch, and any
+    uncommitted changes - by default for the most recently active worktree, to
+    see what an agent just did.
+    """
+    set_json_mode(json_out)
+    config = require_config()
+
+    if name is None:
+        recent = by_recent_activity(config, load_worktrees(config))
+        if not recent:
+            raise fail("No worktrees found.", "unknown_worktree")
+        info, last_active = recent[0].info, recent[0].last_active
+    else:
+        found = require_worktree(config, name)
+        if not found.info and is_group(config, name):
+            raise fail(
+                f"'{name}' is a multi-repo group; show a member with 'arbor show {name}/<repo>'.",
+                "group_worktree",
+            )
+        if not found.info:
+            raise fail(f"Worktree '{name}' has no arbor metadata.", "no_metadata")
+        info = found.info
+        last_active = last_activity(found.path, info)
+
+    path = config.worktrees_dir / info.name
+    if not path.exists():
+        raise fail(f"Worktree directory {path} does not exist.", "missing_worktree_dir")
+
+    repo_path = config.projects.get(info.repo_name)
+    try:
+        base_ref = find_base_ref(repo_path, fetch=False) if repo_path else None
+    except subprocess.CalledProcessError:
+        base_ref = None
+
+    commits = []
+    if base_ref:
+        log = subprocess.run(
+            ["git", "-C", str(path), "log", "--format=%h%x00%s", f"{base_ref}..HEAD"],
+            capture_output=True, text=True
+        )
+        if log.returncode == 0:
+            commits = [
+                dict(zip(("sha", "subject"), line.split("\0", 1)))
+                for line in log.stdout.splitlines()
+            ]
+    changes = subprocess.run(
+        ["git", "-C", str(path), "status", "--short"],
+        capture_output=True, text=True
+    ).stdout.splitlines()
+
+    if json_out:
+        emit({
+            "ok": True,
+            **worktree_summary(config, info, last_active),
+            "base": base_ref,
+            "commits": commits,
+            "changes": changes,
+        })
+        return
+
+    console.print(f"[bold cyan]{info.name}[/bold cyan]  {path}")
+    console.print(f"  Repo:        [magenta]{info.repo_name}[/magenta]  Branch: [green]{info.branch}[/green]")
+    if info.task:
+        console.print(f"  Description: {info.task}")
+    if info.tags:
+        console.print(f"  Tags:        [green]{', '.join(info.tags)}[/green]")
+    if info.owner:
+        console.print(f"  Owner:       {info.owner}")
+    if info.pr_number:
+        console.print(f"  PR:          #{info.pr_number} ({info.pr_status})")
+    console.print(f"  Active:      {format_ago(last_active)}")
+
+    if base_ref:
+        console.print(f"\n[bold]Commits on top of {base_ref}:[/bold]")
+        if not commits:
+            console.print("  (none)")
+        for commit in commits:
+            console.print(f"  [yellow]{commit['sha']}[/yellow] {commit['subject']}", highlight=False)
+
+    console.print("\n[bold]Uncommitted changes:[/bold]")
+    if not changes:
+        console.print("  (none)")
+    for line in changes:
+        console.print(f"  {line}", markup=False, highlight=False)
+
+
+def require_metadata(config: Config, name: str) -> list[tuple[Path, WorktreeInfo]]:
+    """The metadata behind a name: one worktree, or every member of a group."""
+    found = require_worktree(config, name)
+    if found.info:
+        return [(found.meta_file, found.info)]
+    if is_group(config, name):
+        return [(f, i) for f, i in load_worktrees(config) if i.group == name]
+    raise fail(f"Worktree '{name}' has no arbor metadata.", "no_metadata")
+
+
+@app.command("tag")
+def tag_command(
+    name: str,
+    tags: list[str] = typer.Argument(..., help="Tags to add (or remove, with --remove)."),
+    remove: bool = typer.Option(False, "--remove", "-r", help="Remove the tags instead."),
+    json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
+):
+    """Add tags to a worktree, or remove them. Tagging a group tags every member."""
+    set_json_mode(json_out)
+    config = require_config()
+    changed = normalize_tags(tags)
+
+    targets = require_metadata(config, name)
+    for meta_file, info in targets:
+        if remove:
+            info.tags = [t for t in info.tags if t not in changed]
+        else:
+            info.tags = normalize_tags(info.tags + changed)
+        meta_file.write_text(info.model_dump_json(indent=2))
+        console.print(f"[cyan]{info.name}[/cyan]: {', '.join(info.tags) or '(no tags)'}")
+
+    emit({"ok": True, "worktrees": [{"name": i.name, "tags": i.tags} for _, i in targets]})
+
+
+@app.command("describe")
+def describe_command(
+    name: str,
+    description: str = typer.Argument(..., help="What the worktree is for; '' clears it."),
+    json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
+):
+    """Set a worktree's description. Describing a group describes every member."""
+    set_json_mode(json_out)
+    config = require_config()
+
+    targets = require_metadata(config, name)
+    for meta_file, info in targets:
+        info.task = description or None
+        meta_file.write_text(info.model_dump_json(indent=2))
+        console.print(f"[cyan]{info.name}[/cyan]: {info.task or '(no description)'}")
+
+    emit({"ok": True, "worktrees": [{"name": i.name, "task": i.task} for _, i in targets]})
+
+
 def _remove_worktree(repo_path: Path, worktree_path: Path, meta_file: Path, force: bool = False) -> bool:
     cmd = ["git", "-C", str(repo_path), "worktree", "remove", str(worktree_path)]
     if force:
@@ -1245,8 +1621,7 @@ def cleanup(
     config = require_config()
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
-    json_files = sorted(arbor_dir.glob("**/*.json"))
-    infos = [(f, WorktreeInfo.model_validate_json(f.read_text())) for f in json_files]
+    infos = load_worktrees(config)
     if repo:
         # Groups are judged as a whole, so a group with a member in this repo
         # brings its other members along.

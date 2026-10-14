@@ -25,7 +25,7 @@ PR, or anything that shouldn't disturb the current checkout.
 ```bash
 # Create a worktree, branched from the freshly fetched main branch.
 # The path goes to stdout, so it can be captured directly.
-WT=$(arbor create <project> <branch> --task "what this is for")
+WT=$(arbor create <project> <branch> --description "what this is for" --tag <tag>)
 
 # One change spanning several repos: a worktree per repo on the same branch,
 # under one folder ($WT/<project>). All are created or none are.
@@ -41,6 +41,12 @@ arbor pr <branch> --fill --draft
 
 # What is in flight, with live git state (dirty/ahead/behind) per worktree.
 arbor status --repo <project> --json
+
+# Find worktrees by text/tag (most recently active first), and see what
+# happened in one - commits on top of main plus uncommitted changes. With no
+# name, 'show' picks the most recently active worktree.
+arbor search <words> --tag <tag> --json
+arbor show [<name>] --json
 
 # A throwaway detached checkout for reading code, expired automatically.
 arbor research <project>
