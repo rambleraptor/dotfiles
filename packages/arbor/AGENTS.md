@@ -98,6 +98,36 @@ removed once every member's PR is merged, and then the whole group goes.
 arbor cleanup
 ```
 
+### `search`
+Finds worktrees by text and tags, most recently active first. Query words must
+all appear somewhere in the name, branch, repo, description, owner or tags;
+`--tag` (repeatable) requires a tag. With no arguments it lists everything.
+Reads only local state, so it's fast and works offline.
+```bash
+arbor search retry
+arbor search --tag bug --repo my-project -n 5
+```
+"Active" is the latest of the creation time, the last commit, and the mtime of
+any uncommitted file, so a worktree an agent is editing right now ranks first.
+
+### `show`
+Shows a worktree's description, tags and PR, the commits it has on top of the
+base branch, and its uncommitted changes. With no name, shows the most recently
+active worktree - what an agent just did. `arbor cd` with no name goes there.
+```bash
+arbor show
+arbor show fix-the-thing --json
+```
+
+### `tag` / `describe`
+Edit a worktree's tags and description after creation. On a multi-repo group
+they apply to every member.
+```bash
+arbor tag fix-the-thing bug urgent
+arbor tag fix-the-thing urgent --remove
+arbor describe fix-the-thing "Fix the retry bug in the uploader"
+```
+
 ### `config`
 Displays the current Arbor configuration, including the worktrees directory and
 imported projects.
@@ -107,7 +137,8 @@ arbor config
 
 ## Machine-readable output
 
-`create`, `research`, `status`, `cleanup`, `config` and `pr` all take `--json`.
+`create`, `research`, `status`, `search`, `show`, `tag`, `describe`, `cleanup`,
+`config` and `pr` all take `--json`.
 In JSON mode stdout carries exactly one JSON document and every human-facing
 message moves to stderr, so the output can be parsed without stripping terminal
 formatting. Errors are reported the same way — `{"ok": false, "error": ...,
@@ -120,9 +151,11 @@ formatting. Errors are reported the same way — `{"ok": false, "error": ...,
 cached, so a session can tell at a glance which of its worktrees still have
 uncommitted or unpushed work.
 
-Worktrees can be tagged at creation with `--task "what this is for"` and
-`--owner <agent-or-session-id>`; both come back in `status --json`, which is how
-a session that fanned out several worktrees tells them apart later.
+Worktrees can be labelled at creation with `--description "what this is for"`
+(alias `--task`, stored as `task`), `--tag <tag>` (repeatable) and
+`--owner <agent-or-session-id>`; all come back in `status --json` and
+`search --json`, which is how a session that fanned out several worktrees tells
+them apart later.
 
 ## Running several worktrees at once
 

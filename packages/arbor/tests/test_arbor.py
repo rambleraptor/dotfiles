@@ -1,6 +1,7 @@
 import json
 import os
 import shutil
+import time
 import subprocess
 from pathlib import Path
 import pytest
@@ -1148,3 +1149,133 @@ def test_cleanup_skips_group_when_a_lookup_fails(temp_arbor_env, fake_gh):
     assert result.exit_code == 0
     assert (worktrees_dir / "feature-x" / "api").exists()
     assert (worktrees_dir / "feature-x" / "web").exists()
+
+
+def _create(*args):
+    result = runner.invoke(app, ["create", *args])
+    assert result.exit_code == 0, result.stderr
+    return Path(result.stdout.strip())
+
+
+def _search(*args):
+    result = runner.invoke(app, ["search", *args, "--json"])
+    assert result.exit_code == 0, result.stdout
+    return [w["name"] for w in json.loads(result.stdout)["worktrees"]]
+
+
+def _setup_project(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    return worktrees_dir
+
+
+def test_create_records_tags_and_description(temp_arbor_env):
+    worktrees_dir = _setup_project(temp_arbor_env)
+
+    _create("proj", "fix-retry", "--description", "Fix the retry bug",
+            "--tag", "bug", "--tag", "net,bug")
+
+    info = json.loads((worktrees_dir / ".arbor" / "fix-retry.json").read_text())
+    assert info["task"] == "Fix the retry bug"
+    assert info["tags"] == ["bug", "net"]
+    assert info["created_at"]
+
+
+def test_tag_and_describe_edit_metadata(temp_arbor_env):
+    worktrees_dir = _setup_project(temp_arbor_env)
+    _create("proj", "feature-x", "--tag", "old")
+
+    result = runner.invoke(app, ["tag", "feature-x", "new", "other"])
+    assert result.exit_code == 0, result.stderr
+    result = runner.invoke(app, ["tag", "feature-x", "old", "--remove"])
+    assert result.exit_code == 0, result.stderr
+    result = runner.invoke(app, ["describe", "feature-x", "Shiny new thing"])
+    assert result.exit_code == 0, result.stderr
+
+    info = json.loads((worktrees_dir / ".arbor" / "feature-x.json").read_text())
+    assert info["tags"] == ["new", "other"]
+    assert info["task"] == "Shiny new thing"
+
+
+def test_tag_group_tags_every_member(temp_arbor_env):
+    worktrees_dir, _ = _setup_two_repos(temp_arbor_env)
+    _create("api,web", "feature/multi")
+
+    result = runner.invoke(app, ["tag", "feature/multi", "cross-repo"])
+    assert result.exit_code == 0, result.stderr
+
+    for name in ("api", "web"):
+        info = json.loads((worktrees_dir / ".arbor" / "feature" / "multi" / f"{name}.json").read_text())
+        assert info["tags"] == ["cross-repo"]
+
+
+def test_search_by_text_and_tag(temp_arbor_env):
+    _setup_project(temp_arbor_env)
+    _create("proj", "fix-retry", "--description", "Fix the retry bug", "--tag", "bug")
+    _create("proj", "add-login", "--description", "Add login page", "--tag", "ui")
+    _create("proj", "fix-css", "--description", "Fix button styles", "--tag", "ui", "--tag", "bug")
+
+    assert _search("retry") == ["fix-retry"]
+    assert _search("FIX bug styles") == ["fix-css"]
+    assert set(_search("--tag", "ui")) == {"add-login", "fix-css"}
+    assert _search("--tag", "ui", "--tag", "bug") == ["fix-css"]
+    assert _search("nothing-matches") == []
+
+
+def test_search_orders_by_recent_activity(temp_arbor_env):
+    _setup_project(temp_arbor_env)
+    old = _create("proj", "older")
+    _create("proj", "newer")
+    # Editing a file in the older worktree makes it the most recently active.
+    edited = old / "file.txt"
+    edited.write_text("changed")
+    future = time.time() + 60
+    os.utime(edited, (future, future))
+
+    assert _search() == ["older", "newer"]
+    assert _search("--limit", "1") == ["older"]
+
+
+def test_cd_without_name_goes_to_most_recent(temp_arbor_env):
+    _setup_project(temp_arbor_env)
+    _create("proj", "first")
+    latest = _create("proj", "second")
+    # Make the ordering independent of clock resolution.
+    future = time.time() + 60
+    (latest / "new.txt").write_text("hi")
+    os.utime(latest / "new.txt", (future, future))
+
+    result = runner.invoke(app, ["cd"])
+    assert result.exit_code == 0
+    assert result.stdout.strip() == str(latest)
+
+
+def test_show_reports_commits_and_changes(temp_arbor_env):
+    _setup_project(temp_arbor_env)
+    wt = _create("proj", "feature-show", "--description", "Show me", "--tag", "demo")
+    _commit_in(wt, "did a thing")
+    (wt / "wip.txt").write_text("wip")
+
+    result = runner.invoke(app, ["show", "--json"])
+    assert result.exit_code == 0, result.stdout
+    payload = json.loads(result.stdout)
+    assert payload["name"] == "feature-show"
+    assert payload["task"] == "Show me"
+    assert payload["tags"] == ["demo"]
+    assert payload["base"] == "upstream/main"
+    assert [c["subject"] for c in payload["commits"]] == ["did a thing"]
+    assert payload["changes"] == ["?? wip.txt"]
+
+    result = runner.invoke(app, ["show", "feature-show"])
+    assert result.exit_code == 0
+    assert "did a thing" in result.stdout
+    assert "wip.txt" in result.stdout
+
+
+def test_show_with_no_worktrees(temp_arbor_env):
+    runner.invoke(app, ["init", str(temp_arbor_env["worktrees_dir"])])
+    result = runner.invoke(app, ["show", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "unknown_worktree"
