@@ -141,6 +141,9 @@ class WorktreeInfo(BaseModel):
     task: Optional[str] = None
     # Who asked for this worktree - typically an agent or session identifier.
     owner: Optional[str] = None
+    # Set when this worktree was created alongside others on the same branch in
+    # other repos; all of them live under '{worktrees_dir}/{group}/'.
+    group: Optional[str] = None
 
 def get_config() -> Optional[Config]:
     if not CONFIG_PATH.exists():
@@ -219,6 +222,27 @@ def is_git_dirty(path: Path) -> bool:
     )
     return bool(res.stdout.strip())
 
+def _branch_checkout(repo_path: Path, branch: str) -> Optional[Path]:
+    """Return where 'branch' is checked out (main repo or any worktree), if anywhere."""
+    res = subprocess.run(
+        ["git", "-C", str(repo_path), "worktree", "list", "--porcelain"],
+        capture_output=True, text=True, check=True
+    )
+    path = None
+    for line in res.stdout.splitlines():
+        if line.startswith("worktree "):
+            path = Path(line[len("worktree "):])
+        elif line == f"branch refs/heads/{branch}":
+            return path.resolve()
+    return None
+
+def _remote_branch(repo_path: Path, branch: str) -> Optional[str]:
+    """Return e.g. 'origin/foo' when 'branch' exists only on a remote."""
+    for remote in ("origin", "upstream"):
+        if _ref_exists(repo_path, f"refs/remotes/{remote}/{branch}"):
+            return f"{remote}/{branch}"
+    return None
+
 def _create_worktree(
     config: Config,
     repo_name: str,
@@ -227,53 +251,201 @@ def _create_worktree(
     base: Optional[str] = None,
     task: Optional[str] = None,
     owner: Optional[str] = None,
+    name: Optional[str] = None,
+    group: Optional[str] = None,
 ) -> tuple[Path, WorktreeInfo]:
     """Add a worktree for 'branch' and record its metadata.
 
     'base' is the start point for a branch that doesn't exist yet. An existing
     branch is checked out where it already is, so a base is meaningless there.
+    A branch already checked out in the main repo is moved into the worktree
+    (the main repo is left detached); one already in the worktrees dir is reused.
+    'name' is the worktree's path relative to the worktrees dir, defaulting to
+    the branch name.
     """
-    worktree_path = config.worktrees_dir / branch
+    name = name or branch
+    worktree_path = config.worktrees_dir / name
+    meta_file = get_worktree_file(config.worktrees_dir, name)
+    checked_out_at = _branch_checkout(repo_path, branch)
+
+    if checked_out_at == worktree_path.resolve():
+        err_console.print(f"Branch [yellow]{branch}[/yellow] already has a worktree at {worktree_path}.")
+        if meta_file.exists():
+            info = WorktreeInfo.model_validate_json(meta_file.read_text())
+        else:
+            info = WorktreeInfo(
+                name=name, repo_name=repo_name, branch=branch, task=task, owner=owner, group=group
+            )
+            meta_file.write_text(info.model_dump_json(indent=2))
+        return worktree_path, info
+
     if worktree_path.exists():
         raise fail(f"Worktree directory {worktree_path} already exists.", "worktree_exists")
 
+    main_repo = repo_path.resolve()
+    if checked_out_at and checked_out_at != main_repo:
+        raise fail(
+            f"Branch {branch} is already checked out at {checked_out_at}. "
+            f"Move it with 'git worktree move {checked_out_at} {worktree_path}'.",
+            "branch_checked_out",
+        )
+    if checked_out_at == main_repo and is_git_dirty(main_repo):
+        raise fail(
+            f"Branch {branch} is checked out in {main_repo}, which has uncommitted "
+            "changes. Commit or stash them first.",
+            "dirty_repo",
+        )
+
     err_console.print(f"Creating worktree for [blue]{repo_name}[/blue] on branch [yellow]{branch}[/yellow]...")
 
-    try:
-        # Check if branch exists
-        result = subprocess.run(
-            ["git", "-C", str(repo_path), "rev-parse", "--verify", branch],
-            capture_output=True,
-            text=True
-        )
+    cmd = ["git", "-C", str(repo_path), "worktree", "add", str(worktree_path)]
+    if _ref_exists(repo_path, f"refs/heads/{branch}"):
+        cmd.append(branch)
+    elif remote_ref := _remote_branch(repo_path, branch):
+        err_console.print(f"Tracking existing remote branch [blue]{remote_ref}[/blue].")
+        cmd += ["--track", "-b", branch, remote_ref]
+    else:
+        where = f" from [blue]{base}[/blue]" if base else ""
+        err_console.print(f"Branch [yellow]{branch}[/yellow] does not exist. Creating it{where}.")
+        cmd += ["-b", branch]
+        if base:
+            cmd.append(base)
 
-        cmd = ["git", "-C", str(repo_path), "worktree", "add", str(worktree_path)]
-        if result.returncode != 0:
-            where = f" from [blue]{base}[/blue]" if base else ""
-            err_console.print(f"Branch [yellow]{branch}[/yellow] does not exist. Creating it{where}.")
-            cmd += ["-b", branch]
-            if base:
-                cmd.append(base)
-        else:
-            cmd.append(branch)
-
+    if checked_out_at == main_repo:
+        err_console.print(f"Detaching [blue]{main_repo}[/blue] so {branch} can move into its worktree.")
         subprocess.run(
-            cmd,
-            check=True,
-            capture_output=True,
-            text=True
+            ["git", "-C", str(main_repo), "checkout", "--quiet", "--detach"],
+            check=True, capture_output=True, text=True
         )
 
-        # Save metadata
-        info = WorktreeInfo(
-            name=branch, repo_name=repo_name, branch=branch, task=task, owner=owner
-        )
-        get_worktree_file(config.worktrees_dir, branch).write_text(info.model_dump_json(indent=2))
-
-        err_console.print(f"[green]Worktree created at {worktree_path}[/green]")
-        return worktree_path, info
+    try:
+        subprocess.run(cmd, check=True, capture_output=True, text=True)
     except subprocess.CalledProcessError as e:
+        if checked_out_at == main_repo:
+            subprocess.run(["git", "-C", str(main_repo), "checkout", "--quiet", branch], check=False)
         raise fail(f"Failed to create worktree: {e.stderr}", "worktree_add_failed")
+
+    info = WorktreeInfo(
+        name=name, repo_name=repo_name, branch=branch, task=task, owner=owner, group=group
+    )
+    meta_file.write_text(info.model_dump_json(indent=2))
+
+    err_console.print(f"[green]Worktree created at {worktree_path}[/green]")
+    return worktree_path, info
+
+def is_group(config: Config, name: str) -> bool:
+    """Whether 'name' is a multi-repo group created by 'arbor create a,b <branch>'."""
+    group_meta = get_arbor_dir(config.worktrees_dir) / name
+    if not group_meta.is_dir():
+        return False
+    return any(
+        WorktreeInfo.model_validate_json(f.read_text()).group == name
+        for f in group_meta.glob("*.json")
+    )
+
+def prune_empty_dirs(path: Path, stop: Path) -> None:
+    """Remove 'path' and its parents while they are empty, stopping at 'stop'."""
+    while path != stop and path.is_relative_to(stop):
+        try:
+            path.rmdir()
+        except OSError:
+            return
+        path = path.parent
+
+def parse_repo_names(repo_names: str) -> list[str]:
+    names = [n.strip() for n in repo_names.split(",")]
+    if not all(names):
+        raise fail(f"Empty repo name in '{repo_names}'.", "empty_repo_name")
+    duplicates = sorted({n for n in names if names.count(n) > 1})
+    if duplicates:
+        raise fail(f"Repo listed more than once: {', '.join(duplicates)}.", "duplicate_repo")
+    return names
+
+class _GroupMember(NamedTuple):
+    repo_name: str
+    repo_path: Path
+    base: str
+    # Captured before creation so a failed group can be put back as it was.
+    worktree_existed: bool
+    branch_existed: bool
+    branch_in_main_repo: bool
+
+def _rollback_group(config: Config, branch: str, created: list[_GroupMember]) -> None:
+    """Undo the worktrees a failed group creation made, newest first."""
+    for member in reversed(created):
+        if member.worktree_existed:
+            continue
+        name = f"{branch}/{member.repo_name}"
+        err_console.print(f"[yellow]Rolling back {name}...[/yellow]")
+        subprocess.run(
+            ["git", "-C", str(member.repo_path), "worktree", "remove", "--force",
+             str(config.worktrees_dir / name)],
+            capture_output=True, text=True
+        )
+        get_worktree_file(config.worktrees_dir, name).unlink(missing_ok=True)
+        if member.branch_in_main_repo:
+            subprocess.run(
+                ["git", "-C", str(member.repo_path), "checkout", "--quiet", branch],
+                capture_output=True, text=True
+            )
+        elif not member.branch_existed:
+            subprocess.run(
+                ["git", "-C", str(member.repo_path), "branch", "-D", branch],
+                capture_output=True, text=True
+            )
+    prune_empty_dirs(config.worktrees_dir / branch, config.worktrees_dir)
+    arbor_dir = get_arbor_dir(config.worktrees_dir)
+    prune_empty_dirs(arbor_dir / branch, arbor_dir)
+
+def _create_group(
+    config: Config,
+    repo_names: list[str],
+    branch: str,
+    base: Optional[str],
+    fetch: bool,
+    task: Optional[str],
+    owner: Optional[str],
+) -> list[tuple[Path, WorktreeInfo, str]]:
+    """Create a worktree per repo under '{worktrees_dir}/{branch}/', all or nothing.
+
+    Must be called with the arbor lock held.
+    """
+    group_path = config.worktrees_dir / branch
+    if group_path.exists() and not is_group(config, branch):
+        raise fail(
+            f"{group_path} already exists and is not a multi-repo worktree group.",
+            "worktree_exists",
+        )
+
+    repo_paths = {name: require_project(config, name) for name in repo_names}
+    bases = {}
+    for name, repo_path in repo_paths.items():
+        if base and not _ref_exists(repo_path, base):
+            raise fail(f"Base ref {base} does not exist in {name}.", "no_base_ref")
+        bases[name] = base or resolve_base_ref(repo_path, fetch=fetch)
+
+    created: list[_GroupMember] = []
+    results = []
+    try:
+        for name, repo_path in repo_paths.items():
+            member = _GroupMember(
+                repo_name=name,
+                repo_path=repo_path,
+                base=bases[name],
+                worktree_existed=(group_path / name).exists(),
+                branch_existed=_ref_exists(repo_path, f"refs/heads/{branch}"),
+                branch_in_main_repo=_branch_checkout(repo_path, branch) == repo_path.resolve(),
+            )
+            created.append(member)
+            path, info = _create_worktree(
+                config, name, branch, repo_path, base=bases[name], task=task, owner=owner,
+                name=f"{branch}/{name}", group=branch,
+            )
+            results.append((path, info, bases[name]))
+    except BaseException:
+        _rollback_group(config, branch, created)
+        raise
+    return results
 
 @app.command()
 def init(worktrees_dir: str):
@@ -317,23 +489,20 @@ def import_command(
         save_config(config)
         console.print(f"[green]Imported project [bold]{repo_name}[/bold] from {toplevel}[/green]")
         
-        # Check current branch and convert to worktree if applicable
+        # Move a feature branch that is checked out here into its own worktree.
+        # The main branch stays put: it isn't work in flight.
         res = subprocess.run(
             ["git", "-C", str(toplevel), "rev-parse", "--abbrev-ref", "HEAD"],
             capture_output=True, text=True, check=True
         )
         current_branch = res.stdout.strip()
-        
-        if current_branch != "HEAD":
+        base_ref = find_base_ref(toplevel, fetch=False)
+        main_branches = {base_branch_name(base_ref)} if base_ref else {"main", "master"}
+
+        if current_branch != "HEAD" and current_branch not in main_branches:
             console.print(f"Converting current branch [yellow]{current_branch}[/yellow] into a worktree...")
-            subprocess.run(["git", "-C", str(toplevel), "checkout", "--detach"], check=True)
-            try:
-                _create_worktree(config, repo_name, current_branch, toplevel)
-            except Exception:
-                console.print(f"[red]Failed to create worktree for {current_branch}. Restoring checkout...[/red]")
-                subprocess.run(["git", "-C", str(toplevel), "checkout", current_branch], check=False)
-                raise
-            
+            _create_worktree(config, repo_name, current_branch, toplevel)
+
     else:
         # It's a worktree
         # Verify it's inside the worktrees_dir
@@ -370,8 +539,10 @@ def import_command(
 
 @app.command()
 def create(
-    repo_name: str,
-    branch: str,
+    repo_name: str = typer.Argument(
+        ..., help="Project name, or a comma-separated list to create a multi-repo group."
+    ),
+    branch: str = typer.Argument(...),
     base: Optional[str] = typer.Option(
         None, "--base",
         help="Ref to branch from. Defaults to the upstream main branch."
@@ -390,11 +561,39 @@ def create(
 ):
     """Create a new worktree for a repo and branch, branched from main.
 
-    The worktree path is printed to stdout so a caller can act on it directly;
-    everything else goes to stderr.
+    With several comma-separated repos, each gets a worktree on the same branch
+    under one '<worktrees>/<branch>/' folder; if any of them fails, none are
+    kept. The worktree (or group folder) path is printed to stdout so a caller
+    can act on it directly; everything else goes to stderr.
     """
     set_json_mode(json_out)
     config = require_config()
+    repo_names = parse_repo_names(repo_name)
+
+    if len(repo_names) > 1:
+        with arbor_lock(config.worktrees_dir):
+            members = _create_group(
+                config, repo_names, branch, base, not no_fetch, task, owner
+            )
+        group_path = config.worktrees_dir / branch
+        if json_out:
+            emit({
+                "ok": True,
+                "name": branch,
+                "path": str(group_path),
+                "branch": branch,
+                "task": task,
+                "owner": owner,
+                "worktrees": [
+                    {"name": info.name, "path": str(path), "repo": info.repo_name, "base": member_base}
+                    for path, info, member_base in members
+                ],
+            })
+        else:
+            print(group_path)
+        return
+
+    repo_name = repo_names[0]
     repo_path = require_project(config, repo_name)
 
     with arbor_lock(config.worktrees_dir):
@@ -748,14 +947,26 @@ def resolve_worktree(config: Config, name: str) -> Optional[ResolvedWorktree]:
         info = WorktreeInfo.model_validate_json(meta_file.read_text())
         return ResolvedWorktree(config.worktrees_dir / info.name, info, meta_file)
 
+    # A multi-repo group resolves to the folder holding its worktrees.
+    if worktree_path.is_dir() and is_group(config, name):
+        return ResolvedWorktree(worktree_path)
+
     # Recursive search: match either the file stem (e.g. "feature-branch") or
-    # the full relative path recorded in the metadata.
+    # the full relative path recorded in the metadata. Groups repeat stems (every
+    # group has an "api.json"), so more than one match is an error, not a guess.
+    matches = []
     for f in sorted(arbor_dir.glob("**/*.json")):
         info = WorktreeInfo.model_validate_json(f.read_text())
         if f.stem == name or info.name == name:
-            return ResolvedWorktree(config.worktrees_dir / info.name, info, f)
+            matches.append(ResolvedWorktree(config.worktrees_dir / info.name, info, f))
 
-    return None
+    if len(matches) > 1:
+        raise fail(
+            f"Worktree '{name}' is ambiguous: "
+            f"{', '.join(m.info.name for m in matches)}. Use the full name.",
+            "ambiguous_worktree",
+        )
+    return matches[0] if matches else None
 
 
 def require_worktree(config: Config, name: str) -> ResolvedWorktree:
@@ -940,6 +1151,7 @@ def status(
                     "repo_path": str(config.projects.get(info.repo_name) or ""),
                     "branch": info.branch,
                     "kind": info.kind,
+                    "group": info.group,
                     "task": info.task,
                     "owner": info.owner,
                     "created_at": info.created_at,
@@ -1025,26 +1237,36 @@ def cleanup(
     ),
     json_out: bool = typer.Option(False, "--json", help="Emit JSON on stdout."),
 ):
-    """Delete merged worktrees and expired research worktrees."""
+    """Delete merged worktrees and expired research worktrees.
+
+    A multi-repo group is removed as a whole, once every member's PR is merged.
+    """
     set_json_mode(json_out)
     config = require_config()
 
     arbor_dir = get_arbor_dir(config.worktrees_dir)
     json_files = sorted(arbor_dir.glob("**/*.json"))
+    infos = [(f, WorktreeInfo.model_validate_json(f.read_text())) for f in json_files]
+    if repo:
+        # Groups are judged as a whole, so a group with a member in this repo
+        # brings its other members along.
+        groups = {i.group for _, i in infos if i.group and i.repo_name == repo}
+        infos = [(f, i) for f, i in infos if i.repo_name == repo or i.group in groups]
 
     removed: list[dict[str, Any]] = []
     skipped: list[dict[str, Any]] = []
     jobs = {}
     work = []
-    for f in json_files:
-        info = WorktreeInfo.model_validate_json(f.read_text())
-        if repo and info.repo_name != repo:
-            continue
+    # Groups with a member we couldn't check; none of their members are removed.
+    blocked_groups: set[str] = set()
+    for f, info in infos:
         repo_path = config.projects.get(info.repo_name)
 
         if not repo_path:
             console.print(f"[yellow]Skipping {info.name}: Repo {info.repo_name} not found in config.[/yellow]")
             skipped.append({"name": info.name, "reason": f"repo {info.repo_name} not in config"})
+            if info.group:
+                blocked_groups.add(info.group)
             continue
 
         worktree_path = config.worktrees_dir / info.name
@@ -1063,21 +1285,48 @@ def cleanup(
 
     lookups = lookup_prs(jobs)
 
-    for f, info, repo_path, worktree_path in work:
+    group_members: dict[str, list] = {}
+    for item in work:
+        f, info, repo_path, worktree_path = item
         lookup = lookups[f]
         if lookup.error:
             # Removing a worktree is destructive, so never act on a stale cached
             # status when we couldn't confirm it against GitHub.
             console.print(f"[yellow]Skipping {info.name}: PR lookup failed ({lookup.error}).[/yellow]")
             skipped.append({"name": info.name, "reason": f"PR lookup failed: {lookup.error}"})
+            if info.group:
+                blocked_groups.add(info.group)
             continue
 
         apply_lookup(info, lookup, f)
 
-        if lookup.state and lookup.state.upper() == "MERGED":
+        if info.group:
+            group_members.setdefault(info.group, []).append(item)
+        elif lookup.state and lookup.state.upper() == "MERGED":
             console.print(f"Cleaning up merged worktree: [blue]{info.name}[/blue]")
             if dry_run or _remove_worktree(repo_path, worktree_path, f):
                 removed.append({"name": info.name, "reason": f"PR #{info.pr_number} merged"})
+
+    for group, members in group_members.items():
+        if group in blocked_groups:
+            console.print(f"[yellow]Keeping group {group}: not every member could be checked.[/yellow]")
+            continue
+        waiting = [i.name for _, i, _, _ in members if (i.pr_status or "").upper() != "MERGED"]
+        if waiting:
+            if len(waiting) < len(members):
+                console.print(
+                    f"Keeping group [blue]{group}[/blue] until every member is merged "
+                    f"(waiting on {', '.join(waiting)})."
+                )
+            continue
+
+        console.print(f"Cleaning up merged group: [blue]{group}[/blue]")
+        for f, info, repo_path, worktree_path in members:
+            if dry_run or _remove_worktree(repo_path, worktree_path, f):
+                removed.append({"name": info.name, "reason": f"PR #{info.pr_number} merged"})
+        if not dry_run:
+            prune_empty_dirs(config.worktrees_dir / group, config.worktrees_dir)
+            prune_empty_dirs(arbor_dir / group, arbor_dir)
 
     if not removed:
         console.print("Nothing to clean up.")
@@ -1139,6 +1388,11 @@ def pr(
     config = require_config()
     found = require_worktree(config, name)
 
+    if not found.info and is_group(config, name):
+        raise fail(
+            f"'{name}' is a multi-repo group; open a PR per repo with 'arbor pr {name}/<repo>'.",
+            "group_worktree",
+        )
     if not found.info:
         raise fail(f"Worktree '{name}' has no arbor metadata to read a branch from.", "no_metadata")
     info = found.info

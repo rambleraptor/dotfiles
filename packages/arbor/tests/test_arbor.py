@@ -321,7 +321,10 @@ if args[:2] == ["pr", "view"]:
 
 if args[:2] == ["pr", "list"]:
     head = args[args.index("--head") + 1]
-    print(json.dumps(json.loads(os.environ.get("FAKE_GH_PRS", "{}")).get(head, [])))
+    prs = json.loads(os.environ.get("FAKE_GH_PRS", "{}"))
+    # "<repo dir>:<branch>" pins a PR to one repo; a bare branch matches any.
+    repo_key = os.path.basename(os.getcwd()) + ":" + head
+    print(json.dumps(prs.get(repo_key, prs.get(head, []))))
     sys.exit(0)
 
 if args[:2] == ["pr", "create"]:
@@ -806,6 +809,7 @@ def test_status_json_stays_valid_without_a_base_ref(temp_arbor_env):
     subprocess.run(["git", "add", "."], cwd=repo, check=True)
     subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
     runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    assert runner.invoke(app, ["create", "proj", "feature", "--base", "main"]).exit_code == 0
 
     result = runner.invoke(app, ["status", "--offline", "--json"])
     assert result.exit_code == 0, result.stderr
@@ -814,3 +818,333 @@ def test_status_json_stays_valid_without_a_base_ref(temp_arbor_env):
     entry = payload["worktrees"][0]
     assert entry["git"]["ahead"] is None
     assert entry["git"]["dirty"] is False
+
+
+def _make_repo(tmp_path, name="repo"):
+    repo = tmp_path / name
+    repo.mkdir()
+    subprocess.run(["git", "init", "-b", "main"], cwd=repo, check=True)
+    (repo / "file.txt").write_text("v1")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "init"], cwd=repo, check=True)
+    return repo
+
+
+def _current_branch(path):
+    return subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=path, capture_output=True, text=True
+    ).stdout.strip()
+
+
+def test_import_leaves_main_branch_alone(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo(temp_arbor_env["tmp_path"])
+
+    result = runner.invoke(app, ["import", str(repo), "--name", "proj"])
+    assert result.exit_code == 0, result.stderr
+    assert "Converting" not in result.stdout
+    assert not (worktrees_dir / "main").exists()
+    assert _current_branch(repo) == "main"
+
+
+def test_create_existing_branch_checked_out_in_main_repo(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    subprocess.run(["git", "checkout", "-b", "existing"], cwd=repo, check=True)
+    result = runner.invoke(app, ["create", "proj", "existing", "--base", "main"])
+    assert result.exit_code == 0, result.stderr
+
+    wt = Path(result.stdout.strip())
+    assert wt == worktrees_dir / "existing"
+    assert _current_branch(wt) == "existing"
+    assert _current_branch(repo) == "HEAD"
+    assert (worktrees_dir / ".arbor" / "existing.json").exists()
+
+
+def test_create_existing_branch_in_dirty_main_repo_fails(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    subprocess.run(["git", "checkout", "-b", "existing"], cwd=repo, check=True)
+    (repo / "file.txt").write_text("v2")
+    result = runner.invoke(app, ["create", "proj", "existing", "--base", "main"])
+    assert result.exit_code == 1
+    assert "uncommitted changes" in result.stderr
+    assert _current_branch(repo) == "existing"
+
+
+def test_create_reuses_existing_worktree(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    first = runner.invoke(app, ["create", "proj", "again", "--base", "main"])
+    assert first.exit_code == 0, first.stderr
+    second = runner.invoke(app, ["create", "proj", "again", "--base", "main"])
+    assert second.exit_code == 0, second.stderr
+    assert second.stdout.strip() == first.stdout.strip()
+
+
+def test_create_existing_branch_in_other_worktree_fails(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    elsewhere = temp_arbor_env["tmp_path"] / "elsewhere"
+    subprocess.run(["git", "worktree", "add", str(elsewhere), "-b", "other"], cwd=repo, check=True)
+    result = runner.invoke(app, ["create", "proj", "other", "--base", "main"])
+    assert result.exit_code == 1
+    assert "git worktree move" in result.stderr
+
+
+def test_create_tracks_remote_only_branch(temp_arbor_env):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repo = _make_repo_with_upstream(temp_arbor_env["tmp_path"])
+    runner.invoke(app, ["import", str(repo), "--name", "proj"])
+
+    subprocess.run(["git", "checkout", "-b", "pushed"], cwd=repo, check=True)
+    (repo / "pushed.txt").write_text("pushed")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-m", "pushed"], cwd=repo, check=True)
+    subprocess.run(["git", "push", "upstream", "pushed"], cwd=repo, check=True)
+    subprocess.run(["git", "checkout", "--detach"], cwd=repo, check=True)
+    subprocess.run(["git", "branch", "-D", "pushed"], cwd=repo, check=True)
+
+    result = runner.invoke(app, ["create", "proj", "pushed"])
+    assert result.exit_code == 0, result.stderr
+    wt = Path(result.stdout.strip())
+    assert (wt / "pushed.txt").exists()
+    upstream_ref = subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "pushed@{upstream}"], cwd=wt, capture_output=True, text=True
+    ).stdout.strip()
+    assert upstream_ref == "upstream/pushed"
+
+
+# --- Multi-repo groups ---------------------------------------------------------
+#
+# 'arbor create a,b <branch>' puts one worktree per repo, all on <branch>, under
+# '<worktrees>/<branch>/<repo>', and keeps either all of them or none.
+
+def _setup_two_repos(temp_arbor_env, make=_make_repo_with_upstream):
+    worktrees_dir = temp_arbor_env["worktrees_dir"]
+    runner.invoke(app, ["init", str(worktrees_dir)])
+    repos = {}
+    for name in ("api", "web"):
+        repos[name] = make(temp_arbor_env["tmp_path"], name=name)
+        runner.invoke(app, ["import", str(repos[name]), "--name", name])
+    return worktrees_dir, repos
+
+
+def _has_branch(repo, branch):
+    return subprocess.run(
+        ["git", "rev-parse", "--verify", "--quiet", f"refs/heads/{branch}"], cwd=repo
+    ).returncode == 0
+
+
+def test_create_group_layout(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+
+    result = runner.invoke(app, ["create", "api, web", "feature/multi"])
+    assert result.exit_code == 0, result.stderr
+
+    group = worktrees_dir / "feature" / "multi"
+    assert result.stdout.strip() == str(group)
+    for name in ("api", "web"):
+        assert _current_branch(group / name) == "feature/multi"
+        info = json.loads((worktrees_dir / ".arbor" / "feature" / "multi" / f"{name}.json").read_text())
+        assert info["name"] == f"feature/multi/{name}"
+        assert info["repo_name"] == name
+        assert info["group"] == "feature/multi"
+
+
+def test_create_single_repo_keeps_flat_layout(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+
+    result = runner.invoke(app, ["create", "api", "solo"])
+    assert result.exit_code == 0, result.stderr
+    assert result.stdout.strip() == str(worktrees_dir / "solo")
+    assert json.loads((worktrees_dir / ".arbor" / "solo.json").read_text())["group"] is None
+
+
+def test_create_group_json(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+
+    result = runner.invoke(app, ["create", "api,web", "feature-x", "--task", "both", "--json"])
+    assert result.exit_code == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["path"] == str(worktrees_dir / "feature-x")
+    assert payload["task"] == "both"
+    assert [w["name"] for w in payload["worktrees"]] == ["feature-x/api", "feature-x/web"]
+    assert {w["base"] for w in payload["worktrees"]} == {"upstream/main"}
+
+
+@pytest.mark.parametrize("repos_arg,code", [
+    ("api,api", "duplicate_repo"),
+    ("api,", "empty_repo_name"),
+    ("api,nope", "unknown_project"),
+])
+def test_create_group_rejects_bad_repo_list(temp_arbor_env, repos_arg, code):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+
+    result = runner.invoke(app, ["create", repos_arg, "feature-x", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == code
+    assert not (worktrees_dir / "feature-x").exists()
+    assert not _has_branch(repos["api"], "feature-x")
+
+
+def test_create_group_rolls_back_on_failure(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+    # 'web' can't take the branch: it's already checked out outside arbor.
+    elsewhere = temp_arbor_env["tmp_path"] / "elsewhere"
+    subprocess.run(["git", "worktree", "add", str(elsewhere), "-b", "feature-x"], cwd=repos["web"], check=True)
+
+    result = runner.invoke(app, ["create", "api,web", "feature-x"])
+    assert result.exit_code == 1
+    assert "git worktree move" in result.stderr
+
+    # 'api' was created first and must be undone, branch and all.
+    assert not (worktrees_dir / "feature-x").exists()
+    assert not (worktrees_dir / ".arbor" / "feature-x").exists()
+    assert not _has_branch(repos["api"], "feature-x")
+    # The pre-existing branch in 'web' is untouched.
+    assert _current_branch(elsewhere) == "feature-x"
+
+
+def test_create_group_rollback_keeps_existing_branch(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+    subprocess.run(["git", "branch", "feature-x"], cwd=repos["api"], check=True)
+    elsewhere = temp_arbor_env["tmp_path"] / "elsewhere"
+    subprocess.run(["git", "worktree", "add", str(elsewhere), "-b", "feature-x"], cwd=repos["web"], check=True)
+
+    result = runner.invoke(app, ["create", "api,web", "feature-x"])
+    assert result.exit_code == 1
+    assert not (worktrees_dir / "feature-x").exists()
+    assert _has_branch(repos["api"], "feature-x")
+
+
+def test_create_group_is_rerunnable(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+
+    first = runner.invoke(app, ["create", "api,web", "feature-x"])
+    assert first.exit_code == 0, first.stderr
+    second = runner.invoke(app, ["create", "api,web", "feature-x"])
+    assert second.exit_code == 0, second.stderr
+    assert second.stdout == first.stdout
+
+
+def test_create_group_conflicts_with_single_worktree(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+    runner.invoke(app, ["create", "api", "feature-x"])
+
+    result = runner.invoke(app, ["create", "api,web", "feature-x", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "worktree_exists"
+    assert not _has_branch(repos["web"], "feature-x")
+
+
+def test_cd_resolves_group_and_members(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+    runner.invoke(app, ["create", "api,web", "one"])
+    runner.invoke(app, ["create", "api,web", "two"])
+
+    result = runner.invoke(app, ["cd", "one"])
+    assert result.stdout.strip() == str(worktrees_dir / "one")
+    result = runner.invoke(app, ["cd", "one/api"])
+    assert result.stdout.strip() == str(worktrees_dir / "one" / "api")
+
+    # Every group has an 'api'; picking one would be a guess.
+    result = runner.invoke(app, ["cd", "api"])
+    assert result.exit_code == 1
+    assert "ambiguous" in result.stderr
+
+
+def test_exec_in_group_runs_in_group_folder(temp_arbor_env):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env)
+    runner.invoke(app, ["create", "api,web", "feature-x"])
+
+    marker = temp_arbor_env["tmp_path"] / "cwd.txt"
+    result = runner.invoke(app, ["exec", "feature-x", "--", "sh", "-c", f"pwd > {marker}"])
+    assert result.exit_code == 0
+    assert Path(marker.read_text().strip()) == worktrees_dir / "feature-x"
+
+
+def test_pr_on_group_points_at_members(temp_arbor_env, fake_gh):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env, make=_fork_repo)
+    runner.invoke(app, ["create", "api,web", "feature-x", "--no-fetch"])
+
+    result = runner.invoke(app, ["pr", "feature-x", "--title", "t", "--json"])
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["code"] == "group_worktree"
+
+
+def _merged(number):
+    return [{"number": number, "state": "MERGED", "headRepositoryOwner": {"login": "me"}}]
+
+
+def _open(number):
+    return [{"number": number, "state": "OPEN", "headRepositoryOwner": {"login": "me"}}]
+
+
+def test_cleanup_removes_group_once_all_merged(temp_arbor_env, fake_gh):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env, make=_fork_repo)
+    runner.invoke(app, ["create", "api,web", "feature/multi", "--no-fetch"])
+    fake_gh(prs={"feature/multi": _merged(1)})
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0, result.stderr
+    assert "Cleaning up merged group" in result.stdout
+    # The group folder and its metadata go too, up to the worktrees root.
+    assert not (worktrees_dir / "feature").exists()
+    assert not (worktrees_dir / ".arbor" / "feature").exists()
+
+
+def test_cleanup_keeps_group_until_every_member_merged(temp_arbor_env, fake_gh):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env, make=_fork_repo)
+    runner.invoke(app, ["create", "api,web", "feature-x", "--no-fetch"])
+    fake_gh(prs={"api:feature-x": _merged(1), "web:feature-x": _open(2)})
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0, result.stderr
+    assert "waiting on feature-x/web" in result.stdout
+    assert (worktrees_dir / "feature-x" / "api").exists()
+    assert (worktrees_dir / "feature-x" / "web").exists()
+
+
+def test_cleanup_keeps_group_with_member_without_pr(temp_arbor_env, fake_gh):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env, make=_fork_repo)
+    runner.invoke(app, ["create", "api,web", "feature-x", "--no-fetch"])
+    fake_gh(prs={"api:feature-x": _merged(1)})
+
+    runner.invoke(app, ["cleanup"])
+    assert (worktrees_dir / "feature-x" / "api").exists()
+
+
+def test_cleanup_repo_filter_judges_whole_group(temp_arbor_env, fake_gh):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env, make=_fork_repo)
+    runner.invoke(app, ["create", "api,web", "feature-x", "--no-fetch"])
+    fake_gh(prs={"api:feature-x": _merged(1), "web:feature-x": _open(2)})
+
+    # Filtering to 'api' must not hide that 'web' is still open.
+    runner.invoke(app, ["cleanup", "--repo", "api"])
+    assert (worktrees_dir / "feature-x" / "api").exists()
+
+
+def test_cleanup_skips_group_when_a_lookup_fails(temp_arbor_env, fake_gh):
+    worktrees_dir, repos = _setup_two_repos(temp_arbor_env, make=_fork_repo)
+    runner.invoke(app, ["create", "api,web", "feature-x", "--no-fetch"])
+    fake_gh(mode="fail")
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert (worktrees_dir / "feature-x" / "api").exists()
+    assert (worktrees_dir / "feature-x" / "web").exists()
