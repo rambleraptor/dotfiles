@@ -1588,6 +1588,11 @@ def describe_command(
 
 
 def _remove_worktree(repo_path: Path, worktree_path: Path, meta_file: Path, force: bool = False) -> bool:
+    if not worktree_path.exists():
+        # The directory was deleted by hand; git only needs its stale entry pruned.
+        subprocess.run(["git", "-C", str(repo_path), "worktree", "prune"], capture_output=True, text=True)
+        meta_file.unlink()
+        return True
     cmd = ["git", "-C", str(repo_path), "worktree", "remove", str(worktree_path)]
     if force:
         cmd.append("--force")
