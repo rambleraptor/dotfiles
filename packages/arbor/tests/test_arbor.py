@@ -463,6 +463,20 @@ def test_cleanup_removes_merged_worktree(temp_arbor_env, fake_gh):
     assert not meta.exists()
 
 
+def test_cleanup_removes_merged_worktree_whose_directory_is_gone(temp_arbor_env, fake_gh):
+    repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
+    # Deleted by hand, and git has since pruned it too: 'worktree remove' then
+    # fails with "is not a working tree".
+    shutil.rmtree(wt)
+    subprocess.run(["git", "worktree", "prune"], cwd=repo, check=True)
+    fake_gh(prs={"feature-pr": [{"number": 42, "state": "MERGED", "headRepositoryOwner": {"login": "me"}}]})
+
+    result = runner.invoke(app, ["cleanup"])
+    assert result.exit_code == 0
+    assert "Failed to remove" not in result.stdout
+    assert not meta.exists()
+
+
 def test_cleanup_skips_when_lookup_fails(temp_arbor_env, fake_gh):
     repo, wt, meta = _setup_worktree(temp_arbor_env, fake_gh)
 
